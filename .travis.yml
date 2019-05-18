@@ -30,8 +30,8 @@ jobs:
     before_script:
     - "./scripts/add-key.sh"
     before_install:
-    - openssl aes-256-cbc -K $encrypted_9841417654f4_key -iv $encrypted_9841417654f4_iv -in JPPerformance/Keys.plist.enc -out JPPerformance/Keys.plist -d
-    - openssl aes-256-cbc -K $encrypted_9841417654f4_key -iv $encrypted_9841417654f4_iv -in scripts/certs/dist.p12.enc -out scripts/certs/dist.p12 -d
+    - openssl aes-256-cbc -K $encrypted_9841417654f4_key -iv $encrypted_9841417654f4_iv -in secrets.tar.enc -out secrets.tar -d
+    - tar xvf secrets.tar
     install:
     - gem install bundler -v 2.0.1
     - bundle install
