@@ -9,7 +9,7 @@ let package = Package(
         .library(name: "Dependencies", targets: ["Dependencies"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/jp-fan-app/swift-client", from: "0.19.0"),
+        .package(url: "https://github.com/jp-fan-app/swift-client", from: "0.20.0"),
     ],
     targets: [
         .target(name: "Dependencies", dependencies: ["JPFanAppClient"]),

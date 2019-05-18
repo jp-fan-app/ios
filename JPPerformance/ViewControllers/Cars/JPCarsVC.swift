@@ -12,7 +12,7 @@ import GoogleMobileAds
 
 
 class JPCarsVC: JPBaseViewController {
-    
+
     let viewModel = ViewModel()
     @IBOutlet weak var tableViewCars: UITableView!
     @IBOutlet weak var searchBarCars: UISearchBar!

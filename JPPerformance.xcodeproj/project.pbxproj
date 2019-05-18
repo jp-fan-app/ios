@@ -95,6 +95,8 @@
 		59D7A278212AB96900A7B929 /* YoutubeVideoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D7A277212AB96900A7B929 /* YoutubeVideoModel.swift */; };
 		59DA5FD12290264C0077FD39 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59DA5FD02290264C0077FD39 /* Keys.plist */; };
 		59DA5FD3229026730077FD39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA5FD2229026730077FD39 /* Keys.swift */; };
+		59DA64D9229092CB0077FD39 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DA64D8229092CB0077FD39 /* Info.storyboard */; };
+		59DA64DC229096210077FD39 /* LaSiSeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA64DB229096210077FD39 /* LaSiSeVC.swift */; };
 		59E4480D20E17DA9003EE672 /* CompareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E4480C20E17DA9003EE672 /* CompareVC.swift */; };
 		59ED637C1F6D6AAB008A3A0F /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59ED63761F6D6AAA008A3A0F /* YouTubePlayer.framework */; };
 		59ED637F1F6D73F4008A3A0F /* JPNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ED637E1F6D73F4008A3A0F /* JPNavigationViewController.swift */; };
@@ -263,6 +265,8 @@
 		59D7A277212AB96900A7B929 /* YoutubeVideoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoModel.swift; sourceTree = "<group>"; };
 		59DA5FD02290264C0077FD39 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		59DA5FD2229026730077FD39 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		59DA64D8229092CB0077FD39 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
+		59DA64DB229096210077FD39 /* LaSiSeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaSiSeVC.swift; sourceTree = "<group>"; };
 		59E4480C20E17DA9003EE672 /* CompareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareVC.swift; sourceTree = "<group>"; };
 		59ED63761F6D6AAA008A3A0F /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = Carthage/Build/iOS/YouTubePlayer.framework; sourceTree = "<group>"; };
 		59ED637E1F6D73F4008A3A0F /* JPNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPNavigationViewController.swift; sourceTree = "<group>"; };
@@ -503,6 +507,7 @@
 				59F8124020489E400017C9F6 /* Assets */,
 				5990354E205D5C5F00D204F1 /* Segues */,
 				59A18AAE1F6D0BBC008789BA /* Main.storyboard */,
+				59DA64D8229092CB0077FD39 /* Info.storyboard */,
 				59A18AB31F6D0BBC008789BA /* LaunchScreen.storyboard */,
 				59F812962049EAF10017C9F6 /* JPPerformance-Bridging-Header.h */,
 				59A18AB61F6D0BBC008789BA /* Info.plist */,
@@ -548,6 +553,7 @@
 				5969622C213E680100172F5F /* Donation */,
 				5969622D213E680A00172F5F /* Notification Settings */,
 				5990354F205D5F7C00D204F1 /* Gallery */,
+				59DA64DA229096080077FD39 /* LaSiSe */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -608,6 +614,14 @@
 				59356FEC1F6EACA200EFF311 /* JPCarData.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		59DA64DA229096080077FD39 /* LaSiSe */ = {
+			isa = PBXGroup;
+			children = (
+				59DA64DB229096210077FD39 /* LaSiSeVC.swift */,
+			);
+			path = LaSiSe;
 			sourceTree = "<group>";
 		};
 		59E4480620E17D7C003EE672 /* Compare */ = {
@@ -806,6 +820,7 @@
 				59F8127A20489F4E0017C9F6 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				59696223213DC73B00172F5F /* Localizable.strings in Resources */,
 				59F8127020489F4E0017C9F6 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				59DA64D9229092CB0077FD39 /* Info.storyboard in Resources */,
 				59F8127620489F4E0017C9F6 /* Montserrat-Medium.ttf in Resources */,
 				59F8128E20489F4E0017C9F6 /* MontserratAlternates-ThinItalic.ttf in Resources */,
 				59F8127820489F4E0017C9F6 /* Montserrat-Regular.ttf in Resources */,
@@ -986,6 +1001,7 @@
 			files = (
 				592BB0512183298200AD400C /* VideoSerieVideo.swift in Sources */,
 				5969622B213DCE4500172F5F /* String.swift in Sources */,
+				59DA64DC229096210077FD39 /* LaSiSeVC.swift in Sources */,
 				592A74A720508CEC000EC2D5 /* YoutubeFallbackVC.swift in Sources */,
 				59D18005212A015500ABCD6F /* ManufacturerModel.swift in Sources */,
 				59D18010212A050500ABCD6F /* CarModel.swift in Sources */,

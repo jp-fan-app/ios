@@ -20,6 +20,7 @@ public class CarStage: Object {
     @objc public dynamic var isStock = false
     public let ps = RealmOptional<Double>()
     public let nm = RealmOptional<Double>()
+    public let lasiseInSeconds = RealmOptional<Double>()
     @objc public dynamic var createdAt: Date?
     @objc public dynamic var updatedAt: Date?
 
