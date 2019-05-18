@@ -3,9 +3,26 @@ default_platform :ios
 
 platform :ios do
 
-  desc "Runs all the tests"
-  lane :test do
-    scan
+  desc "Installs dependencies"
+  lane :dependencies do
+    sh "pod install --repo-update"
+    sh "cd .. && carthage bootstrap --platform iOS --cache-builds"
+    sh "cd ../Dependencies && rake dependencies"
+  end
+
+  desc "Build ipa"
+  lane :build_ipa do
+    # update build number from travis env
+    build_number = ENV["TRAVIS_BUILD_NUMBER"]
+    build_number ||= 1
+    set_info_plist_value(path: "./JPPerformance/Info.plist",
+                         key: "CFBundleVersion",
+                         value: "#{build_number}")
+
+    build_app(
+      scheme: "JPPerformance",
+      workspace: "JPPerformance.xcworkspace"
+    )
   end
 
   desc "Create App Store Screenshots"
@@ -27,6 +44,16 @@ platform :ios do
       output_simulator_logs: false,
       # clear_previous_screenshots: true
     )
+  end
+
+  desc "Deploys App to AppCenter"
+  lane :deploy_develop do
+    puts "implement deploy develop"
+  end
+
+  desc "Deploys App to AppStore"
+  lane :deploy_master do
+    puts "implement deploy master"
   end
 
 end

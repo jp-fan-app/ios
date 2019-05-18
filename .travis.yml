@@ -1,0 +1,58 @@
+os: osx
+osx_image: xcode10.2
+language: swift
+branches:
+  only:
+  - "/^develop\\/.*$/"
+  - master
+env:
+  global:
+  - LC_CTYPE=en_US.UTF-8
+  - LANG=en_US.UTF-8
+  - PROFILE_NAME="Krone_Trailer_Check_InHouse"
+  - PROFILE_NAME_STORE="Krone_Trailer_Check_AppStore"
+git:
+  submodules: false
+stages:
+- name: develop
+  if: branch =~ ^develop/.*$
+- name: master
+  if: branch = master
+jobs:
+  include:
+  - stage: develop
+    name: Develop Job
+    cache:
+      cocoapods: true
+      directories:
+      - Carthage
+    # before_script:
+    # - "./scripts/add-key.sh"
+    script:
+    - fastlane dependencies
+    - fastlane build_ipa
+    # after_script:
+    # - "./scripts/remove-key.sh"
+    - "./scripts/write_homebrew_to_cache.sh mockturtle"
+    deploy:
+    - provider: script
+      skip_cleanup: true
+      script: fastlane deploy_develop
+      on:
+        all_branches: true
+        condition: "$TRAVIS_BRANCH =~ ^develop\\/.*$"
+  - stage: master
+    name: Master Job
+    # before_script:
+    # - "./scripts/add-key.sh"
+    script:
+    - fastlane resign_current_version_from_s3_bucket
+    # after_script:
+    # - "./scripts/remove-key.sh"
+    deploy:
+    - provider: script
+      skip_cleanup: true
+      script: fastlane deploy_master
+      on:
+        all_branches: true
+        condition: "$TRAVIS_BRANCH = master"

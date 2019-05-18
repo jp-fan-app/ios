@@ -16,21 +16,31 @@ or alternatively using `brew cask install fastlane`
 
 # Available Actions
 ## iOS
-### ios test
+### ios dependencies
 ```
-fastlane ios test
+fastlane ios dependencies
 ```
-Runs all the tests
+Installs dependencies
+### ios build_ipa
+```
+fastlane ios build_ipa
+```
+Build ipa
 ### ios screenshots
 ```
 fastlane ios screenshots
 ```
 Create App Store Screenshots
-### ios beta
+### ios deploy_develop
 ```
-fastlane ios beta
+fastlane ios deploy_develop
 ```
-Builds and uploads to hockey
+Deploys App to AppCenter
+### ios deploy_master
+```
+fastlane ios deploy_master
+```
+Deploys App to AppStore
 
 ----
 
