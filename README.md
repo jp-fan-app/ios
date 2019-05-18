@@ -1,2 +1,1 @@
-# ios
-JP Fan App (iOS)
+# jpperformance-ios

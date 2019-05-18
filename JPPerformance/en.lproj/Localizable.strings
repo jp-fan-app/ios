@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  JPPerformance
+
+  Created by Christoph Pageler on 03.09.18.
+  Copyright © 2018 Christoph Pageler. All rights reserved.
+*/
+
+
+"info_notification_settings_button_title" = "Notifications";
+"info_donation_information_button_title" = "Give a tip";
+"info_send_feedback_button_title" = "Send Feedback";
+"info_disclaimer_title" = "Disclaimer";
+"info_disclaimer_text" = "Die durch die Appbetreiber erstellten Inhalte und Werke in dieser App unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser App sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.\n\nSoweit die Inhalte in dieser App nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.";
+
+"donation_title" = "Give a tip";
+"donation_text_top" = "If you like the JP Fan App you can leave a tip.";
+"donation_text_bottom" = "The tip goes exclusively to the app developer and not to JP Performance GmbH and is expressly voluntary!\n\n\nFor the JP Fan App I run a small server, e.g. for the data and sending the push notifications.";
+"donation_thank_you_alert_title" = "Thank You";
+"donation_thank_you_alert_text" = "For the donation for the app developer 🙂👍🏼";
+"donation_thank_you_alert_close_title" = "Close";
+
+"notification_settings_title" = "Notifications";
+"notification_settings_new_videos_title" = "New Videos";
+"notification_settings_new_videos_description" = "11:30 is the magic time! At noon our server penetrates the servers of Youtube to send you a push notification with the latest video as soon as possible!";
+"notification_settings_car_updates_title" = "Car Updates";
+"notification_settings_car_updates_description" = "As soon as we add or change a new car, a new time, stages or photos, you can be automatically notified to be always up to date!";
+"notification_settings_enable_alert_title" = "Missing Permission";
+"notification_settings_enable_alert_text" = "Please \"Allow notificaions\" in the settings of the app";
+"notification_settings_enable_alert_settings_button" = "Settings";
+"notification_settings_enable_alert_cancel_button" = "Cancel";
+
+"cars" = "Cars";
+"board" = "Board";
+"youtube" = "Youtube";
+"series" = "Series";
+"serie" = "Series";
+"compare" = "Compare";
+"no_description" = "No Description";
+"image_source" = "Source";
+"select" = "Select";
+"car_selection" = "Car Selection";
+"more" = "More";

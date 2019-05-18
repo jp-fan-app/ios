@@ -1,0 +1,43 @@
+/* 
+  Localizable.strings
+  JPPerformance
+
+  Created by Christoph Pageler on 03.09.18.
+  Copyright © 2018 Christoph Pageler. All rights reserved.
+*/
+
+
+"info_notification_settings_button_title" = "Benachrichtigungen";
+"info_donation_information_button_title" = "Trinkgeld geben";
+"info_send_feedback_button_title" = "Feedback senden";
+"info_disclaimer_title" = "Haftungsausschluss";
+"info_disclaimer_text" = "Die durch die Appbetreiber erstellten Inhalte und Werke in dieser App unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser App sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.\n\nSoweit die Inhalte in dieser App nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.";
+
+"donation_title" = "Trinkgeld";
+"donation_text_top" = "Wenn dir die JP Fan App gefällt kannst du ein Trinkgeld da lassen.";
+"donation_text_bottom" = "Das Trinkgeld geht ausschließlich an den App Entwickler und nicht an JP Performance GmbH und ist ausdrücklich freiwillig!\n\nFür die JP Fan App betreibe ich einen kleinen Server, z.B. für die Daten und senden der Push Benachrichtigungen.";
+"donation_thank_you_alert_title" = "Vielen Dank";
+"donation_thank_you_alert_text" = "Für deine Spende an den App Entwickler 🙂👍🏼";
+"donation_thank_you_alert_close_title" = "Schließen";
+
+"notification_settings_title" = "Benachrichtigungen";
+"notification_settings_new_videos_title" = "Neue Videos";
+"notification_settings_new_videos_description" = "11:30 ist die magische Uhrzeit! Mittags penetriert unser Server die Server von Youtube um euch schnellstmöglich eine Push Benachrichtung mit dem neusten Video zu senden!";
+"notification_settings_car_updates_title" = "Auto Updates";
+"notification_settings_car_updates_description" = "Sobald wir ein neues Auto, eine neue Zeit, Stages oder Fotos hinzufügen oder ändern, kannst du dich automatisch benachrichtigen lassen um immer auf dem aktuellen Stand zu sein!";
+"notification_settings_enable_alert_title" = "Fehlende Berechtigung";
+"notification_settings_enable_alert_text" = "Bitte \"erlaube Mitteilungen\" in den Einstellungen der App";
+"notification_settings_enable_alert_settings_button" = "Einstellungen";
+"notification_settings_enable_alert_cancel_button" = "Abbrechen";
+
+"cars" = "Autos";
+"board" = "Board";
+"youtube" = "Youtube";
+"series" = "Serien";
+"serie" = "Serie";
+"compare" = "Vergleich";
+"no_description" = "Keine Beschreibung";
+"image_source" = "Quelle";
+"select" = "Auswählen";
+"car_selection" = "Auto auswählen";
+"more" = "Mehr";

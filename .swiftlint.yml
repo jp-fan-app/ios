@@ -1,0 +1,29 @@
+included:
+  - JPPerformance
+
+nesting:
+  type_level: 2
+
+disabled_rules:
+  - opening_brace
+
+opt_in_rules:
+  - closure_end_indentation
+  - literal_expression_end_indentation
+
+identifier_name:
+  max_length:
+    warning: 45
+  excluded:
+    - id
+    - i
+    - ps
+    - nm
+    - df
+    - nf
+    - to
+
+vertical_whitespace:
+  max_empty_lines: 2
+
+line_length: 120

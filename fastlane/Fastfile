@@ -1,0 +1,32 @@
+fastlane_version "2.57.0"
+default_platform :ios
+
+platform :ios do
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "Create App Store Screenshots"
+  lane :screenshots do
+    snapshot(
+      workspace: 'JPPerformance.xcworkspace',
+      scheme: 'JPPerformanceUITests',
+      devices: [
+        'iPhone 5s',
+        'iPhone 8',
+        'iPhone 8 Plus',
+        'iPhone X',
+        'iPhone XS Max'
+      ],
+      languages: [
+        "en-US",
+        "de-DE"
+      ],
+      output_simulator_logs: false,
+      # clear_previous_screenshots: true
+    )
+  end
+
+end

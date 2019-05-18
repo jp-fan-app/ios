@@ -1,0 +1,52 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire",
+        "state": {
+          "branch": null,
+          "revision": "75bba56748359f297a83f620d45f72cf4ebee4e7",
+          "version": "4.8.2"
+        }
+      },
+      {
+        "package": "Quack",
+        "repositoryURL": "https://github.com/cpageler93/Quack.git",
+        "state": {
+          "branch": null,
+          "revision": "38930deedf25007f860fff45d2cfe7550ed02776",
+          "version": "1.9.0"
+        }
+      },
+      {
+        "package": "Result",
+        "repositoryURL": "https://github.com/antitypical/Result.git",
+        "state": {
+          "branch": null,
+          "revision": "2ca499ba456795616fbc471561ff1d963e6ae160",
+          "version": "4.1.0"
+        }
+      },
+      {
+        "package": "JPFanAppClient",
+        "repositoryURL": "https://github.com/jp-fan-app/swift-client",
+        "state": {
+          "branch": null,
+          "revision": "76888c34534f334078ababcee5c7330f5009dc5d",
+          "version": "0.19.0"
+        }
+      },
+      {
+        "package": "SwiftyJSON",
+        "repositoryURL": "https://github.com/IBM-Swift/SwiftyJSON.git",
+        "state": {
+          "branch": null,
+          "revision": "f2612ea3ac29996ae9601bdcb00cc1c29e26f104",
+          "version": "17.0.4"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
