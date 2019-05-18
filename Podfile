@@ -11,7 +11,10 @@ target 'JPPerformance' do
   
   target 'JPPerformanceUITests' do
     inherit! :search_paths
-    # Pods for testing
+    
+    pod 'Firebase/Core'
+    pod 'Google-Mobile-Ads-SDK', '~> 7.26'
+    pod 'Harpy'
   end
 
 end
