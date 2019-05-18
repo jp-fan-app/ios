@@ -51,7 +51,7 @@ class JPCarsVC: JPBaseViewController {
         }
         searchBarCars.alpha = 0
         viewLoadingError.alpha = 0
-        
+
         tableViewCars.rowHeight = UITableView.automaticDimension
         tableViewCars.estimatedRowHeight = 103
 
@@ -75,7 +75,7 @@ class JPCarsVC: JPBaseViewController {
 
         fetchCarData(scrollToTop: true)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -148,7 +148,7 @@ class JPCarsVC: JPBaseViewController {
         viewLoadingError.alpha = hasLoadingError ? 1 : 0
         searchBarCars.alpha = hasLoadingError ? 0 : 1
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail",
             let detailVC = segue.destination as? JPCarDetailVC,
@@ -193,7 +193,7 @@ extension JPCarsVC: UITableViewDataSource {
         let sectionModel = viewModel.filteredSections()[section]
         return sectionModel.title
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionModel = viewModel.filteredSections()[section]
         return sectionModel.rows.count

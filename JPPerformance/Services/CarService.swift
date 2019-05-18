@@ -23,7 +23,7 @@ class CarService {
     static func prepareForStaging() {
         sharedInstance = CarService(staging: true)
     }
-    
+
     static func prepareForProduction() {
         sharedInstance = CarService(staging: false)
     }
@@ -79,7 +79,8 @@ class CarService {
                                       youtubeID: firstVideo?.videoID,
                                       timings: carStageTimings,
                                       ps: stage.ps.value,
-                                      nm: stage.nm.value)
+                                      nm: stage.nm.value,
+                                      lasiseInSeconds: stage.lasiseInSeconds.value)
             carStages.append(carStage)
         }
 
@@ -92,7 +93,7 @@ class CarService {
                          stages: carStages)
     }
 
-    func fetchData(completion: @escaping (JPCarData?) -> (Void)) {
+    func fetchData(completion: @escaping (JPCarData?) -> Void) {
         let dispatchQueue = DispatchQueue(label: "fetchData",
                                           qos: .userInitiated,
                                           attributes: .concurrent,
@@ -116,7 +117,7 @@ class CarService {
     ///
     /// - Parameters:
     ///   - forRange: for example: 0-100 or 100-200
-    func fetchBoard(forRange range: String, completion: @escaping (JPCarData?) -> ()) {
+    func fetchBoard(forRange range: String, completion: @escaping (JPCarData?) -> Void) {
         fetchData { carData in
             DispatchQueue.global(qos: .background).async {
                 guard let carData = carData else {
@@ -147,7 +148,7 @@ class CarService {
     }
 
     /// Board sorted by PS
-    func fetchBoardForPS(completion: @escaping (JPCarData?) -> ()) {
+    func fetchBoardForPS(completion: @escaping (JPCarData?) -> Void) {
         fetchData { carData in
             DispatchQueue.global(qos: .background).async {
                 guard let carData = carData else {
@@ -177,7 +178,7 @@ class CarService {
     }
 
     /// Board sorted by NM
-    func fetchBoardForNM(completion: @escaping (JPCarData?) -> ()) {
+    func fetchBoardForNM(completion: @escaping (JPCarData?) -> Void) {
         fetchData { carData in
             DispatchQueue.global(qos: .background).async {
                 guard let carData = carData else {
@@ -201,6 +202,39 @@ class CarService {
                 let rangeCarData = JPCarData(cars: sortedCarItemsWithNM)
                 DispatchQueue.main.async {
                     completion(rangeCarData)
+                }
+            }
+        }
+    }
+
+    /// Board sorted by LaSiSe Seconds
+
+    func fetchBoardForLaSiSe(completion: @escaping (JPCarData?) -> Void) {
+        fetchData { carData in
+            DispatchQueue.global(qos: .background).async {
+                guard let carData = carData else {
+                    DispatchQueue.main.async {
+                        completion(nil)
+                    }
+                    return
+                }
+
+                // collect all car items with given ps
+                let carItemsWithSeconds = carData.cars.filter({ carItem -> Bool in
+                    carItem.stages.filter({ stage -> Bool in
+                        return stage.lasiseInSeconds != nil
+                    }).count > 0
+                })
+
+                let sortedCarItemsWithLaSiSeSeconds = carItemsWithSeconds.sorted(by: { (carItem1, carItem2) -> Bool in
+                    let lasise1 = carItem1.bestStageInLaSiSe()?.lasiseInSeconds ?? 99999.0
+                    let lasise2 = carItem2.bestStageInLaSiSe()?.lasiseInSeconds ?? 99999.0
+                    return lasise1 < lasise2
+                })
+
+                let carDataWithLaSiSeSeconds = JPCarData(cars: sortedCarItemsWithLaSiSeSeconds)
+                DispatchQueue.main.async {
+                    completion(carDataWithLaSiSeSeconds)
                 }
             }
         }

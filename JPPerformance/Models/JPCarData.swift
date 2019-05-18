@@ -90,6 +90,12 @@ struct JPCarItem {
         })
     }
 
+    func bestStageInLaSiSe() -> JPCarStage? {
+        return stages.max(by: { (stage1, stage2) -> Bool in
+            return stage1.lasiseInSeconds ?? 99999.0 < stage2.lasiseInSeconds ?? 99999.0
+        })
+    }
+
     func stages(inRange range: String) -> [JPCarStage] {
         return stages.filter({ $0.bestTiming(inRange: range) != nil })
     }
@@ -123,6 +129,7 @@ struct JPCarStage {
     let timings: [JPCarStageTiming]?
     let ps: Double?
     let nm: Double?
+    let lasiseInSeconds: Double?
 
     init(title: String,
          description: String,
@@ -130,7 +137,8 @@ struct JPCarStage {
          youtubeID: String?,
          timings: [JPCarStageTiming]?,
          ps: Double?,
-         nm: Double?) {
+         nm: Double?,
+         lasiseInSeconds: Double?) {
         self.title = title
         self.description = description
         self.isStock = isStock
@@ -138,6 +146,7 @@ struct JPCarStage {
         self.timings = timings
         self.ps = ps
         self.nm = nm
+        self.lasiseInSeconds = lasiseInSeconds
     }
 
     func displayDescription() -> String {
@@ -170,6 +179,19 @@ struct JPCarStage {
         nf.minimumFractionDigits = 0
         guard let formattedNM = nf.string(from: NSNumber(value: nm)) else { return nil }
         return "\(formattedNM) NM"
+    }
+
+    func displayStringForLaSiSe() -> String? {
+        guard let seconds = lasiseInSeconds else { return nil }
+
+        let minutesInt = Int(floor(seconds / 60.0))
+        let secondsInt = Int(seconds - Double(minutesInt * 60))
+        let fractionInt = Int((Double(seconds) - floor(seconds)) * 10)
+
+        let minutesString = minutesInt < 10 ? "0\(minutesInt)" : "\(minutesInt)"
+        let secondsString = secondsInt < 10 ? "0\(secondsInt)" : "\(secondsInt)"
+
+        return "\(minutesString):\(secondsString),\(fractionInt)"
     }
 
 }

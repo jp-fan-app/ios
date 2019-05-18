@@ -97,6 +97,7 @@
 		59DA5FD3229026730077FD39 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA5FD2229026730077FD39 /* Keys.swift */; };
 		59DA64D9229092CB0077FD39 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59DA64D8229092CB0077FD39 /* Info.storyboard */; };
 		59DA64DC229096210077FD39 /* LaSiSeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA64DB229096210077FD39 /* LaSiSeVC.swift */; };
+		59DA64DE229099EA0077FD39 /* CarStageLaSiSeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA64DD229099EA0077FD39 /* CarStageLaSiSeTableViewCell.swift */; };
 		59E4480D20E17DA9003EE672 /* CompareVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E4480C20E17DA9003EE672 /* CompareVC.swift */; };
 		59ED637C1F6D6AAB008A3A0F /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59ED63761F6D6AAA008A3A0F /* YouTubePlayer.framework */; };
 		59ED637F1F6D73F4008A3A0F /* JPNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59ED637E1F6D73F4008A3A0F /* JPNavigationViewController.swift */; };
@@ -267,6 +268,7 @@
 		59DA5FD2229026730077FD39 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		59DA64D8229092CB0077FD39 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
 		59DA64DB229096210077FD39 /* LaSiSeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaSiSeVC.swift; sourceTree = "<group>"; };
+		59DA64DD229099EA0077FD39 /* CarStageLaSiSeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarStageLaSiSeTableViewCell.swift; sourceTree = "<group>"; };
 		59E4480C20E17DA9003EE672 /* CompareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareVC.swift; sourceTree = "<group>"; };
 		59ED63761F6D6AAA008A3A0F /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = Carthage/Build/iOS/YouTubePlayer.framework; sourceTree = "<group>"; };
 		59ED637E1F6D73F4008A3A0F /* JPNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPNavigationViewController.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 				59C4C10D1F6D418900B5B7E1 /* YoutubeVideoCell.swift */,
 				59356FF01F6EB5DF00EFF311 /* CarTableViewCell.swift */,
 				59939EF0204ACBA60038427F /* CarBoardTableViewCell.swift */,
+				59DA64DD229099EA0077FD39 /* CarStageLaSiSeTableViewCell.swift */,
 				593FE0F020F897EF0092B89F /* CarBoardTableViewCellPSNM.swift */,
 				5952A3CA1F766A8900313132 /* CarStageTimingCell.swift */,
 				594E504320E387B900CCC158 /* CompareStageTableViewCell.swift */,
@@ -1037,6 +1040,7 @@
 				59356FF11F6EB5DF00EFF311 /* CarTableViewCell.swift in Sources */,
 				59939EFA204B4EBA0038427F /* HarpyService.m in Sources */,
 				59D7A278212AB96900A7B929 /* YoutubeVideoModel.swift in Sources */,
+				59DA64DE229099EA0077FD39 /* CarStageLaSiSeTableViewCell.swift in Sources */,
 				59DA5FD3229026730077FD39 /* Keys.swift in Sources */,
 				5952A3C91F765E5800313132 /* CarImageInputSource.swift in Sources */,
 				59C4C10E1F6D418900B5B7E1 /* YoutubeVideoCell.swift in Sources */,
