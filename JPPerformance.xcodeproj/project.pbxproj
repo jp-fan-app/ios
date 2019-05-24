@@ -1300,7 +1300,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JPPerformance/JPPerformance.entitlements;
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 1.6.0;
 				DEVELOPMENT_TEAM = 488D924Q6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1329,7 +1329,7 @@
 				CODE_SIGN_ENTITLEMENTS = JPPerformance/JPPerformance.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.0;
+				CURRENT_PROJECT_VERSION = 1.6.0;
 				DEVELOPMENT_TEAM = 488D924Q6G;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
