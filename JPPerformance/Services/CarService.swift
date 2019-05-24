@@ -58,8 +58,6 @@ class CarService {
         let stages = StorageService.shared.carStagesForCarModel(carModel)
         var carStages: [JPCarStage] = []
         for stage in stages {
-            let firstVideo = stage.videos.first
-
             let timings = StorageService.shared.stageTimingsForCarStage(stage)
             var carStageTimings: [JPCarStageTiming] = []
             for timing in timings {
@@ -76,7 +74,7 @@ class CarService {
             let carStage = JPCarStage(title: stage.name,
                                       description: stage.stageDescription,
                                       isStock: stage.isStock,
-                                      youtubeID: firstVideo?.videoID,
+                                      youtubeIDs: stage.videos.map({ $0.videoID }),
                                       timings: carStageTimings,
                                       ps: stage.ps.value,
                                       nm: stage.nm.value,

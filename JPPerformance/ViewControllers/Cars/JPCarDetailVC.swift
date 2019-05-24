@@ -260,7 +260,7 @@ class JPCarDetailVC: JPBaseViewController {
             return true
         }
 
-        if sectionModel.youtubeID != nil {
+        if sectionModel.youtubeIDs.count > 0 {
             return true
         }
 
@@ -269,10 +269,24 @@ class JPCarDetailVC: JPBaseViewController {
 
     fileprivate func showYoutubeVideoForSectionAt(_ sectionIndex: Int) {
         guard let sectionModel = carItem?.stages[sectionIndex] else { return }
-        guard let youtubeID = sectionModel.youtubeID else { return }
-        guard let video = StorageService.shared.youtubeVideoWithVideoID(youtubeID) else { return }
+        let videos = sectionModel.youtubeIDs.compactMap({ StorageService.shared.youtubeVideoWithVideoID($0) })
 
-        self.performSegue(withIdentifier: "showYoutubeVideoDetail", sender: video)
+        if videos.count == 1, let video = videos.first {
+            self.performSegue(withIdentifier: "showYoutubeVideoDetail", sender: video)
+        } else {
+            let alertController = UIAlertController(title: "car_detail_video_selection_alert_title".localized(),
+                                                    message: "car_detail_video_selection_alert_message".localized(),
+                                                    preferredStyle: .actionSheet)
+            for video in videos {
+                alertController.addAction(UIAlertAction(title: video.shortTitle(), style: .default, handler: { _ in
+                    self.performSegue(withIdentifier: "showYoutubeVideoDetail", sender: video)
+                }))
+            }
+            alertController.addAction(UIAlertAction(title: "car_detail_video_selection_alert_button_cancel".localized(),
+                                                    style: .cancel,
+                                                    handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
     }
 
     private func updateTableViewHeightConstraint() {
@@ -363,7 +377,7 @@ extension JPCarDetailVC: UITableViewDelegate {
             }
 
             // youtube button
-            if let sectionModel = carItem?.stages[section], sectionModel.youtubeID != nil {
+            if let sectionModel = carItem?.stages[section], sectionModel.youtubeIDs.count > 0 {
                 expandedHeight = max(expandedHeight, 60)
             }
 
@@ -471,7 +485,7 @@ extension JPCarDetailVC: UITableViewDelegate {
         }
 
         // add go to youtube video button
-        if sectionModel.youtubeID != nil {
+        if sectionModel.youtubeIDs.count > 0 {
             let youtubeVideoButton = UIButton()
             youtubeVideoButton.translatesAutoresizingMaskIntoConstraints = false
             youtubeVideoButton.setImage(#imageLiteral(resourceName: "icon_youtube").withRenderingMode(.alwaysTemplate), for: .normal)

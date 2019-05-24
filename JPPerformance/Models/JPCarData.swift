@@ -125,7 +125,7 @@ struct JPCarStage {
     let title: String
     let description: String
     let isStock: Bool
-    let youtubeID: String?
+    let youtubeIDs: [String]
     let timings: [JPCarStageTiming]?
     let ps: Double?
     let nm: Double?
@@ -134,7 +134,7 @@ struct JPCarStage {
     init(title: String,
          description: String,
          isStock: Bool,
-         youtubeID: String?,
+         youtubeIDs: [String],
          timings: [JPCarStageTiming]?,
          ps: Double?,
          nm: Double?,
@@ -142,7 +142,7 @@ struct JPCarStage {
         self.title = title
         self.description = description
         self.isStock = isStock
-        self.youtubeID = youtubeID
+        self.youtubeIDs = youtubeIDs
         self.timings = timings
         self.ps = ps
         self.nm = nm
