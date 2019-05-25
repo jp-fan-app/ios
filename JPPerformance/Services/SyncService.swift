@@ -569,6 +569,7 @@ public class SyncService {
                 carStage.carModel = StorageService.shared.carModelWithID(carStageFromService.carModelID, realm: realm)
                 carStage.ps.value = carStageFromService.ps
                 carStage.nm.value = carStageFromService.nm
+                carStage.lasiseInSeconds.value = carStageFromService.lasiseInSeconds
                 carStage.createdAt = carStageFromService.createdAt
                 carStage.updatedAt = carStageFromService.updatedAt
                 if createNew {

@@ -41,3 +41,8 @@
 "select" = "Select";
 "car_selection" = "Car Selection";
 "more" = "More";
+"lasise" = "LaSiSe";
+
+"car_detail_video_selection_alert_title" = "Video";
+"car_detail_video_selection_alert_message" = "Which video would you like to see?";
+"car_detail_video_selection_alert_button_cancel" = "Cancel";

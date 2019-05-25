@@ -23,14 +23,14 @@ class JPTabBarViewController: UITabBarController {
         tabBar.items?[1].title = "board".localized()
         tabBar.items?[1].accessibilityLabel = "board"
 
-        tabBar.items?[2].title = "youtube".localized()
-        tabBar.items?[2].accessibilityLabel = "youtube"
+        tabBar.items?[2].title = "lasise".localized()
+        tabBar.items?[2].accessibilityLabel = "lasise"
 
-        tabBar.items?[3].title = "series".localized()
-        tabBar.items?[3].accessibilityLabel = "series"
+        tabBar.items?[3].title = "youtube".localized()
+        tabBar.items?[3].accessibilityLabel = "youtube"
 
-        tabBar.items?[4].title = "Info"
-        tabBar.items?[4].accessibilityLabel = "info"
+        tabBar.items?[4].title = "series".localized()
+        tabBar.items?[4].accessibilityLabel = "series"
 
         FeaturesService.sharedInstance.updateRootViewController(self)
         FeaturesService.sharedInstance.checkForUpdates()
@@ -43,6 +43,8 @@ class JPTabBarViewController: UITabBarController {
         }
 
         JPTabBarViewController.isTabBarControllerLoaded = true
+
+        selectedIndex = 1
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {

@@ -54,6 +54,10 @@ class AdMobService {
         return "ca-app-pub-8137972757715004/4837456260"
     }
 
+    func adUnitIDForBottomBannerLaSiSe() -> String {
+        return "ca-app-pub-8137972757715004/1534933288"
+    }
+
     func request() -> GADRequest {
         let request = GADRequest()
         request.testDevices = [

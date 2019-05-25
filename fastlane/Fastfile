@@ -34,14 +34,15 @@ platform :ios do
         'iPhone 5s',
         'iPhone 8',
         'iPhone 8 Plus',
-        'iPhone X',
-        'iPhone XS Max'
+        'iPhone Xs',
+        'iPhone Xs Max'
       ],
       languages: [
         "en-US",
         "de-DE"
       ],
       output_simulator_logs: false,
+      concurrent_simulators: false
       # clear_previous_screenshots: true
     )
   end

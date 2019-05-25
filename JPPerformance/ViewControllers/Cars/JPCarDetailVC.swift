@@ -17,19 +17,19 @@ class JPCarDetailVC: JPBaseViewController {
     var carItem: JPCarItem?
 
     var expandedSectionIndex: Int?
-    
+
     @IBOutlet weak var imageSlideshowCarImages: ImageSlideshow!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var tableViewStages: UITableView!
     @IBOutlet weak var lcTableViewStagesHeight: NSLayoutConstraint!
     @IBOutlet weak var labelImageSource: UILabel!
     private var isGalleryVisible: Bool = false
-    
+
     private static let viewTagCellDescriptionLabel = 1337
     private static let viewTagCellKPIValues = 1338
-    
+
     @IBOutlet weak var bannerView: GADBannerView!
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if isGalleryVisible {
             return UIInterfaceOrientationMask.allButUpsideDown
@@ -37,11 +37,11 @@ class JPCarDetailVC: JPBaseViewController {
             return UIInterfaceOrientationMask.portrait
         }
     }
-    
+
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIInterfaceOrientation.portrait
     }
-    
+
     override var prefersStatusBarHidden: Bool {
         return isGalleryVisible
     }
@@ -191,7 +191,7 @@ class JPCarDetailVC: JPBaseViewController {
             self.updateSourceForSelectedSlideshowImage()
         }
 
-        if let mainIndex = images.index(where: { $0.isMainImage }) {
+        if let mainIndex = images.firstIndex(where: { $0.isMainImage }) {
             imageSlideshowCarImages.setCurrentPage(mainIndex, animated: false)
             self.updateSourceForSelectedSlideshowImage()
         }
@@ -208,7 +208,7 @@ class JPCarDetailVC: JPBaseViewController {
 
         labelImageSource.text = "\("image_source".localized()): \(copyrightInformation)"
     }
-    
+
     @objc private func gestureTapImageSlideshowCarImages(gesture: UITapGestureRecognizer) {
         performSegue(withIdentifier: "showImageGallery", sender: self)
     }
@@ -260,7 +260,7 @@ class JPCarDetailVC: JPBaseViewController {
             return true
         }
 
-        if sectionModel.youtubeID != nil {
+        if sectionModel.youtubeIDs.count > 0 {
             return true
         }
 
@@ -269,10 +269,24 @@ class JPCarDetailVC: JPBaseViewController {
 
     fileprivate func showYoutubeVideoForSectionAt(_ sectionIndex: Int) {
         guard let sectionModel = carItem?.stages[sectionIndex] else { return }
-        guard let youtubeID = sectionModel.youtubeID else { return }
-        guard let video = StorageService.shared.youtubeVideoWithVideoID(youtubeID) else { return }
+        let videos = sectionModel.youtubeIDs.compactMap({ StorageService.shared.youtubeVideoWithVideoID($0) })
 
-        self.performSegue(withIdentifier: "showYoutubeVideoDetail", sender: video)
+        if videos.count == 1, let video = videos.first {
+            self.performSegue(withIdentifier: "showYoutubeVideoDetail", sender: video)
+        } else {
+            let alertController = UIAlertController(title: "car_detail_video_selection_alert_title".localized(),
+                                                    message: "car_detail_video_selection_alert_message".localized(),
+                                                    preferredStyle: .actionSheet)
+            for video in videos {
+                alertController.addAction(UIAlertAction(title: video.shortTitle(), style: .default, handler: { _ in
+                    self.performSegue(withIdentifier: "showYoutubeVideoDetail", sender: video)
+                }))
+            }
+            alertController.addAction(UIAlertAction(title: "car_detail_video_selection_alert_button_cancel".localized(),
+                                                    style: .cancel,
+                                                    handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
     }
 
     private func updateTableViewHeightConstraint() {
@@ -350,7 +364,7 @@ extension JPCarDetailVC: UITableViewDelegate {
             // description height
             if let headerView = tableViewHeaderViewFor(section: section, title: "DummyHeader", height: normalHeight) {
                 if let descriptionLabel = headerView.viewWithTag(JPCarDetailVC.viewTagCellDescriptionLabel) as? UILabel {
-                    let descriptionLabelWidth = UIScreen.main.bounds.size.width - 16 - 100;
+                    let descriptionLabelWidth = UIScreen.main.bounds.size.width - 16 - 100
                     let size = descriptionLabel.sizeThatFits(CGSize(width: descriptionLabelWidth,
                                                                     height: CGFloat.greatestFiniteMagnitude))
                     expandedHeight += size.height
@@ -363,7 +377,7 @@ extension JPCarDetailVC: UITableViewDelegate {
             }
 
             // youtube button
-            if let sectionModel = carItem?.stages[section], sectionModel.youtubeID != nil {
+            if let sectionModel = carItem?.stages[section], sectionModel.youtubeIDs.count > 0 {
                 expandedHeight = max(expandedHeight, 60)
             }
 
@@ -471,7 +485,7 @@ extension JPCarDetailVC: UITableViewDelegate {
         }
 
         // add go to youtube video button
-        if sectionModel.youtubeID != nil {
+        if sectionModel.youtubeIDs.count > 0 {
             let youtubeVideoButton = UIButton()
             youtubeVideoButton.translatesAutoresizingMaskIntoConstraints = false
             youtubeVideoButton.setImage(#imageLiteral(resourceName: "icon_youtube").withRenderingMode(.alwaysTemplate), for: .normal)

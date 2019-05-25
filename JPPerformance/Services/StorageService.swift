@@ -22,10 +22,9 @@ public class StorageService {
 
     private func realm() -> Realm {
         let config = Realm.Configuration(
-            schemaVersion: 2,
+            schemaVersion: 3,
             migrationBlock:
-        { _, _ in
-        })
+        { _, _ in })
         // swiftlint:disable force_try
         return try! Realm(configuration: config)
         // swiftlint:enable force_try
