@@ -71,6 +71,13 @@ class CarService {
                 carStageTimings.append(carStageTiming)
             }
 
+            if let lasiseInSeconds = stage.lasiseInSeconds.value {
+                var lasiseTiming = JPCarStageTiming(range: "LaSiSe", seconds: [lasiseInSeconds])
+                lasiseTiming.prefersDisplayInSeconds = false
+                carStageTimings.insert(lasiseTiming, at: 0)
+            }
+
+
             let carStage = JPCarStage(title: stage.name,
                                       description: stage.stageDescription,
                                       isStock: stage.isStock,

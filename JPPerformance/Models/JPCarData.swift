@@ -199,6 +199,8 @@ struct JPCarStage {
 
 struct JPCarStageTiming {
 
+    var prefersDisplayInSeconds: Bool = true
+
     let range: String
     let seconds: [Double]
 

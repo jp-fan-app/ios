@@ -17,19 +17,19 @@ class JPCarDetailVC: JPBaseViewController {
     var carItem: JPCarItem?
 
     var expandedSectionIndex: Int?
-    
+
     @IBOutlet weak var imageSlideshowCarImages: ImageSlideshow!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var tableViewStages: UITableView!
     @IBOutlet weak var lcTableViewStagesHeight: NSLayoutConstraint!
     @IBOutlet weak var labelImageSource: UILabel!
     private var isGalleryVisible: Bool = false
-    
+
     private static let viewTagCellDescriptionLabel = 1337
     private static let viewTagCellKPIValues = 1338
-    
+
     @IBOutlet weak var bannerView: GADBannerView!
-    
+
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if isGalleryVisible {
             return UIInterfaceOrientationMask.allButUpsideDown
@@ -37,11 +37,11 @@ class JPCarDetailVC: JPBaseViewController {
             return UIInterfaceOrientationMask.portrait
         }
     }
-    
+
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
         return UIInterfaceOrientation.portrait
     }
-    
+
     override var prefersStatusBarHidden: Bool {
         return isGalleryVisible
     }
@@ -191,7 +191,7 @@ class JPCarDetailVC: JPBaseViewController {
             self.updateSourceForSelectedSlideshowImage()
         }
 
-        if let mainIndex = images.index(where: { $0.isMainImage }) {
+        if let mainIndex = images.firstIndex(where: { $0.isMainImage }) {
             imageSlideshowCarImages.setCurrentPage(mainIndex, animated: false)
             self.updateSourceForSelectedSlideshowImage()
         }
@@ -208,7 +208,7 @@ class JPCarDetailVC: JPBaseViewController {
 
         labelImageSource.text = "\("image_source".localized()): \(copyrightInformation)"
     }
-    
+
     @objc private func gestureTapImageSlideshowCarImages(gesture: UITapGestureRecognizer) {
         performSegue(withIdentifier: "showImageGallery", sender: self)
     }
@@ -364,7 +364,7 @@ extension JPCarDetailVC: UITableViewDelegate {
             // description height
             if let headerView = tableViewHeaderViewFor(section: section, title: "DummyHeader", height: normalHeight) {
                 if let descriptionLabel = headerView.viewWithTag(JPCarDetailVC.viewTagCellDescriptionLabel) as? UILabel {
-                    let descriptionLabelWidth = UIScreen.main.bounds.size.width - 16 - 100;
+                    let descriptionLabelWidth = UIScreen.main.bounds.size.width - 16 - 100
                     let size = descriptionLabel.sizeThatFits(CGSize(width: descriptionLabelWidth,
                                                                     height: CGFloat.greatestFiniteMagnitude))
                     expandedHeight += size.height
