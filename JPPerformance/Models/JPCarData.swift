@@ -92,7 +92,7 @@ struct JPCarItem {
 
     func bestStageInLaSiSe() -> JPCarStage? {
         return stages.max(by: { (stage1, stage2) -> Bool in
-            return stage1.lasiseInSeconds ?? 99999.0 < stage2.lasiseInSeconds ?? 99999.0
+            return stage1.lasiseInSeconds ?? 99999.0 > stage2.lasiseInSeconds ?? 99999.0
         })
     }
 
