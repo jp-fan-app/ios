@@ -198,7 +198,20 @@ extension CompareVC: UITableViewDataSource {
             nf.minimumFractionDigits = 3
             nf.maximumFractionDigits = 3
 
-            cell.labelStageTiming.text = nf.string(from: NSNumber(value: bestTiming))
+            if section.compareRange == "LaSiSe" {
+                let seconds = bestTiming
+
+                let minutesInt = Int(floor(seconds / 60.0))
+                let secondsInt = Int(seconds - Double(minutesInt * 60))
+                let fractionInt = Int((Double(seconds) - floor(seconds)) * 10)
+
+                let minutesString = minutesInt < 10 ? "0\(minutesInt)" : "\(minutesInt)"
+                let secondsString = secondsInt < 10 ? "0\(secondsInt)" : "\(secondsInt)"
+
+                cell.labelStageTiming.text = "\(minutesString):\(secondsString),\(fractionInt)"
+            } else {
+                cell.labelStageTiming.text = nf.string(from: NSNumber(value: bestTiming))
+            }
             cell.labelStageTiming.isHidden = false
         } else {
             cell.labelStageTiming.isHidden = true
