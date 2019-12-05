@@ -5,9 +5,6 @@
       location = "group:JPPerformance.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Dependencies/Dependencies.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

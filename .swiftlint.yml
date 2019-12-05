@@ -1,6 +1,9 @@
 included:
   - JPPerformance
 
+excluded:
+  - JPPerformance/Old
+
 nesting:
   type_level: 2
 
