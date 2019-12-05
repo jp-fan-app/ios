@@ -28,4 +28,13 @@ public class YoutubeVideoModel: Object {
         return "id"
     }
 
+    public func shortTitle() -> String {
+        let jpPerformancePrefix = "JP Performance - "
+        if title.hasPrefix(jpPerformancePrefix) {
+            return String(title[title.index(title.startIndex, offsetBy: jpPerformancePrefix.count)...])
+        } else {
+            return title
+        }
+    }
+
 }

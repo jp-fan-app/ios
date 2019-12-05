@@ -49,6 +49,18 @@ class CarStageTimingCell: UITableViewCell {
                 let secondsLabel = TagLabel()
                 secondsLabel.translatesAutoresizingMaskIntoConstraints = false
                 secondsLabel.text = numberFormatter.string(from: NSNumber(value: seconds))
+
+                if !carStageTiming.prefersDisplayInSeconds {
+                    let minutesInt = Int(floor(seconds / 60.0))
+                    let secondsInt = Int(seconds - Double(minutesInt * 60))
+                    let fractionInt = Int((Double(seconds) - floor(seconds)) * 10)
+
+                    let minutesString = minutesInt < 10 ? "0\(minutesInt)" : "\(minutesInt)"
+                    let secondsString = secondsInt < 10 ? "0\(secondsInt)" : "\(secondsInt)"
+
+                    secondsLabel.text = "\(minutesString):\(secondsString),\(fractionInt)"
+                }
+
                 secondsLabel.font = UIFont(name: "Menlo", size: 12)
                 secondsLabel.textAlignment = .center
                 secondsLabel.textColor = UIColor.jpDarkGrayColor

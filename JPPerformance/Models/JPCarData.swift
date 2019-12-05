@@ -90,6 +90,12 @@ struct JPCarItem {
         })
     }
 
+    func bestStageInLaSiSe() -> JPCarStage? {
+        return stages.max(by: { (stage1, stage2) -> Bool in
+            return stage1.lasiseInSeconds ?? 99999.0 > stage2.lasiseInSeconds ?? 99999.0
+        })
+    }
+
     func stages(inRange range: String) -> [JPCarStage] {
         return stages.filter({ $0.bestTiming(inRange: range) != nil })
     }
@@ -119,25 +125,28 @@ struct JPCarStage {
     let title: String
     let description: String
     let isStock: Bool
-    let youtubeID: String?
+    let youtubeIDs: [String]
     let timings: [JPCarStageTiming]?
     let ps: Double?
     let nm: Double?
+    let lasiseInSeconds: Double?
 
     init(title: String,
          description: String,
          isStock: Bool,
-         youtubeID: String?,
+         youtubeIDs: [String],
          timings: [JPCarStageTiming]?,
          ps: Double?,
-         nm: Double?) {
+         nm: Double?,
+         lasiseInSeconds: Double?) {
         self.title = title
         self.description = description
         self.isStock = isStock
-        self.youtubeID = youtubeID
+        self.youtubeIDs = youtubeIDs
         self.timings = timings
         self.ps = ps
         self.nm = nm
+        self.lasiseInSeconds = lasiseInSeconds
     }
 
     func displayDescription() -> String {
@@ -172,10 +181,25 @@ struct JPCarStage {
         return "\(formattedNM) NM"
     }
 
+    func displayStringForLaSiSe() -> String? {
+        guard let seconds = lasiseInSeconds else { return nil }
+
+        let minutesInt = Int(floor(seconds / 60.0))
+        let secondsInt = Int(seconds - Double(minutesInt * 60))
+        let fractionInt = Int((Double(seconds) - floor(seconds)) * 10)
+
+        let minutesString = minutesInt < 10 ? "0\(minutesInt)" : "\(minutesInt)"
+        let secondsString = secondsInt < 10 ? "0\(secondsInt)" : "\(secondsInt)"
+
+        return "\(minutesString):\(secondsString),\(fractionInt)"
+    }
+
 }
 
 
 struct JPCarStageTiming {
+
+    var prefersDisplayInSeconds: Bool = true
 
     let range: String
     let seconds: [Double]
