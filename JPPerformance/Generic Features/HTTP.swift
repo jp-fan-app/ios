@@ -9,10 +9,18 @@
 
 import Foundation
 import NIO
+import UIKit.UIImage
 @_exported import JPFanAppClient
 
 
 public class HTTP {
+
+    enum Error: Swift.Error {
+
+        case unknown
+        case notAnURL
+
+    }
 
     private let httpClient: JPFanAppClient
     private let cache: Cache?
@@ -30,6 +38,17 @@ public class HTTP {
         return httpClient.manufacturersIndex().map { index in
             self.cache?.store(manufacturersIndex: index)
             return index
+        }
+    }
+
+    @discardableResult
+    public func getManufacturer(id: Int) -> EventLoopFuture<JPFanAppClient.ManufacturerModel> {
+        if let cached = cache?.cached(manufacturerID: id) {
+            return httpClient.nextEventLoop().makeSucceededFuture(cached)
+        }
+        return httpClient.manufacturersShow(id: id).map { single in
+            self.cache?.store(manufacturer: single)
+            return single
         }
     }
 
@@ -52,6 +71,16 @@ public class HTTP {
         return httpClient.imagesIndex().map { index in
             self.cache?.store(carImagesIndex: index)
             return index
+        }
+    }
+
+    public func getCarImageFile(id: Int) -> EventLoopFuture<Data> {
+        if let cached = cache?.cachedCarImageData(carImageID: id) {
+            return httpClient.nextEventLoop().makeSucceededFuture(cached)
+        }
+        return httpClient.imagesFile(id: id).map { data in
+            self.cache?.store(carImageID: id, carImageData: data)
+            return data
         }
     }
 
@@ -119,6 +148,31 @@ public class HTTP {
             self.cache?.store(videoSeriesYoutubeVideosIndex: index)
             return index
         }
+    }
+
+    @discardableResult
+    public func getPublicImage(url urlString: String) -> EventLoopFuture<UIImage> {
+        guard let url = URL(string: urlString) else {
+            return httpClient.nextEventLoop().makeFailedFuture(Error.notAnURL)
+        }
+        if let cached = cache?.cached(publicImageURL: urlString) {
+            return httpClient.nextEventLoop().makeSucceededFuture(cached)
+        }
+
+        let dataPromise = httpClient.nextEventLoop().makePromise(of: UIImage.self)
+        URLSession.shared.dataTask(with: url) { (data, _, _) in
+            guard let data = data else {
+                dataPromise.fail(Error.unknown)
+                return
+            }
+            guard let image = UIImage(data: data) else {
+                dataPromise.fail(Error.unknown)
+                return
+            }
+            self.cache?.store(publicImageURL: urlString, image: image)
+            dataPromise.succeed(image)
+        }.resume()
+        return dataPromise.futureResult
     }
 
 }

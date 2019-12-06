@@ -16,7 +16,6 @@ import Firebase
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let http = HTTP()
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -33,42 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
             Review.requestReviewIfNeeded()
         }
-
-//        http.getManufacturers().whenSuccess { index in
-//            print("manufacturers: \(index.count)")
-//        }
-//
-//        http.getCarModels().whenSuccess { index in
-//            print("models: \(index.count)")
-//        }
-
-//        http.getCarImages().whenSuccess { index in
-//            print("car images: \(index.count)")
-//        }
-
-//        http.getCarStages().whenSuccess { index in
-//            print("stages: \(index.count)")
-//        }
-
-//        http.getStageTimings().whenSuccess { index in
-//            print("timings: \(index.count)")
-//        }
-
-//        http.getYoutubeVideos().whenSuccess { index in
-//            print("youtube videos: \(index.count)")
-//        }
-
-//        http.getStagesVideos().whenSuccess { index in
-//            print("stage videos: \(index.count)")
-//        }
-
-//        http.getVideoSeries().whenSuccess { index in
-//            print("video series: \(index.count)")
-//        }
-
-//        http.getVideoSerieYoutubeVideos().whenSuccess { index in
-//            print("video series youtube videos: \(index.count)")
-//        }
 
 //        PurchaseService.shared.completeTransactions()
 //        PurchaseService.shared.retrieveProductsInfo()

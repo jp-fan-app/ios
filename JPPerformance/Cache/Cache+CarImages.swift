@@ -8,6 +8,7 @@
 
 
 import Cache
+import Foundation
 
 
 public extension Cache {
@@ -35,6 +36,16 @@ public extension Cache {
 
     func cached(carImageID: Int) -> JPFanAppClient.CarImage? {
         return cachedSingle(in: singleStorage, key: "\(carImageID)")
+    }
+
+    // MARK: - Car Image Data
+
+    func store(carImageID: Int, carImageData: Data) {
+        try? carImageDataStorage.setObject(carImageData, forKey: "\(carImageID)")
+    }
+
+    func cachedCarImageData(carImageID: Int) -> Data? {
+        return try? carImageDataStorage.object(forKey: "\(carImageID)")
     }
 
 }

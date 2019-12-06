@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="TU4-pU-N0J" customClass="MainDetailsHeader" customModule="JPPerformance" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sYe-Wf-5lg">
+                    <rect key="frame" x="20" y="16" width="43.5" height="20"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T0u-Rb-8qn">
+                    <rect key="frame" x="340" y="8.5" width="54" height="33"/>
+                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" name="HighlightColor1"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="T0u-Rb-8qn" secondAttribute="trailing" constant="20" id="6Kq-Qv-hw1"/>
+                <constraint firstItem="sYe-Wf-5lg" firstAttribute="leading" secondItem="TU4-pU-N0J" secondAttribute="leading" constant="20" id="6aa-FN-nfJ"/>
+                <constraint firstItem="T0u-Rb-8qn" firstAttribute="centerY" secondItem="TU4-pU-N0J" secondAttribute="centerY" id="cBJ-gI-v5n"/>
+                <constraint firstItem="sYe-Wf-5lg" firstAttribute="centerY" secondItem="TU4-pU-N0J" secondAttribute="centerY" constant="1" id="cJ5-Sb-3Lo"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="VGT-6O-jaU"/>
+            <connections>
+                <outlet property="buttonAction" destination="T0u-Rb-8qn" id="CUb-2L-e8B"/>
+                <outlet property="labelTitle" destination="sYe-Wf-5lg" id="Ype-Fh-MVh"/>
+            </connections>
+            <point key="canvasLocation" x="513" y="95"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="HighlightColor1">
+            <color red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

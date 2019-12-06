@@ -22,6 +22,7 @@ public class Cache {
 
     internal let carImageStorage: DiskStorage<JPFanAppClient.CarImage>
     internal let carImagesStorage: DiskStorage<[JPFanAppClient.CarImage]>
+    internal let carImageDataStorage: DiskStorage<Data>
 
     internal let carStageStorage: DiskStorage<JPFanAppClient.CarStage>
     internal let carStagesStorage: DiskStorage<[JPFanAppClient.CarStage]>
@@ -41,18 +42,24 @@ public class Cache {
     internal let videoSerieYoutubeVideoRelationStorage: DiskStorage<JPFanAppClient.VideoSerieYoutubeVideoRelation>
     internal let videoSerieYoutubeVideoRelationsStorage: DiskStorage<[JPFanAppClient.VideoSerieYoutubeVideoRelation]>
 
+    internal let publicImagesStorage: DiskStorage<Image>
+
     // swiftlint:disable line_length function_body_length
     public init?() {
         let oneDayExpiry = Expiry.seconds(60 * 60 * 24)
+        let oneMonthExpiry = Expiry.seconds(60 * 60 * 24 * 30)
+
         let manufacturersConfig = DiskConfig(name: "manufacturers", expiry: oneDayExpiry)
         let carModelsConfig = DiskConfig(name: "car-models", expiry: oneDayExpiry)
         let carImagesConfig = DiskConfig(name: "car-images", expiry: oneDayExpiry)
+        let carImageDataConfig = DiskConfig(name: "car-image-data", expiry: oneMonthExpiry)
         let carStagesConfig = DiskConfig(name: "car-stages", expiry: oneDayExpiry)
         let stageTimingConfig = DiskConfig(name: "stage-timings", expiry: oneDayExpiry)
         let youtubeVideosConfig = DiskConfig(name: "youtube-videos", expiry: oneDayExpiry)
         let stageVideosConfig = DiskConfig(name: "stage-videos", expiry: oneDayExpiry)
         let videoSeriesConfig = DiskConfig(name: "video-series", expiry: oneDayExpiry)
         let videoSeriesYoutubeVideoRelationsConfig = DiskConfig(name: "video-series-youtube-video-relations", expiry: oneDayExpiry)
+        let publicImagesConfig = DiskConfig(name: "public-images", expiry: oneMonthExpiry)
 
         let manufacturerTransformer = TransformerFactory.forCodable(ofType: JPFanAppClient.ManufacturerModel.self)
         let manufacturersTransformer = TransformerFactory.forCodable(ofType: [JPFanAppClient.ManufacturerModel].self)
@@ -89,6 +96,8 @@ public class Cache {
             let carImageStorage = try? DiskStorage(config: carImagesConfig, transformer: carImageTransformer),
             let carImagesStorage = try? DiskStorage(config: carImagesConfig, transformer: carImagesTransformer),
 
+            let carImageDataStorage = try? DiskStorage(config: carImageDataConfig, transformer: TransformerFactory.forData()),
+
             let carStageStorage = try? DiskStorage(config: carStagesConfig, transformer: carStageTransformer),
             let carStagesStorage = try? DiskStorage(config: carStagesConfig, transformer: carStagesTransformer),
 
@@ -105,7 +114,9 @@ public class Cache {
             let videoSeriesStorage = try? DiskStorage(config: videoSeriesConfig, transformer: videoSeriesTransformer),
 
             let videoSerieYoutubeVideoRelationStorage = try? DiskStorage(config: videoSeriesYoutubeVideoRelationsConfig, transformer: videoSerieYoutubeVideoRelationTransformer),
-            let videoSerieYoutubeVideoRelationsStorage = try? DiskStorage(config: videoSeriesYoutubeVideoRelationsConfig, transformer: videoSerieYoutubeVideoRelationsTransformer)
+            let videoSerieYoutubeVideoRelationsStorage = try? DiskStorage(config: videoSeriesYoutubeVideoRelationsConfig, transformer: videoSerieYoutubeVideoRelationsTransformer),
+
+            let publicImagesStorage = try? DiskStorage(config: publicImagesConfig, transformer: TransformerFactory.forImage())
         else {
             return nil
         }
@@ -116,6 +127,7 @@ public class Cache {
         self.carModelsStorage = carModelsStorage
         self.carImageStorage = carImageStorage
         self.carImagesStorage = carImagesStorage
+        self.carImageDataStorage = carImageDataStorage
         self.carStageStorage = carStageStorage
         self.carStagesStorage = carStagesStorage
         self.stageTimingStorage = stageTimingStorage
@@ -128,6 +140,7 @@ public class Cache {
         self.videoSeriesStorage = videoSeriesStorage
         self.videoSerieYoutubeVideoRelationStorage = videoSerieYoutubeVideoRelationStorage
         self.videoSerieYoutubeVideoRelationsStorage = videoSerieYoutubeVideoRelationsStorage
+        self.publicImagesStorage = publicImagesStorage
 
         try? manufacturerStorage.removeExpiredObjects()
         try? manufacturersStorage.removeExpiredObjects()
@@ -135,6 +148,7 @@ public class Cache {
         try? carModelsStorage.removeExpiredObjects()
         try? carImageStorage.removeExpiredObjects()
         try? carImagesStorage.removeExpiredObjects()
+        try? carImageDataStorage.removeExpiredObjects()
         try? carStageStorage.removeExpiredObjects()
         try? carStagesStorage.removeExpiredObjects()
         try? stageTimingStorage.removeExpiredObjects()
@@ -147,6 +161,7 @@ public class Cache {
         try? videoSeriesStorage.removeExpiredObjects()
         try? videoSerieYoutubeVideoRelationStorage.removeExpiredObjects()
         try? videoSerieYoutubeVideoRelationsStorage.removeExpiredObjects()
+        try? publicImagesStorage.removeExpiredObjects()
 
         #if DEBUG
         let cacheURL = URL(fileURLWithPath: manufacturerStorage.path).deletingLastPathComponent()

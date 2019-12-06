@@ -46,3 +46,9 @@
 "car_detail_video_selection_alert_title" = "Video";
 "car_detail_video_selection_alert_message" = "Which video would you like to see?";
 "car_detail_video_selection_alert_button_cancel" = "Cancel";
+
+"choose-a-manufacturer" = "Choose a manufacturer";
+"show-all-car-models" = "Show all cars";
+"recent-videos" = "Recent Videos";
+"video-series" = "Video Series";
+"all" = "All";

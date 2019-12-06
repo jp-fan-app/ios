@@ -29,6 +29,10 @@ public extension Cache {
               singleKey: keyFor)
     }
 
+    func store(manufacturer: JPFanAppClient.ManufacturerModel) {
+        store(single: manufacturer, storage: singleStorage, key: keyFor(codable: manufacturer))
+    }
+
     func cachedManufacturersIndex() -> [JPFanAppClient.ManufacturerModel]? {
         return cachedIndex(in: indexStorage, key: indexKey)
     }
