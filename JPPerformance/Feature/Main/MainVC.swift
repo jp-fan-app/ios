@@ -17,6 +17,8 @@ class MainVC: UIViewController {
 
     private let viewModel = ViewModel()
 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,7 +54,7 @@ class MainVC: UIViewController {
     }
 
     @objc private func actionMainNavigationHeaderSearch(_ sender: UIButton) {
-        print("make search")
+        performSegue(withIdentifier: "showCarModelsSearch", sender: self)
     }
 
 
@@ -69,7 +71,7 @@ class MainVC: UIViewController {
     }
 
     @objc private func actionShowDetailsCarModelsRow(_ sender: UIButton) {
-        performSegue(withIdentifier: "showCarModelsList", sender: self)
+        performSegue(withIdentifier: "showCarModelsSearch", sender: self)
     }
 
 }

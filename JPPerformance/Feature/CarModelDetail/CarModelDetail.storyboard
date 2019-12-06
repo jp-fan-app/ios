@@ -27,7 +27,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="460"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="audir8sample" translatesAutoresizingMaskIntoConstraints="NO" id="8Mn-0q-hwj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="460.00000000000045"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="460"/>
                                                     </imageView>
                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="t2H-9a-1es">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="460"/>
@@ -47,7 +47,7 @@
                                                         </constraints>
                                                     </view>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="MakeLogoAudi" translatesAutoresizingMaskIntoConstraints="NO" id="wVd-du-Z1M">
-                                                        <rect key="frame" x="20" y="40" width="80" height="32"/>
+                                                        <rect key="frame" x="20" y="40" width="80" height="64"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="c0G-zm-sWi"/>
@@ -198,6 +198,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bannerView" destination="lPv-bZ-Wg9" id="BDD-lG-qJc"/>
+                        <outlet property="barButtonItemClose" destination="Crj-RP-6hP" id="19d-y5-p6S"/>
                         <outlet property="imageViewMainImage" destination="8Mn-0q-hwj" id="Oe9-XG-0sg"/>
                         <outlet property="imageViewManufacturerLogo" destination="wVd-du-Z1M" id="sOd-9d-XY6"/>
                         <outlet property="labelCarModelName" destination="TPZ-vk-pyr" id="hLg-zA-U3G"/>
@@ -213,7 +214,7 @@
         <!--Navigation Controller-->
         <scene sceneID="sjl-1i-4kY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yd0-P7-80u" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yd0-P7-80u" customClass="JPNavigationController" customModule="JPPerformance" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8Vz-BY-c2G">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

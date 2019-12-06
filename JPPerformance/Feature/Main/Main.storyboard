@@ -13,7 +13,7 @@
         <!--Navigation Controller-->
         <scene sceneID="2I6-Ao-MjC">
             <objects>
-                <navigationController navigationBarHidden="YES" id="HPE-pe-5LV" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="HPE-pe-5LV" customClass="JPNavigationController" customModule="JPPerformance" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backIndicatorImage="icon-back" largeTitles="YES" backIndicatorTransitionMaskImage="icon-back" id="KuD-F9-ZI9">
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -508,7 +508,7 @@
                         <outlet property="tableView" destination="GR0-nf-lmG" id="xdK-CH-o5i"/>
                         <segue destination="nTm-l7-9Nt" kind="show" identifier="showPerformanceBoard" id="fQJ-xg-DHe"/>
                         <segue destination="Hq1-x8-nZC" kind="show" identifier="showManufacturersList" id="Eoj-Mh-2P6"/>
-                        <segue destination="Fx0-Xf-lZH" kind="show" identifier="showCarModelsList" id="ouU-1r-BZa"/>
+                        <segue destination="Fx0-Xf-lZH" kind="show" identifier="showCarModelsSearch" id="ouU-1r-BZa"/>
                         <segue destination="XSP-1G-cW8" kind="show" identifier="showYoutubeVideosList" id="RXU-w3-FZb"/>
                         <segue destination="oZU-wB-tVh" kind="show" identifier="showVideoSeriesList" id="yJa-Wc-UuJ"/>
                         <segue destination="ZcF-7n-CJw" kind="showDetail" identifier="showCarModelDetail" id="BtF-Fq-csU"/>
@@ -538,10 +538,10 @@
             </objects>
             <point key="canvasLocation" x="1112" y="-141"/>
         </scene>
-        <!--CarModelsList-->
+        <!--CarModelsSearch-->
         <scene sceneID="b7T-7w-EyQ">
             <objects>
-                <viewControllerPlaceholder storyboardName="CarModelsList" id="Fx0-Xf-lZH" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="CarModelsSearch" id="Fx0-Xf-lZH" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="e31-ZZ-ieW"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ave-lO-gWk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

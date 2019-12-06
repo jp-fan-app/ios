@@ -14,6 +14,8 @@ import GoogleMobileAds
 
 class CarModelDetailVC: UIViewController {
 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .portrait }
+
     var carModel: JPFanAppClient.CarModel? {
         didSet {
             reloadCarModel()
@@ -31,6 +33,7 @@ class CarModelDetailVC: UIViewController {
 
     @IBOutlet var tableViewStages: UITableView!
     @IBOutlet var lcTableViewStagesHeight: NSLayoutConstraint!
+    @IBOutlet var barButtonItemClose: UIBarButtonItem!
 
     let http = HTTP()
 
@@ -38,6 +41,8 @@ class CarModelDetailVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        barButtonItemClose.title = "close".localized()
 
         bannerView?.adSize = kGADAdSizeSmartBannerPortrait
         bannerView?.adUnitID = AdMob.adUnitIDForBottomBannerCarDetail

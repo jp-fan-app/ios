@@ -48,7 +48,9 @@
 "car_detail_video_selection_alert_button_cancel" = "Abbrechen";
 
 "choose-a-manufacturer" = "Wähle eine Marke";
+"manufacturers" = "Marken";
 "show-all-car-models" = "Alle Fahrzeuge anzeigen";
 "recent-videos" = "Neue Videos";
 "video-series" = "Videoserien";
 "all" = "Alle";
+"close" = "Schließen";

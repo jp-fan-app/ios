@@ -4,7 +4,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,13 +17,108 @@
                     <view key="view" contentMode="scaleToFill" id="R2S-rh-OQ9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WWh-h3-nhb">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xY8-Wv-wGm">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ManufacturerCollectionViewCell" id="DFr-K5-c8j" customClass="ManufacturerCollectionViewCell" customModule="JPPerformance" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="0.0" width="125" height="140"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="xQH-lc-cP0">
+                                            <rect key="frame" x="0.0" y="0.0" width="125" height="140"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WW-jz-WAU">
+                                                    <rect key="frame" x="0.0" y="0.0" width="125" height="140"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YFj-W4-asp">
+                                                            <rect key="frame" x="40.5" y="104.5" width="44" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="MakeLogoBMW" translatesAutoresizingMaskIntoConstraints="NO" id="zEX-qM-f4b">
+                                                            <rect key="frame" x="20" y="20" width="85" height="74.5"/>
+                                                            <color key="tintColor" name="HighlightColor1"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" priority="999" constant="125" id="1bC-ae-hJ9"/>
+                                                        <constraint firstItem="zEX-qM-f4b" firstAttribute="top" secondItem="0WW-jz-WAU" secondAttribute="top" constant="20" id="3nF-4C-SpU"/>
+                                                        <constraint firstAttribute="trailing" secondItem="zEX-qM-f4b" secondAttribute="trailing" constant="20" id="LtJ-hG-Zr3"/>
+                                                        <constraint firstItem="YFj-W4-asp" firstAttribute="centerX" secondItem="0WW-jz-WAU" secondAttribute="centerX" id="MrP-xr-PYO"/>
+                                                        <constraint firstAttribute="bottom" secondItem="YFj-W4-asp" secondAttribute="bottom" constant="15" id="Xya-eg-ANl"/>
+                                                        <constraint firstItem="YFj-W4-asp" firstAttribute="top" secondItem="zEX-qM-f4b" secondAttribute="bottom" constant="10" id="nBG-XD-RBw"/>
+                                                        <constraint firstItem="zEX-qM-f4b" firstAttribute="leading" secondItem="0WW-jz-WAU" secondAttribute="leading" constant="20" id="qga-Zn-2Dl"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="140" id="tET-Fd-4Qb"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0WW-jz-WAU" firstAttribute="top" secondItem="xQH-lc-cP0" secondAttribute="top" id="0Q1-ge-uEU"/>
+                                                <constraint firstAttribute="trailing" secondItem="0WW-jz-WAU" secondAttribute="trailing" id="mF8-fX-185"/>
+                                                <constraint firstItem="0WW-jz-WAU" firstAttribute="leading" secondItem="xQH-lc-cP0" secondAttribute="leading" id="npw-CO-K7H"/>
+                                                <constraint firstAttribute="bottom" secondItem="0WW-jz-WAU" secondAttribute="bottom" id="pvQ-fZ-MTO"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="125" height="140"/>
+                                        <connections>
+                                            <outlet property="imageViewLogo" destination="zEX-qM-f4b" id="Egb-k7-1Zh"/>
+                                            <outlet property="labelName" destination="YFj-W4-asp" id="Eph-Yl-Yee"/>
+                                            <outlet property="viewBackground" destination="0WW-jz-WAU" id="CGI-7G-GZP"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="AEi-hk-vxZ" id="3y4-Cn-Myq"/>
+                                    <outlet property="delegate" destination="AEi-hk-vxZ" id="Gr5-p9-lGA"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WWh-h3-nhb" firstAttribute="top" secondItem="R2S-rh-OQ9" secondAttribute="top" id="8Yw-gG-PCc"/>
+                            <constraint firstAttribute="trailing" secondItem="WWh-h3-nhb" secondAttribute="trailing" id="9Km-tw-2Ic"/>
+                            <constraint firstAttribute="bottom" secondItem="WWh-h3-nhb" secondAttribute="bottom" id="qNm-po-BlD"/>
+                            <constraint firstItem="WWh-h3-nhb" firstAttribute="leading" secondItem="R2S-rh-OQ9" secondAttribute="leading" id="zm5-ft-nca"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="mLN-XP-avz"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Dzc-GO-M8Y">
+                        <barButtonItem key="backBarButtonItem" title=" " id="hBh-XO-SNa"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="WWh-h3-nhb" id="yXf-aH-Cv7"/>
+                        <segue destination="yr1-m3-CVd" kind="show" identifier="showCarModelsSearch" id="HzO-Nu-uwy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wP2-e9-xOJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-158" y="125"/>
         </scene>
+        <!--CarModelsSearch-->
+        <scene sceneID="P8E-Ht-7VW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CarModelsSearch" id="yr1-m3-CVd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rfm-LB-qhD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BRI-Rq-jbM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="504" y="125"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="MakeLogoBMW" width="80" height="80"/>
+        <namedColor name="HighlightColor1">
+            <color red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
