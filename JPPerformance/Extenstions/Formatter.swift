@@ -10,7 +10,7 @@
 import Foundation
 
 
-extension Formatter {
+extension NumberFormatter {
 
     static let withSeparator: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -18,5 +18,18 @@ extension Formatter {
         formatter.numberStyle = .decimal
         return formatter
     }()
+
+    static let secondsFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.minimumFractionDigits = 3
+        formatter.maximumFractionDigits = 3
+        return formatter
+    }()
+
+    func string(from: Double?) -> String? {
+        guard let from = from else { return nil }
+        return string(from: NSNumber(value: from))
+    }
 
 }

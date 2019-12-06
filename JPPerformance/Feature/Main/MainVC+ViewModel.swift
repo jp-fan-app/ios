@@ -71,6 +71,41 @@ internal extension MainVC {
             ]
 
             if manufacturers.count > 0 {
+                var manufacturers: [JPFanAppClient.ManufacturerModel] = []
+
+                // try to prefer manufacturers from recent videos
+                if youtubeVideos.count > 0 {
+                    let sortedVideos = youtubeVideos.sorted(by: { $0.publishedAt > $1.publishedAt })
+                    let recentVideos = Array(sortedVideos.prefix(14))
+                    var manufacturersWithVideos: [(JPFanAppClient.ManufacturerModel, Int)] = []
+                    var manufacturersWithoutVideos: [JPFanAppClient.ManufacturerModel] = []
+
+                    for manufacturer in self.manufacturers {
+                        let videoWithIndex = recentVideos.enumerated().first { tuple in
+                            let (_, youtubeVideo) = tuple
+                            let nameInTitle = youtubeVideo.title.lowercased().contains(manufacturer.name.lowercased())
+                            let nameInDescription = youtubeVideo.description.lowercased().contains(manufacturer.name.lowercased())
+                            return nameInTitle || nameInDescription
+                        }
+                        if let videoWithIndex = videoWithIndex {
+                            let (index, _) = videoWithIndex
+                            manufacturersWithVideos.append((manufacturer, index))
+                        } else {
+                            manufacturersWithoutVideos.append(manufacturer)
+                        }
+                    }
+                    let manufacturersWithVideosSortedByVideos = manufacturersWithVideos
+                        .sorted(by: { $0.1 < $1.1 })
+                        .map { $0.0 }
+                    manufacturers.append(contentsOf: manufacturersWithVideosSortedByVideos)
+                    manufacturers.append(contentsOf: manufacturersWithoutVideos)
+
+                } else {
+                    manufacturers = self.manufacturers
+                }
+
+                manufacturers = manufacturers.filter({ ManufacturerLogoMapper.manufacturerLogo(for: $0.name) != nil })
+
                 let title = "choose-a-manufacturer".localized()
                 newSections.append(ManufacturerSection(headerType: .detailsHeader(title: title),
                                                        manufacturers: Array(manufacturers.prefix(5))))

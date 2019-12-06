@@ -11,6 +11,14 @@ import UIKit
 import JPFanAppClient
 
 
+protocol CarModelsTableViewCellDelegate: class {
+
+    func carModelsTableViewCell(_ carModelsTableViewCell: CarModelsTableViewCell,
+                                didSelect carModel: JPFanAppClient.CarModel)
+
+}
+
+
 class CarModelsTableViewCell: UITableViewCell {
 
     var carModels: [JPFanAppClient.CarModel] = [] {
@@ -23,6 +31,8 @@ class CarModelsTableViewCell: UITableViewCell {
 
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var lcCollectionViewHeight: NSLayoutConstraint!
+
+    weak var delegate: CarModelsTableViewCellDelegate?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -59,7 +69,13 @@ extension CarModelsTableViewCell: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension CarModelsTableViewCell: UICollectionViewDelegate { }
+extension CarModelsTableViewCell: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.carModelsTableViewCell(self, didSelect: carModels[indexPath.row])
+    }
+
+}
 
 // MARK: - UICollectionViewDelegateFlowLayout
 

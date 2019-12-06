@@ -13,7 +13,7 @@ import Foundation
 extension Int {
 
     var formattedWithSeparator: String {
-        return Formatter.withSeparator.string(for: self) ?? ""
+        return NumberFormatter.withSeparator.string(for: self) ?? ""
     }
 
 }

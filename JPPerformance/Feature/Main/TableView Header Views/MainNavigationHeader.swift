@@ -12,13 +12,7 @@ import UIKit
 
 class MainNavigationHeader: UITableViewHeaderFooterView {
 
-    @IBAction func actionSearch(_ sender: UIButton) {
-        print("search")
-    }
-
-    @IBAction func actionPerformance(_ sender: UIButton) {
-        print("performance")
-    }
-
+    @IBOutlet var buttonPerformanceBoard: UIButton!
+    @IBOutlet var buttonSearch: UIButton!
 
 }

@@ -30,6 +30,8 @@ public class HTTP {
         self.cache = Cache()
     }
 
+    // MARK: - Manufacturers
+
     @discardableResult
     public func getManufacturers() -> EventLoopFuture<[JPFanAppClient.ManufacturerModel]> {
         if let cached = cache?.cachedManufacturersIndex() {
@@ -52,6 +54,8 @@ public class HTTP {
         }
     }
 
+    // MARK: - Car Models
+
     @discardableResult
     public func getCarModels() -> EventLoopFuture<[JPFanAppClient.CarModel]> {
         if let cached = cache?.cachedCarModelsIndex() {
@@ -62,6 +66,8 @@ public class HTTP {
             return index
         }
     }
+
+    // MARK: - Car Images
 
     @discardableResult
     public func getCarImages() -> EventLoopFuture<[JPFanAppClient.CarImage]> {
@@ -84,6 +90,8 @@ public class HTTP {
         }
     }
 
+    // MARK: - Car Stages
+
     @discardableResult
     public func getCarStages() -> EventLoopFuture<[JPFanAppClient.CarStage]> {
         if let cached = cache?.cachedCarStagesIndex() {
@@ -96,6 +104,33 @@ public class HTTP {
     }
 
     @discardableResult
+    public func getCarStages(carModelID: Int) -> EventLoopFuture<[JPFanAppClient.CarStage]> {
+        // TODO: Cache
+        return httpClient.modelsStages(id: carModelID).map { index in
+            return index
+        }
+    }
+
+    public typealias CarStageWithTimingsMapping = (JPFanAppClient.CarStage, [JPFanAppClient.StageTiming])
+    public func getCarStagesWithMappedTimings(carModelID: Int) -> EventLoopFuture<[CarStageWithTimingsMapping]> {
+        return getCarStages(carModelID: carModelID).and(getStageTimings()).map { (tuple) in
+            let (carStages, allTimings) = tuple
+            let stageTimings: [(JPFanAppClient.CarStage, [JPFanAppClient.StageTiming])] = carStages.compactMap { carStage in
+                // TODO: return car stages without timings?
+                let timings = allTimings.filter({ $0.stageID == carStage.id })
+                if timings.count > 0 {
+                    return (carStage, timings)
+                } else {
+                    return nil
+                }
+            }
+            return stageTimings
+        }
+    }
+
+    // MARK: - Stage Timings
+
+    @discardableResult
     public func getStageTimings() -> EventLoopFuture<[JPFanAppClient.StageTiming]> {
         if let cached = cache?.cachedStageTimingsIndex() {
             return httpClient.nextEventLoop().makeSucceededFuture(cached)
@@ -105,6 +140,8 @@ public class HTTP {
             return index
         }
     }
+
+    // MARK: - Youtube Videos
 
     @discardableResult
     public func getYoutubeVideos() -> EventLoopFuture<[JPFanAppClient.YoutubeVideo]> {
@@ -128,6 +165,8 @@ public class HTTP {
         }
     }
 
+    // MARK: - Video Series
+
     @discardableResult
     public func getVideoSeries() -> EventLoopFuture<[JPFanAppClient.VideoSerie]> {
         if let cached = cache?.cachedVideoSeriesIndex() {
@@ -149,6 +188,8 @@ public class HTTP {
             return index
         }
     }
+
+    // MARK: - Public Images
 
     @discardableResult
     public func getPublicImage(url urlString: String) -> EventLoopFuture<UIImage> {

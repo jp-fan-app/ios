@@ -26,9 +26,6 @@
                                 <constraint firstAttribute="width" secondItem="fqu-5M-ESx" secondAttribute="height" multiplier="1:1" id="86i-hb-VDS"/>
                             </constraints>
                             <state key="normal" image="icon-board"/>
-                            <connections>
-                                <action selector="actionPerformance:" destination="-1" eventType="touchUpInside" id="NOy-Al-iBH"/>
-                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTr-eP-e55">
                             <rect key="frame" x="50" y="0.0" width="40" height="40"/>
@@ -36,9 +33,6 @@
                                 <constraint firstAttribute="width" secondItem="yTr-eP-e55" secondAttribute="height" multiplier="1:1" id="Sl1-xu-M8N"/>
                             </constraints>
                             <state key="normal" image="icon-search"/>
-                            <connections>
-                                <action selector="actionSearch:" destination="-1" eventType="touchUpInside" id="Ch3-4k-SBa"/>
-                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -56,6 +50,10 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="H2J-aY-6UX"/>
+            <connections>
+                <outlet property="buttonPerformanceBoard" destination="fqu-5M-ESx" id="nEI-dh-HcG"/>
+                <outlet property="buttonSearch" destination="yTr-eP-e55" id="MtE-O6-0hx"/>
+            </connections>
             <point key="canvasLocation" x="8.6956521739130448" y="167.74553571428569"/>
         </view>
     </objects>

@@ -17,6 +17,10 @@ class CarModelCollectionViewCell: UICollectionViewCell {
     @IBOutlet var imageViewLogo: UIImageView!
     @IBOutlet var labelName: UILabel!
 
+    @IBOutlet var labelCarStageName: UILabel!
+    @IBOutlet var labelCarStageTimingRange: UILabel!
+    @IBOutlet var labelCarStageTimingSeconds: UILabel!
+
     let http = HTTP()
 
     var carModel: JPFanAppClient.CarModel? {
@@ -46,6 +50,8 @@ class CarModelCollectionViewCell: UICollectionViewCell {
             labelName.text = ""
             imageViewLogo.image = nil
             imageViewMainImage.image = nil
+
+            updatePerformanceUI()
             return
         }
 
@@ -61,6 +67,45 @@ class CarModelCollectionViewCell: UICollectionViewCell {
         http.getManufacturer(id: carModel.manufacturerID).whenSuccess { manufacturer in
             DispatchQueue.main.async {
                 self.imageViewLogo.image = ManufacturerLogoMapper.manufacturerLogo(for: manufacturer.name)
+            }
+        }
+
+        updatePerformanceUI()
+    }
+
+    private func updatePerformanceUI() {
+        func clearLabels() {
+            labelCarStageName.text = ""
+            labelCarStageTimingRange.text = ""
+            labelCarStageTimingSeconds.text = ""
+        }
+
+        guard let carModelID = carModel?.id else {
+            clearLabels()
+            return
+        }
+
+        http.getCarStagesWithMappedTimings(carModelID: carModelID).whenSuccess { stageTimings in
+            guard let stageTiming = stageTimings.randomElement(),
+                let timing = stageTiming.1.randomElement()
+            else {
+                DispatchQueue.main.async {
+                    clearLabels()
+                }
+                return
+            }
+            let bestTiming = [
+                timing.second1,
+                timing.second3,
+                timing.second3
+            ].compactMap({ $0 }).max()
+
+            DispatchQueue.main.async {
+                self.labelCarStageName.text = stageTiming.0.name
+                self.labelCarStageTimingRange.text = timing.range
+
+                let formattedSec = NumberFormatter.secondsFormatter.string(from: bestTiming) ?? ""
+                self.labelCarStageTimingSeconds.text = formattedSec
             }
         }
     }

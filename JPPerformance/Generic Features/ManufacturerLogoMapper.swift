@@ -32,6 +32,7 @@ class ManufacturerLogoMapper {
         case let str where str.contains("skoda"): return #imageLiteral(resourceName: "MakeLogoSkoda2.pdf")
         case let str where str.contains("smart"): return #imageLiteral(resourceName: "MakeLogoSmart.pdf")
         case let str where str.contains("toyota"): return #imageLiteral(resourceName: "MakeLogoToyota.pdf")
+        case let str where str.contains("ford"): return #imageLiteral(resourceName: "MakeLogoFord")
         default: return nil
         }
     }

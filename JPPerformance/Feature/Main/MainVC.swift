@@ -30,8 +30,46 @@ class MainVC: UIViewController {
         viewModel.update()
     }
 
-    @objc private func actionMainDetailsHeaderActionButton(_ sender: UIButton) {
-        print("show detials")
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCarModelDetail",
+            let navController = segue.destination as? UINavigationController,
+            let carModelDetailVC = navController.topViewController as? CarModelDetailVC,
+            let carModel = sender as? JPFanAppClient.CarModel
+        {
+            carModelDetailVC.carModel = carModel
+        }
+    }
+
+
+    @objc private func actionMainNavigationHeaderPerformanceBoard(_ sender: UIButton) {
+        performSegue(withIdentifier: "showPerformanceBoard", sender: self)
+    }
+
+    @objc private func actionMainNavigationHeaderSearch(_ sender: UIButton) {
+        print("make search")
+    }
+
+
+    @objc private func actionMainDetailsHeaderActionButtonManufacturerSection(_ sender: UIButton) {
+        performSegue(withIdentifier: "showManufacturersList", sender: self)
+    }
+
+    @objc private func actionMainDetailsHeaderActionButtonYoutubeVideoSection(_ sender: UIButton) {
+        performSegue(withIdentifier: "showYoutubeVideosList", sender: self)
+    }
+
+    @objc private func actionMainDetailsHeaderActionButtonVideoSerieSection(_ sender: UIButton) {
+        performSegue(withIdentifier: "showVideoSeriesList", sender: self)
+    }
+
+    @objc private func actionShowDetailsCarModelsRow(_ sender: UIButton) {
+        performSegue(withIdentifier: "showCarModelsList", sender: self)
     }
 
 }
@@ -68,6 +106,7 @@ extension MainVC: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CarModelsTableViewCell",
                                                          for: indexPath) as! CarModelsTableViewCell
                 // swiftlint:enable force_cast
+                cell.delegate = self
                 cell.carModels = carModels
                 return cell
             case .details(let title):
@@ -76,6 +115,8 @@ extension MainVC: UITableViewDataSource {
                                                          for: indexPath) as! ShowDetailsTableViewCell
                 // swiftlint:enable force_cast
                 cell.buttonAction.setTitle(title, for: .normal)
+                cell.buttonAction.removeTarget(self, action: nil, for: .allEvents)
+                cell.buttonAction.addTarget(self, action: #selector(actionShowDetailsCarModelsRow), for: .touchUpInside)
                 return cell
             case .admob(let id):
                 // swiftlint:disable force_cast
@@ -133,6 +174,14 @@ extension MainVC: UITableViewDelegate {
         case .navigationHeader:
             // swiftlint:disable force_cast
             let mainNavigationHeader = tableView.dequeueReusableHeaderFooterView(withIdentifier: "MainNavigationHeader") as! MainNavigationHeader
+            mainNavigationHeader.buttonPerformanceBoard.removeTarget(self, action: nil, for: .allEvents)
+            mainNavigationHeader.buttonPerformanceBoard.addTarget(self,
+                                                                  action: #selector(actionMainNavigationHeaderPerformanceBoard),
+                                                                  for: .touchUpInside)
+            mainNavigationHeader.buttonSearch.removeTarget(self, action: nil, for: .allEvents)
+            mainNavigationHeader.buttonSearch.addTarget(self,
+                                                        action: #selector(actionMainNavigationHeaderSearch),
+                                                        for: .touchUpInside)
             // swiftlint:enable force_cast
             return mainNavigationHeader
         case .detailsHeader(let title):
@@ -142,9 +191,22 @@ extension MainVC: UITableViewDelegate {
             mainDetailsHeader.labelTitle.text = title
             mainDetailsHeader.buttonAction.setTitle("all".localized(), for: .normal)
             mainDetailsHeader.buttonAction.removeTarget(self, action: nil, for: .allEvents)
-            mainDetailsHeader.buttonAction.addTarget(self,
-                                                     action: #selector(actionMainDetailsHeaderActionButton),
-                                                     for: .touchUpInside)
+            switch viewModelSection {
+            case is ViewModel.ManufacturerSection:
+                mainDetailsHeader.buttonAction.addTarget(self,
+                                                         action: #selector(actionMainDetailsHeaderActionButtonManufacturerSection),
+                                                         for: .touchUpInside)
+            case is ViewModel.YoutubeVideosSection:
+                mainDetailsHeader.buttonAction.addTarget(self,
+                                                         action: #selector(actionMainDetailsHeaderActionButtonYoutubeVideoSection),
+                                                         for: .touchUpInside)
+            case is ViewModel.VideoSeriesSection:
+                mainDetailsHeader.buttonAction.addTarget(self,
+                                                         action: #selector(actionMainDetailsHeaderActionButtonVideoSerieSection),
+                                                         for: .touchUpInside)
+            default:
+                break
+            }
             return mainDetailsHeader
         }
     }
@@ -159,6 +221,17 @@ extension MainVC: MainVCViewModelDelegate {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
+    }
+
+}
+
+// MARK: - CarModelsTableViewCellDelegate
+
+extension MainVC: CarModelsTableViewCellDelegate {
+
+    func carModelsTableViewCell(_ carModelsTableViewCell: CarModelsTableViewCell,
+                                didSelect carModel: JPFanAppClient.CarModel) {
+        performSegue(withIdentifier: "showCarModelDetail", sender: carModel)
     }
 
 }

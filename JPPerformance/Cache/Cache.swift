@@ -163,10 +163,10 @@ public class Cache {
         try? videoSerieYoutubeVideoRelationsStorage.removeExpiredObjects()
         try? publicImagesStorage.removeExpiredObjects()
 
-        #if DEBUG
-        let cacheURL = URL(fileURLWithPath: manufacturerStorage.path).deletingLastPathComponent()
-        print("Cache: \(cacheURL.path)")
-        #endif
+//        #if DEBUG
+//        let cacheURL = URL(fileURLWithPath: manufacturerStorage.path).deletingLastPathComponent()
+//        print("Cache: \(cacheURL.path)")
+//        #endif
     }
     // swiftlint:enable line_length function_body_length
 
