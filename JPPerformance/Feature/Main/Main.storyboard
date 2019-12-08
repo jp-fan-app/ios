@@ -158,9 +158,21 @@
                                                                 <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="audir8sample" translatesAutoresizingMaskIntoConstraints="NO" id="6Cb-Fr-CcV">
+                                                                    <view contentMode="scaleToFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="dBD-zy-bup">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
-                                                                    </imageView>
+                                                                        <subviews>
+                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="audir8sample" translatesAutoresizingMaskIntoConstraints="NO" id="6Cb-Fr-CcV">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="410.00000000000045"/>
+                                                                            </imageView>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="bottom" secondItem="6Cb-Fr-CcV" secondAttribute="bottom" id="AtK-9O-6I6"/>
+                                                                            <constraint firstItem="6Cb-Fr-CcV" firstAttribute="leading" secondItem="dBD-zy-bup" secondAttribute="leading" id="VPS-ix-3BE"/>
+                                                                            <constraint firstItem="6Cb-Fr-CcV" firstAttribute="top" secondItem="dBD-zy-bup" secondAttribute="top" id="h1S-U0-Guz"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="6Cb-Fr-CcV" secondAttribute="trailing" id="iQN-Cr-Nv5"/>
+                                                                        </constraints>
+                                                                    </view>
                                                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="lAa-LN-ECL">
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
                                                                         <subviews>
@@ -206,7 +218,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="MakeLogoAudi" translatesAutoresizingMaskIntoConstraints="NO" id="FFW-3R-Pxf">
-                                                                        <rect key="frame" x="20" y="40" width="80" height="64"/>
+                                                                        <rect key="frame" x="20" y="40" width="80" height="32"/>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="DZh-fj-QVc"/>
@@ -215,15 +227,15 @@
                                                                     </imageView>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="bottom" secondItem="6Cb-Fr-CcV" secondAttribute="bottom" id="8Vp-W3-OD6"/>
-                                                                    <constraint firstItem="6Cb-Fr-CcV" firstAttribute="top" secondItem="MSP-Gl-6CI" secondAttribute="top" id="9fH-Ae-jHI"/>
                                                                     <constraint firstAttribute="bottom" secondItem="lAa-LN-ECL" secondAttribute="bottom" id="ByJ-6x-nc1"/>
+                                                                    <constraint firstItem="dBD-zy-bup" firstAttribute="top" secondItem="MSP-Gl-6CI" secondAttribute="top" id="CDY-fj-N2n"/>
+                                                                    <constraint firstItem="dBD-zy-bup" firstAttribute="leading" secondItem="MSP-Gl-6CI" secondAttribute="leading" id="Ck0-SC-sAG"/>
                                                                     <constraint firstItem="FFW-3R-Pxf" firstAttribute="leading" secondItem="MSP-Gl-6CI" secondAttribute="leading" constant="20" id="DbT-CK-dA9"/>
-                                                                    <constraint firstItem="6Cb-Fr-CcV" firstAttribute="leading" secondItem="MSP-Gl-6CI" secondAttribute="leading" id="JpA-7t-nWh"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="dBD-zy-bup" secondAttribute="bottom" id="P6v-7a-ixD"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="dBD-zy-bup" secondAttribute="trailing" id="RII-IY-EC0"/>
                                                                     <constraint firstItem="lAa-LN-ECL" firstAttribute="top" secondItem="MSP-Gl-6CI" secondAttribute="top" id="b98-ic-JZt"/>
                                                                     <constraint firstAttribute="trailing" secondItem="lAa-LN-ECL" secondAttribute="trailing" id="e2q-Av-kUh"/>
                                                                     <constraint firstItem="lAa-LN-ECL" firstAttribute="leading" secondItem="MSP-Gl-6CI" secondAttribute="leading" id="fVx-xb-5hh"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="6Cb-Fr-CcV" secondAttribute="trailing" id="kmi-cO-Jhk"/>
                                                                     <constraint firstItem="FFW-3R-Pxf" firstAttribute="top" secondItem="MSP-Gl-6CI" secondAttribute="top" constant="40" id="od3-sn-e44"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
