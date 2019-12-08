@@ -21,7 +21,10 @@ platform :ios do
 
     build_app(
       scheme: "JPPerformance",
-      workspace: "JPPerformance.xcworkspace"
+      workspace: "JPPerformance.xcworkspace",
+      clean: true,
+      output_directory: "build",
+      output_name: "JPPerformance.ipa"
     )
   end
 
@@ -49,7 +52,16 @@ platform :ios do
 
   desc "Deploys App to AppCenter"
   lane :deploy_develop do
-    puts "implement deploy develop"
+    appcenter_upload(
+      api_token: ENV["APPCENTER_API_TOKEN"],
+      owner_name: "christoph.pageler",
+      app_name: "JP-Fan-App",
+
+      file: "./build/JPPerformance.ipa",
+      dsym: "./build/JPPerformance.app.dSYM.zip",
+
+      destinations: "Collaborators"
+    )
   end
 
   desc "Deploys App to AppStore"
