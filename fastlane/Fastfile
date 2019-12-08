@@ -22,6 +22,7 @@ platform :ios do
       scheme: "JPPerformance",
       workspace: "JPPerformance.xcworkspace",
       clean: true,
+      export_method: "ad-hoc",
       output_directory: "build",
       output_name: "JPPerformance.ipa"
     )

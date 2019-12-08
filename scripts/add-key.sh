@@ -23,3 +23,4 @@ security set-key-partition-list -S apple-tool:,apple: -s -k travis ios-build.key
 # Put the provisioning profile in place
 mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
 cp "./scripts/profile/$PROFILE_NAME.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
+cp "./scripts/profile/$PROFILE_NAME_ADHOC.mobileprovision" ~/Library/MobileDevice/Provisioning\ Profiles/
