@@ -72,7 +72,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK (~> 7.43.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -102,4 +102,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 595429f3a04dbc6ea8a697c0a4ef121d87965997
 
-COCOAPODS: 1.6.2
+COCOAPODS: 1.8.4

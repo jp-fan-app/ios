@@ -7,7 +7,6 @@ platform :ios do
   lane :dependencies do
     sh "pod install --repo-update"
     sh "cd .. && carthage bootstrap --platform iOS --cache-builds"
-    sh "cd ../Dependencies && rake dependencies"
   end
 
   desc "Build ipa"
