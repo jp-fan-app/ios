@@ -84,6 +84,13 @@
 		59F9B483239A8506008AAF49 /* CarModelDetailStageHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F9B482239A8506008AAF49 /* CarModelDetailStageHeader.xib */; };
 		59F9B486239A8698008AAF49 /* CarModelTimingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B485239A8698008AAF49 /* CarModelTimingTableViewCell.swift */; };
 		59F9B488239A94C6008AAF49 /* JPNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B487239A94C6008AAF49 /* JPNavigationController.swift */; };
+		59F9B48C239AC003008AAF49 /* PerformanceRowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B48B239AC003008AAF49 /* PerformanceRowTableViewCell.swift */; };
+		59F9B48F239BA4CB008AAF49 /* PerformanceBoardFilterHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B48E239BA4CB008AAF49 /* PerformanceBoardFilterHeaderView.swift */; };
+		59F9B491239BA4D8008AAF49 /* PerformanceBoardFilterHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59F9B490239BA4D8008AAF49 /* PerformanceBoardFilterHeaderView.xib */; };
+		59F9B493239BA7A7008AAF49 /* PerformanceLaSiSeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B492239BA7A7008AAF49 /* PerformanceLaSiSeVC.swift */; };
+		59F9B495239BA7BF008AAF49 /* PerformanceTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B494239BA7BF008AAF49 /* PerformanceTableVC.swift */; };
+		59F9B497239BB784008AAF49 /* StageTiming.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B496239BB784008AAF49 /* StageTiming.swift */; };
+		59F9B499239D44DF008AAF49 /* CarStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B498239D44DF008AAF49 /* CarStage.swift */; };
 		BA7FBE31DBB6512B6BDED616 /* Pods_JPPerformance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F6B346664D197FC63B426D9 /* Pods_JPPerformance.framework */; };
 /* End PBXBuildFile section */
 
@@ -234,6 +241,13 @@
 		59F9B482239A8506008AAF49 /* CarModelDetailStageHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarModelDetailStageHeader.xib; sourceTree = "<group>"; };
 		59F9B485239A8698008AAF49 /* CarModelTimingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModelTimingTableViewCell.swift; sourceTree = "<group>"; };
 		59F9B487239A94C6008AAF49 /* JPNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPNavigationController.swift; sourceTree = "<group>"; };
+		59F9B48B239AC003008AAF49 /* PerformanceRowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceRowTableViewCell.swift; sourceTree = "<group>"; };
+		59F9B48E239BA4CB008AAF49 /* PerformanceBoardFilterHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceBoardFilterHeaderView.swift; sourceTree = "<group>"; };
+		59F9B490239BA4D8008AAF49 /* PerformanceBoardFilterHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PerformanceBoardFilterHeaderView.xib; sourceTree = "<group>"; };
+		59F9B492239BA7A7008AAF49 /* PerformanceLaSiSeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceLaSiSeVC.swift; sourceTree = "<group>"; };
+		59F9B494239BA7BF008AAF49 /* PerformanceTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTableVC.swift; sourceTree = "<group>"; };
+		59F9B496239BB784008AAF49 /* StageTiming.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageTiming.swift; sourceTree = "<group>"; };
+		59F9B498239D44DF008AAF49 /* CarStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarStage.swift; sourceTree = "<group>"; };
 		5E5998CEA28124D5F48EA849 /* Pods-JPPerformance.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPPerformance.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JPPerformance/Pods-JPPerformance.debug.xcconfig"; sourceTree = "<group>"; };
 		5EC8EB3C0BFD227B4EDE099B /* Pods-JPPerformance.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JPPerformance.release.xcconfig"; path = "Pods/Target Support Files/Pods-JPPerformance/Pods-JPPerformance.release.xcconfig"; sourceTree = "<group>"; };
 		5F6B346664D197FC63B426D9 /* Pods_JPPerformance.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JPPerformance.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -641,6 +655,8 @@
 				5969622A213DCE4500172F5F /* String.swift */,
 				599145E52398097C005FDB11 /* UIApplication.swift */,
 				59F9B47B239A6B54008AAF49 /* UIColor.swift */,
+				59F9B496239BB784008AAF49 /* StageTiming.swift */,
+				59F9B498239D44DF008AAF49 /* CarStage.swift */,
 			);
 			path = Extenstions;
 			sourceTree = "<group>";
@@ -660,6 +676,10 @@
 			children = (
 				59F9B460239A550D008AAF49 /* PerformanceBoard.storyboard */,
 				59F9B462239A5600008AAF49 /* PerformanceBoardVC.swift */,
+				59F9B492239BA7A7008AAF49 /* PerformanceLaSiSeVC.swift */,
+				59F9B494239BA7BF008AAF49 /* PerformanceTableVC.swift */,
+				59F9B48D239BA4B6008AAF49 /* TableVIew Header Views */,
+				59F9B48A239ABFE6008AAF49 /* TableView Cells */,
 			);
 			path = PerformanceBoard;
 			sourceTree = "<group>";
@@ -726,6 +746,23 @@
 				59F9B485239A8698008AAF49 /* CarModelTimingTableViewCell.swift */,
 			);
 			path = "TableView Cell";
+			sourceTree = "<group>";
+		};
+		59F9B48A239ABFE6008AAF49 /* TableView Cells */ = {
+			isa = PBXGroup;
+			children = (
+				59F9B48B239AC003008AAF49 /* PerformanceRowTableViewCell.swift */,
+			);
+			path = "TableView Cells";
+			sourceTree = "<group>";
+		};
+		59F9B48D239BA4B6008AAF49 /* TableVIew Header Views */ = {
+			isa = PBXGroup;
+			children = (
+				59F9B48E239BA4CB008AAF49 /* PerformanceBoardFilterHeaderView.swift */,
+				59F9B490239BA4D8008AAF49 /* PerformanceBoardFilterHeaderView.xib */,
+			);
+			path = "TableVIew Header Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -795,7 +832,6 @@
 					59A18AA61F6D0BBC008789BA = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -850,6 +886,7 @@
 				59C5900A2397F2CE00EE14AB /* Main.storyboard in Resources */,
 				5981E99C2398FEF600CD57FF /* Colors.xcassets in Resources */,
 				59F9B472239A5DDC008AAF49 /* CarModelDetail.storyboard in Resources */,
+				59F9B491239BA4D8008AAF49 /* PerformanceBoardFilterHeaderView.xib in Resources */,
 				59F9B461239A550D008AAF49 /* PerformanceBoard.storyboard in Resources */,
 				59C590082397F2C400EE14AB /* LaunchScreen.storyboard in Resources */,
 				59F9B483239A8506008AAF49 /* CarModelDetailStageHeader.xib in Resources */,
@@ -1020,11 +1057,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				59DE6122239A3CF80004FCE6 /* VideoSerieCollectionViewCell.swift in Sources */,
+				59F9B48C239AC003008AAF49 /* PerformanceRowTableViewCell.swift in Sources */,
 				59F9B481239A84FE008AAF49 /* CarModelDetailStageHeader.swift in Sources */,
 				59DE611A239A35720004FCE6 /* ShowDetailsTableViewCell.swift in Sources */,
 				5969622B213DCE4500172F5F /* String.swift in Sources */,
+				59F9B48F239BA4CB008AAF49 /* PerformanceBoardFilterHeaderView.swift in Sources */,
 				59DE6068239956230004FCE6 /* CarModelCollectionViewCell.swift in Sources */,
 				59F9B478239A5F1F008AAF49 /* YoutubeVideosListVC.swift in Sources */,
+				59F9B499239D44DF008AAF49 /* CarStage.swift in Sources */,
 				59C590172398043700EE14AB /* Cache.swift in Sources */,
 				59F9B476239A5F0D008AAF49 /* CarModelsSearchVC.swift in Sources */,
 				59C5901A2398077000EE14AB /* Preferences.swift in Sources */,
@@ -1035,7 +1075,9 @@
 				5981E99A2398FBFF00CD57FF /* MainVC.swift in Sources */,
 				5973F30D1F6DC88400A0FFE9 /* Formatter.swift in Sources */,
 				5981E98F2398E54300CD57FF /* Cache+YoutubeVideo.swift in Sources */,
+				59F9B497239BB784008AAF49 /* StageTiming.swift in Sources */,
 				594E504620E399BF00CCC158 /* Collection.swift in Sources */,
+				59F9B493239BA7A7008AAF49 /* PerformanceLaSiSeVC.swift in Sources */,
 				5973F3141F6DC89C00A0FFE9 /* Integer.swift in Sources */,
 				59C590192398075B00EE14AB /* Review.swift in Sources */,
 				59C5900D2398005D00EE14AB /* Keys.swift in Sources */,
@@ -1062,6 +1104,7 @@
 				59F9B463239A5600008AAF49 /* PerformanceBoardVC.swift in Sources */,
 				59356FF31F6EC6F700EFF311 /* Array.swift in Sources */,
 				59DE606423994FC40004FCE6 /* ManufacturerLogoMapper.swift in Sources */,
+				59F9B495239BA7BF008AAF49 /* PerformanceTableVC.swift in Sources */,
 				59A18AAB1F6D0BBC008789BA /* AppDelegate.swift in Sources */,
 				59DE6124239A48670004FCE6 /* Cache+PublicImage.swift in Sources */,
 				59F9B474239A5EFE008AAF49 /* ManufacturersListVC.swift in Sources */,
@@ -1283,7 +1326,8 @@
 				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = JPPerformance/JPPerformance.entitlements;
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.6.1;
 				DEVELOPMENT_TEAM = 488D924Q6G;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1298,7 +1342,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageler.christoph.JPPerformance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "JP Performance Development";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "JPPerformance/JPPerformance-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

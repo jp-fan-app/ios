@@ -76,8 +76,9 @@ class CarModelDetailVC: UIViewController {
         labelCarModelName.text = carModel.name
         if let mainImageID = carModel.mainImageID {
             http.getCarImageFile(id: mainImageID).whenSuccess { imageData in
+                let image = UIImage(data: imageData)
                 DispatchQueue.main.async {
-                    self.imageViewMainImage.image = UIImage(data: imageData)
+                    self.imageViewMainImage.image = image
                 }
             }
         }
@@ -120,18 +121,29 @@ extension CarModelDetailVC: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let stageTiming = stageTimingsViewModel.sections[indexPath.section].timings[indexPath.row]
+        let timing = stageTimingsViewModel.sections[indexPath.section].timings[indexPath.row]
 
         // swiftlint:disable force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: "CarModelTimingTableViewCell",
                                                  for: indexPath) as! CarModelTimingTableViewCell
-        cell.labelRange.text = stageTiming.range
-        cell.labelSecond1.isHidden = stageTiming.second1 == nil
-        cell.labelSecond1.text = NumberFormatter.secondsFormatter.string(from: stageTiming.second1)
-        cell.labelSecond2.isHidden = stageTiming.second2 == nil
-        cell.labelSecond2.text = NumberFormatter.secondsFormatter.string(from: stageTiming.second2)
-        cell.labelSecond3.isHidden = stageTiming.second3 == nil
-        cell.labelSecond3.text = NumberFormatter.secondsFormatter.string(from: stageTiming.second3)
+        switch timing {
+        case .stageTiming(let stageTiming):
+            cell.labelRange.text = stageTiming.range
+            cell.labelSecond1.isHidden = stageTiming.second1 == nil
+            cell.labelSecond1.text = NumberFormatter.secondsFormatter.string(from: stageTiming.second1)
+            cell.labelSecond2.isHidden = stageTiming.second2 == nil
+            cell.labelSecond2.text = NumberFormatter.secondsFormatter.string(from: stageTiming.second2)
+            cell.labelSecond3.isHidden = stageTiming.second3 == nil
+            cell.labelSecond3.text = NumberFormatter.secondsFormatter.string(from: stageTiming.second3)
+        case .laSiSe(let value):
+            cell.labelRange.text = "LaSiSe"
+            cell.labelSecond1.isHidden = false
+            cell.labelSecond1.text = value.formattedLaSiSeDisplayString()
+            cell.labelSecond2.isHidden = true
+            cell.labelSecond2.text = nil
+            cell.labelSecond3.isHidden = true
+            cell.labelSecond3.text = nil
+        }
 
         // swiftlint:enable force_cast
         return cell
@@ -199,8 +211,16 @@ private extension CarModelDetailVC {
         func reload(carModel: JPFanAppClient.CarModel) {
             guard let carModelID = carModel.id else { return }
             http.getCarStagesWithMappedTimings(carModelID: carModelID).whenSuccess { stageTimingMappings in
-                let newSections = stageTimingMappings.map { stageTimingMapping in
-                    return Section(stage: stageTimingMapping.0, timings: stageTimingMapping.1)
+                let newSections = stageTimingMappings.map { stageTimingMapping -> Section in
+                    let carStage = stageTimingMapping.0
+                    var timings: [Section.Timing] = stageTimingMapping.1.map { timing in
+                        return .stageTiming(value: timing)
+                    }
+                    if let lasiseInSeconds = carStage.lasiseInSeconds {
+                        timings.append(.laSiSe(value: lasiseInSeconds))
+                    }
+
+                    return Section(stage: carStage, timings: timings)
                 }
                 self.sections = newSections
                 self.delegate?.didUpdateStageTimings()
@@ -216,8 +236,15 @@ private extension CarModelDetailVC.StageTimingsViewModel {
 
     struct Section {
 
+        enum Timing {
+
+            case stageTiming(value: JPFanAppClient.StageTiming)
+            case laSiSe(value: Double)
+
+        }
+
         var stage: JPFanAppClient.CarStage
-        var timings: [JPFanAppClient.StageTiming]
+        var timings: [Timing]
 
     }
 

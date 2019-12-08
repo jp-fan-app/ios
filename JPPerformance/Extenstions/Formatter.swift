@@ -27,6 +27,26 @@ extension NumberFormatter {
         return formatter
     }()
 
+    static let psFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.negativeSuffix = " PS"
+        formatter.positiveSuffix = " PS"
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 0
+        return formatter
+    }()
+
+    static let nmFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.negativeSuffix = " NM"
+        formatter.positiveSuffix = " NM"
+        formatter.minimumFractionDigits = 0
+        formatter.maximumFractionDigits = 0
+        return formatter
+    }()
+
     func string(from: Double?) -> String? {
         guard let from = from else { return nil }
         return string(from: NSNumber(value: from))

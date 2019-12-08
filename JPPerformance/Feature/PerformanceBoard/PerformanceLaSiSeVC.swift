@@ -1,8 +1,8 @@
 //
-//  PerformanceBoardVC.swift
+//  PerformanceLaSiSeVC.swift
 //  JPPerformance
 //
-//  Created by Christoph Pageler on 06.12.19.
+//  Created by Christoph Pageler on 07.12.19.
 //  Copyright © 2019 Christoph Pageler. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 import UIKit
 
 
-class PerformanceBoardVC: UIViewController {
+class PerformanceLaSiSeVC: UIViewController {
 
     weak var performanceTableVC: PerformanceTableVC?
 
@@ -21,10 +21,9 @@ class PerformanceBoardVC: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EmbeddedPerformanceTable",
-            let performanceTableVC = segue.destination as? PerformanceTableVC
-        {
+        if segue.identifier == "EmbeddedPerformanceTable", let performanceTableVC = segue.destination as? PerformanceTableVC {
             self.performanceTableVC = performanceTableVC
+            performanceTableVC.isLaSiSe = true
             performanceTableVC.delegate = self
         }
 
@@ -39,8 +38,7 @@ class PerformanceBoardVC: UIViewController {
 
 }
 
-
-extension PerformanceBoardVC: PerformanceTableVCDelegate {
+extension PerformanceLaSiSeVC: PerformanceTableVCDelegate {
 
     func performanceTableVC(_ performanceTableVC: PerformanceTableVC, didSelect carModel: JPFanAppClient.CarModel) {
         performSegue(withIdentifier: "showCarModelDetail", sender: carModel)

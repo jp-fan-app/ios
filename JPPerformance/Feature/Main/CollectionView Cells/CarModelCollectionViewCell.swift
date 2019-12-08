@@ -58,8 +58,9 @@ class CarModelCollectionViewCell: UICollectionViewCell {
         labelName.text = carModel.name
         if let mainImageID = carModel.mainImageID {
             http.getCarImageFile(id: mainImageID).whenSuccess { imageData in
+                let image = UIImage(data: imageData)
                 DispatchQueue.main.async {
-                    self.imageViewMainImage.image = UIImage(data: imageData)
+                    self.imageViewMainImage.image = image
                 }
             }
         }
