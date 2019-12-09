@@ -212,11 +212,22 @@
                         <outlet property="lcViewImageBackgroundNoImageRatio" destination="Plb-NS-of3" id="mq1-Yc-tJr"/>
                         <outlet property="tableViewStages" destination="dt4-Li-vg1" id="VkW-UU-pA1"/>
                         <outlet property="viewBannerBackground" destination="ukX-8Y-EKh" id="9to-WA-KED"/>
+                        <segue destination="qFB-8X-c4n" kind="showDetail" identifier="showYoutubeVideoDetail" id="8u0-OW-Hsj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TgX-AE-Jef" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="692.75362318840587" y="135.9375"/>
+        </scene>
+        <!--YoutubePlayer-->
+        <scene sceneID="PE6-Rw-32c">
+            <objects>
+                <viewControllerPlaceholder storyboardName="YoutubePlayer" id="qFB-8X-c4n" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dB4-CT-Dh3"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="THa-Ek-YvA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1299" y="136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sjl-1i-4kY">

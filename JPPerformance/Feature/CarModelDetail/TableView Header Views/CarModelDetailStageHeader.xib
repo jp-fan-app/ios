@@ -27,6 +27,9 @@
                         <constraint firstAttribute="width" constant="83" id="uHa-Z5-hsf"/>
                     </constraints>
                     <state key="normal" image="icon-video"/>
+                    <connections>
+                        <action selector="actionPlayVideoTouchUpInside:" destination="QYM-If-8QG" eventType="touchUpInside" id="zkb-F7-zfB"/>
+                    </connections>
                 </button>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPE-sG-qsc">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>

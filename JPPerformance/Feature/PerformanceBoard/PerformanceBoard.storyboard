@@ -215,6 +215,7 @@
                             <constraint firstAttribute="trailing" secondItem="66C-Fb-wDS" secondAttribute="trailing" id="Pj2-Uh-xcL"/>
                             <constraint firstItem="66C-Fb-wDS" firstAttribute="leading" secondItem="mXt-nC-nDT" secondAttribute="leading" id="uDN-v7-kc6"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Fye-tO-qtt"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="66C-Fb-wDS" id="0Qj-r2-E4Z"/>

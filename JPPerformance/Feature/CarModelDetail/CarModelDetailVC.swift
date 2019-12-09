@@ -68,6 +68,16 @@ class CarModelDetailVC: UIViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showYoutubeVideoDetail",
+            let youtubePlayerVC = segue.destination as? YoutubePlayerVC,
+            let youtubeVideo = sender as? JPFanAppClient.YoutubeVideo
+        {
+            youtubePlayerVC.modalPresentationStyle = .fullScreen
+            youtubePlayerVC.youtubeVideo = youtubeVideo
+        }
+    }
+
     private func reloadCarModel() {
         guard isViewLoaded else { return }
         guard let carModel = carModel else {
@@ -180,7 +190,8 @@ extension CarModelDetailVC: UITableViewDelegate {
         let stage = stageTimingsViewModel.sections[section].stage
         headerView.viewSeperator.isHidden = section == 0
         headerView.labelStageName.text = stage.name
-        headerView.buttonPlayVideo.removeTarget(self, action: nil, for: .allEvents)
+        headerView.delegate = self
+        headerView.preparePlayButton(for: stage)
 
         return headerView
     }
@@ -190,6 +201,30 @@ extension CarModelDetailVC: UITableViewDelegate {
 // MARK: - GADBannerViewDelegate
 
 extension CarModelDetailVC: GADBannerViewDelegate { }
+
+extension CarModelDetailVC: CarModelDetailStageHeaderDelegate {
+
+    func carModelDetailStageHeader(_ carModelDetailStageHeader: CarModelDetailStageHeader,
+                                   show videos: [JPFanAppClient.YoutubeVideo]) {
+        if videos.count == 1, let video = videos.first {
+            self.performSegue(withIdentifier: "showYoutubeVideoDetail", sender: video)
+        } else {
+            let alertController = UIAlertController(title: "car_detail_video_selection_alert_title".localized(),
+                                                    message: "car_detail_video_selection_alert_message".localized(),
+                                                    preferredStyle: .actionSheet)
+            for video in videos {
+                alertController.addAction(UIAlertAction(title: video.shortTitle(), style: .default, handler: { _ in
+                    self.performSegue(withIdentifier: "showYoutubeVideoDetail", sender: video)
+                }))
+            }
+            alertController.addAction(UIAlertAction(title: "car_detail_video_selection_alert_button_cancel".localized(),
+                                                    style: .cancel,
+                                                    handler: nil))
+            present(alertController, animated: true, completion: nil)
+        }
+    }
+
+}
 
 // MARK: - CarModelDetailVCStageTimingsViewModelDelegate
 

@@ -8,12 +8,43 @@
 
 
 import UIKit
+import JPFanAppClient
 
+
+protocol CarModelDetailStageHeaderDelegate: class {
+
+    func carModelDetailStageHeader(_ carModelDetailStageHeader: CarModelDetailStageHeader,
+                                   show videos: [JPFanAppClient.YoutubeVideo])
+
+}
 
 class CarModelDetailStageHeader: UITableViewHeaderFooterView {
 
     @IBOutlet var viewSeperator: UIView!
     @IBOutlet var labelStageName: UILabel!
     @IBOutlet var buttonPlayVideo: UIButton!
+
+    weak var delegate: CarModelDetailStageHeaderDelegate?
+
+    let http = HTTP()
+    private var youtubeVideos: [JPFanAppClient.YoutubeVideo]?
+
+    func preparePlayButton(for carStage: JPFanAppClient.CarStage) {
+        buttonPlayVideo.isHidden = true
+        guard let carStageID = carStage.id else { return }
+
+        http.getCarStageVideos(carStageId: carStageID).whenComplete { result in
+            let youtubeVideos = (try? result.get()) ?? []
+            self.youtubeVideos = youtubeVideos
+            DispatchQueue.main.async {
+                self.buttonPlayVideo.isHidden = youtubeVideos.count == 0
+            }
+        }
+    }
+
+    @IBAction func actionPlayVideoTouchUpInside(_ sender: UIButton) {
+        guard let videos = youtubeVideos else { return }
+        delegate?.carModelDetailStageHeader(self, show: videos)
+    }
 
 }

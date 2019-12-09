@@ -2004,7 +2004,7 @@ and try pull to refresh.</string>
             <objects>
                 <viewController id="i66-Rs-0Pn" customClass="YoutubeFallbackVC" customModule="JPPerformance" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JDf-cz-LTw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconYoutubeLarge" translatesAutoresizingMaskIntoConstraints="NO" id="q2V-Aa-7qm">
@@ -2065,7 +2065,7 @@ and try pull to refresh.</string>
         <image name="img_sample_youtube_thumbnail" width="240" height="180"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fyN-fy-GT1"/>
+        <segue reference="aam-cw-cUe"/>
         <segue reference="0ui-Hy-0Id"/>
         <segue reference="Fen-CA-yve"/>
         <segue reference="BcS-mF-YCh"/>

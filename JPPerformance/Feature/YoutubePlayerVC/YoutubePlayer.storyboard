@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Is7-yt-NZA">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Youtube PlayerVC-->
+        <scene sceneID="gi8-wj-UNS">
+            <objects>
+                <viewController id="Is7-yt-NZA" customClass="YoutubePlayerVC" customModule="JPPerformance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cWz-UX-pQH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBy-cM-OCD" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IjP-Xz-vGY">
+                                <rect key="frame" x="20" y="64" width="50" height="50"/>
+                                <color key="backgroundColor" name="HighlightColor1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="O3q-EU-6cg"/>
+                                    <constraint firstAttribute="width" secondItem="IjP-Xz-vGY" secondAttribute="height" multiplier="1:1" id="oYs-nn-41d"/>
+                                </constraints>
+                                <state key="normal" image="icon-close">
+                                    <color key="titleColor" name="DimColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionCloseTouchUpInside:" destination="Is7-yt-NZA" eventType="touchUpInside" id="U6X-N4-gCj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="zBy-cM-OCD" secondAttribute="bottom" id="1Qd-qO-Gq9"/>
+                            <constraint firstItem="IjP-Xz-vGY" firstAttribute="top" secondItem="lm9-ib-YYw" secondAttribute="top" constant="20" id="DOK-PM-utv"/>
+                            <constraint firstItem="IjP-Xz-vGY" firstAttribute="leading" secondItem="lm9-ib-YYw" secondAttribute="leading" constant="20" id="NwB-bE-h9c"/>
+                            <constraint firstAttribute="trailing" secondItem="zBy-cM-OCD" secondAttribute="trailing" id="TL3-Te-btQ"/>
+                            <constraint firstItem="zBy-cM-OCD" firstAttribute="top" secondItem="cWz-UX-pQH" secondAttribute="top" id="eZd-JJ-qc2"/>
+                            <constraint firstItem="zBy-cM-OCD" firstAttribute="leading" secondItem="cWz-UX-pQH" secondAttribute="leading" id="rtm-g6-84H"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lm9-ib-YYw"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="AXJ-AM-0ze"/>
+                    <connections>
+                        <outlet property="buttonClose" destination="IjP-Xz-vGY" id="8Ka-BC-8NO"/>
+                        <outlet property="youtubePlayerView" destination="zBy-cM-OCD" id="FKF-gX-PPu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bde-uf-xAt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1552" y="136"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-close" width="12" height="12"/>
+        <namedColor name="DimColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="HighlightColor1">
+            <color red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

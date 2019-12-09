@@ -29,8 +29,20 @@ public extension Cache {
               singleKey: keyFor)
     }
 
+    func store(youtubeVideos: [JPFanAppClient.YoutubeVideo], forCarStage carStageId: Int) {
+        store(index: youtubeVideos,
+              indexStorage: indexStorage,
+              indexKey: "car-stage-videos-\(carStageId)",
+              singleStorage: singleStorage,
+              singleKey: keyFor)
+    }
+
     func cachedYoutubeVideosIndex() -> [JPFanAppClient.YoutubeVideo]? {
         return cachedIndex(in: indexStorage, key: indexKey)
+    }
+
+    func cachedCarStageVideos(carStageId: Int) -> [JPFanAppClient.YoutubeVideo]? {
+        return cachedIndex(in: indexStorage, key: "car-stage-videos-\(carStageId)")
     }
 
     func cached(youtubeVideoID: Int) -> JPFanAppClient.YoutubeVideo? {

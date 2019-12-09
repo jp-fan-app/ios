@@ -162,7 +162,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="audir8sample" translatesAutoresizingMaskIntoConstraints="NO" id="6Cb-Fr-CcV">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="410.00000000000045"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -199,8 +199,9 @@
                                                                                     </label>
                                                                                 </subviews>
                                                                             </stackView>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPc-lk-7BJ">
+                                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DPc-lk-7BJ" customClass="TimingLabel" customModule="JPPerformance" customModuleProvider="target">
                                                                                 <rect key="frame" x="271.33333333333331" y="369.66666666666669" width="43.666666666666686" height="20.333333333333314"/>
+                                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
@@ -218,7 +219,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="MakeLogoAudi" translatesAutoresizingMaskIntoConstraints="NO" id="FFW-3R-Pxf">
-                                                                        <rect key="frame" x="20" y="40" width="80" height="64"/>
+                                                                        <rect key="frame" x="20" y="40" width="80" height="32"/>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="DZh-fj-QVc"/>
