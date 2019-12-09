@@ -27,7 +27,7 @@ platform :ios do
         provisioningProfiles: { 
           "com.pageler.christoph.JPPerformance" => "JP Performance AdHoc",
         }
-      }
+      },
       output_directory: "build",
       output_name: "JPPerformance.ipa"
     )
