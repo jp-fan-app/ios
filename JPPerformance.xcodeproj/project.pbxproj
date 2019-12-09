@@ -43,7 +43,7 @@
 		59C590082397F2C400EE14AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C590072397F2C400EE14AB /* LaunchScreen.storyboard */; };
 		59C5900A2397F2CE00EE14AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59C590092397F2CE00EE14AB /* Main.storyboard */; };
 		59C5900D2398005D00EE14AB /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59DA5FD2229026730077FD39 /* Keys.swift */; };
-		59C590102398016500EE14AB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 59C5900F2398016500EE14AB /* SwiftPackageProductDependency */; };
+		59C590102398016500EE14AB /* JPFanAppClient in Frameworks */ = {isa = PBXBuildFile; productRef = 59C5900F2398016500EE14AB /* JPFanAppClient */; };
 		59C59013239803A200EE14AB /* Cache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59C59012239803A200EE14AB /* Cache.framework */; };
 		59C59015239803D400EE14AB /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C59014239803D400EE14AB /* HTTP.swift */; };
 		59C590172398043700EE14AB /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59C590162398043700EE14AB /* Cache.swift */; };
@@ -276,7 +276,7 @@
 				BA7FBE31DBB6512B6BDED616 /* Pods_JPPerformance.framework in Frameworks */,
 				5942B34D213E75DD00F463F9 /* SwiftyStoreKit.framework in Frameworks */,
 				59C59013239803A200EE14AB /* Cache.framework in Frameworks */,
-				59C590102398016500EE14AB /* BuildFile in Frameworks */,
+				59C590102398016500EE14AB /* JPFanAppClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,7 +807,7 @@
 			);
 			name = JPPerformance;
 			packageProductDependencies = (
-				59C5900F2398016500EE14AB /* SwiftPackageProductDependency */,
+				59C5900F2398016500EE14AB /* JPFanAppClient */,
 			);
 			productName = JPPerformance;
 			productReference = 59A18AA71F6D0BBC008789BA /* JPPerformance.app */;
@@ -851,7 +851,7 @@
 			);
 			mainGroup = 59A18A9E1F6D0BBC008789BA;
 			packageReferences = (
-				59C5900E2398016500EE14AB /* RemoteSwiftPackageReference */,
+				59C5900E2398016500EE14AB /* XCRemoteSwiftPackageReference "swift-client" */,
 			);
 			productRefGroup = 59A18AA81F6D0BBC008789BA /* Products */;
 			projectDirPath = "";
@@ -1330,6 +1330,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageler.christoph.JPPerformance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1362,6 +1363,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pageler.christoph.JPPerformance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "JP Performance App Store";
@@ -1404,7 +1406,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		59C5900E2398016500EE14AB /* RemoteSwiftPackageReference */ = {
+		59C5900E2398016500EE14AB /* XCRemoteSwiftPackageReference "swift-client" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jp-fan-app/swift-client";
 			requirement = {
@@ -1415,9 +1417,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		59C5900F2398016500EE14AB /* SwiftPackageProductDependency */ = {
+		59C5900F2398016500EE14AB /* JPFanAppClient */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 59C5900E2398016500EE14AB /* RemoteSwiftPackageReference */;
+			package = 59C5900E2398016500EE14AB /* XCRemoteSwiftPackageReference "swift-client" */;
 			productName = JPFanAppClient;
 		};
 /* End XCSwiftPackageProductDependency section */
