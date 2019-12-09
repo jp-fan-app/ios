@@ -98,7 +98,9 @@ extension MainVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ManufacturersTableViewCell",
                                                      for: indexPath) as! ManufacturersTableViewCell
             // swiftlint:enable force_cast
+            cell.delegate = self
             cell.manufacturers = manufacturerSection.manufacturers
+            cell.selectedManufacturer = viewModel.selectedManufacturer
             return cell
         case let carModelSection as ViewModel.CarModelsSection:
             let row = carModelSection.rows[indexPath.row]
@@ -234,6 +236,17 @@ extension MainVC: CarModelsTableViewCellDelegate {
     func carModelsTableViewCell(_ carModelsTableViewCell: CarModelsTableViewCell,
                                 didSelect carModel: JPFanAppClient.CarModel) {
         performSegue(withIdentifier: "showCarModelDetail", sender: carModel)
+    }
+
+}
+
+// MARK: - ManufacturersTableViewCellDelegate
+
+extension MainVC: ManufacturersTableViewCellDelegate {
+
+    func manufacturersTableViewCell(_ manufacturersTableViewCell: ManufacturersTableViewCell,
+                                    didSelect manufacturer: JPFanAppClient.ManufacturerModel) {
+        viewModel.selectManufacturer(manufacturer)
     }
 
 }

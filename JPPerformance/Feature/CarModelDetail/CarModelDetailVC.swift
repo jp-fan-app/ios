@@ -24,6 +24,7 @@ class CarModelDetailVC: UIViewController {
 
     private var stageTimingsViewModel = StageTimingsViewModel()
 
+    @IBOutlet var lcViewImageBackgroundNoImageRatio: NSLayoutConstraint!
     @IBOutlet var imageViewMainImage: UIImageView!
     @IBOutlet var labelCarModelName: UILabel!
     @IBOutlet var imageViewManufacturerLogo: UIImageView!
@@ -42,6 +43,7 @@ class CarModelDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        imageViewMainImage.image = nil
         barButtonItemClose.title = "close".localized()
 
         bannerView?.adSize = kGADAdSizeSmartBannerPortrait
@@ -75,12 +77,24 @@ class CarModelDetailVC: UIViewController {
 
         labelCarModelName.text = carModel.name
         if let mainImageID = carModel.mainImageID {
-            http.getCarImageFile(id: mainImageID).whenSuccess { imageData in
-                let image = UIImage(data: imageData)
-                DispatchQueue.main.async {
-                    self.imageViewMainImage.image = image
+            http.getCarImageFile(id: mainImageID).whenComplete { result in
+                switch result {
+                case .success(let imageData):
+                    let image = UIImage(data: imageData)
+                    DispatchQueue.main.async {
+                        self.imageViewMainImage.image = image
+                        self.lcViewImageBackgroundNoImageRatio.isActive = false
+                    }
+                case .failure:
+                    DispatchQueue.main.async {
+                        self.imageViewMainImage.image = nil
+                        self.lcViewImageBackgroundNoImageRatio.isActive = true
+                    }
                 }
             }
+        } else {
+            imageViewMainImage.image = nil
+            lcViewImageBackgroundNoImageRatio.isActive = true
         }
 
         http.getManufacturer(id: carModel.manufacturerID).whenSuccess { manufacturer in

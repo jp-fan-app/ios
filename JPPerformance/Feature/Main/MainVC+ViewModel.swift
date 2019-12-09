@@ -26,6 +26,8 @@ internal extension MainVC {
         private var youtubeVideos: [JPFanAppClient.YoutubeVideo] = []
         private var videoSeries: [JPFanAppClient.VideoSerie] = []
 
+        private(set) var selectedManufacturer: JPFanAppClient.ManufacturerModel?
+
         internal private(set) var sections: [Section] = []
 
         weak var delegate: MainVCViewModelDelegate?
@@ -37,17 +39,30 @@ internal extension MainVC {
             updateVideoSeries()
         }
 
+        func selectManufacturer(_ manufacturer: JPFanAppClient.ManufacturerModel) {
+            selectedManufacturer = manufacturer
+            updateCarModels()
+        }
+
         func updateManufacturers() {
             http.getManufacturers().whenSuccess { index in
                 self.manufacturers = index
                 self.updateSections()
+                self.updateSelectedManufacturer()
             }
         }
 
         func updateCarModels() {
-            http.getCarModels().whenSuccess { index in
-                self.carModels = index
-                self.updateSections()
+            if let selectedManufacturerID = selectedManufacturer?.id {
+                http.getManufacturerCarModels(id: selectedManufacturerID).whenSuccess { index in
+                    self.carModels = index
+                    self.updateSections()
+                }
+            } else {
+                http.getCarModels().whenSuccess { index in
+                    self.carModels = index
+                    self.updateSections()
+                }
             }
         }
 
@@ -55,6 +70,7 @@ internal extension MainVC {
             http.getYoutubeVideos().whenSuccess { index in
                 self.youtubeVideos = index
                 self.updateSections()
+                self.updateSelectedManufacturer()
             }
         }
 
@@ -62,6 +78,14 @@ internal extension MainVC {
             http.getVideoSeries().whenSuccess { index in
                 self.videoSeries = index
                 self.updateSections()
+            }
+        }
+
+        private func updateSelectedManufacturer() {
+            let newFirstManufacturer = manufacturers.first
+            if selectedManufacturer?.id != newFirstManufacturer?.id {
+                selectedManufacturer = manufacturers.first
+                updateCarModels()
             }
         }
 
@@ -104,11 +128,11 @@ internal extension MainVC {
                     manufacturers = self.manufacturers
                 }
 
-                manufacturers = manufacturers.filter({ ManufacturerLogoMapper.manufacturerLogo(for: $0.name) != nil })
+                self.manufacturers = manufacturers.filter({ ManufacturerLogoMapper.manufacturerLogo(for: $0.name) != nil })
 
                 let title = "choose-a-manufacturer".localized()
                 newSections.append(ManufacturerSection(headerType: .detailsHeader(title: title),
-                                                       manufacturers: Array(manufacturers.prefix(5))))
+                                                       manufacturers: Array(self.manufacturers.prefix(5))))
             }
 
             if carModels.count > 0 {

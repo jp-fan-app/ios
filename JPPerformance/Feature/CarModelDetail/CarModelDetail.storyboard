@@ -61,14 +61,20 @@
                                                     <constraint firstItem="wVd-du-Z1M" firstAttribute="leading" secondItem="Vpm-BV-w2p" secondAttribute="leading" constant="20" id="5g4-Ht-Zzc"/>
                                                     <constraint firstItem="t2H-9a-1es" firstAttribute="leading" secondItem="Vpm-BV-w2p" secondAttribute="leading" id="DGJ-a8-Eho"/>
                                                     <constraint firstItem="t2H-9a-1es" firstAttribute="top" secondItem="Vpm-BV-w2p" secondAttribute="top" id="H4O-X7-kq1"/>
-                                                    <constraint firstAttribute="width" secondItem="Vpm-BV-w2p" secondAttribute="height" multiplier="0.9" id="Kah-vD-avR"/>
+                                                    <constraint firstAttribute="width" secondItem="Vpm-BV-w2p" secondAttribute="height" multiplier="0.9" priority="750" id="Kah-vD-avR"/>
                                                     <constraint firstAttribute="trailing" secondItem="t2H-9a-1es" secondAttribute="trailing" id="MFZ-Aj-6qr"/>
+                                                    <constraint firstAttribute="width" secondItem="Vpm-BV-w2p" secondAttribute="height" multiplier="1.5" id="Plb-NS-of3"/>
                                                     <constraint firstAttribute="bottom" secondItem="t2H-9a-1es" secondAttribute="bottom" id="Sji-Im-enn"/>
                                                     <constraint firstItem="wVd-du-Z1M" firstAttribute="top" secondItem="Vpm-BV-w2p" secondAttribute="top" constant="40" id="UQ6-mE-2Le"/>
                                                     <constraint firstItem="8Mn-0q-hwj" firstAttribute="top" secondItem="Vpm-BV-w2p" secondAttribute="top" id="adj-IT-RKJ"/>
                                                     <constraint firstItem="8Mn-0q-hwj" firstAttribute="leading" secondItem="Vpm-BV-w2p" secondAttribute="leading" id="bCm-Gz-b1l"/>
                                                     <constraint firstAttribute="bottom" secondItem="8Mn-0q-hwj" secondAttribute="bottom" id="hRD-ky-9KJ"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Plb-NS-of3"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukX-8Y-EKh">
                                                 <rect key="frame" x="0.0" y="460" width="414" height="70"/>
@@ -203,6 +209,7 @@
                         <outlet property="imageViewManufacturerLogo" destination="wVd-du-Z1M" id="sOd-9d-XY6"/>
                         <outlet property="labelCarModelName" destination="TPZ-vk-pyr" id="hLg-zA-U3G"/>
                         <outlet property="lcTableViewStagesHeight" destination="Wim-ML-gdU" id="7Rx-gh-OUd"/>
+                        <outlet property="lcViewImageBackgroundNoImageRatio" destination="Plb-NS-of3" id="mq1-Yc-tJr"/>
                         <outlet property="tableViewStages" destination="dt4-Li-vg1" id="VkW-UU-pA1"/>
                         <outlet property="viewBannerBackground" destination="ukX-8Y-EKh" id="9to-WA-KED"/>
                     </connections>

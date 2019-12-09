@@ -162,7 +162,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="audir8sample" translatesAutoresizingMaskIntoConstraints="NO" id="6Cb-Fr-CcV">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="410.00000000000045"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -218,7 +218,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="MakeLogoAudi" translatesAutoresizingMaskIntoConstraints="NO" id="FFW-3R-Pxf">
-                                                                        <rect key="frame" x="20" y="40" width="80" height="32"/>
+                                                                        <rect key="frame" x="20" y="40" width="80" height="64"/>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="DZh-fj-QVc"/>

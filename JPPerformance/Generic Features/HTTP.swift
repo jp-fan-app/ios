@@ -54,6 +54,17 @@ public class HTTP {
         }
     }
 
+    @discardableResult
+    func getManufacturerCarModels(id: Int) -> EventLoopFuture<[JPFanAppClient.CarModel]> {
+        if let cached = cache?.cachedCarModelFor(manufacturerId: id) {
+            return httpClient.nextEventLoop().makeSucceededFuture(cached)
+        }
+        return httpClient.manufacturersModels(id: id).map { index in
+            self.cache?.store(carModels: index, forManufacturer: id)
+            return index
+        }
+    }
+
     // MARK: - Car Models
 
     @discardableResult
