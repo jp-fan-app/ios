@@ -11,6 +11,14 @@ import UIKit
 import JPFanAppClient
 
 
+protocol YoutubeVideosTableViewCellDelegate: class {
+
+    func youtubeVideosTableViewCell(_ youtubeVideosTableViewCell: YoutubeVideosTableViewCell,
+                                    didSelect youtubeVideo: JPFanAppClient.YoutubeVideo)
+
+}
+
+
 class YoutubeVideosTableViewCell: UITableViewCell {
 
     var youtubeVideos: [JPFanAppClient.YoutubeVideo] = [] {
@@ -21,13 +29,18 @@ class YoutubeVideosTableViewCell: UITableViewCell {
 
     @IBOutlet var collectionView: UICollectionView!
 
+    weak var delegate: YoutubeVideosTableViewCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
 
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension YoutubeVideosTableViewCell: UICollectionViewDataSource {
 
@@ -47,6 +60,14 @@ extension YoutubeVideosTableViewCell: UICollectionViewDataSource {
         // swiftlint:enable force_cast
         cell.youtubeVideo = youtubeVideos[indexPath.row]
         return cell
+    }
+
+}
+
+extension YoutubeVideosTableViewCell: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.youtubeVideosTableViewCell(self, didSelect: youtubeVideos[indexPath.row])
     }
 
 }

@@ -162,7 +162,7 @@
                                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="audir8sample" translatesAutoresizingMaskIntoConstraints="NO" id="6Cb-Fr-CcV">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="410.00000000000045"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="410"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -219,7 +219,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="MakeLogoAudi" translatesAutoresizingMaskIntoConstraints="NO" id="FFW-3R-Pxf">
-                                                                        <rect key="frame" x="20" y="40" width="80" height="32"/>
+                                                                        <rect key="frame" x="20" y="40" width="80" height="64"/>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="DZh-fj-QVc"/>
@@ -525,6 +525,7 @@
                         <segue destination="XSP-1G-cW8" kind="show" identifier="showYoutubeVideosList" id="RXU-w3-FZb"/>
                         <segue destination="oZU-wB-tVh" kind="show" identifier="showVideoSeriesList" id="yJa-Wc-UuJ"/>
                         <segue destination="ZcF-7n-CJw" kind="showDetail" identifier="showCarModelDetail" id="BtF-Fq-csU"/>
+                        <segue destination="t17-bs-kRB" kind="showDetail" identifier="showYoutubeVideoDetail" id="Tri-94-qK2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ZE-wv-A4y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -588,6 +589,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIL-7g-HfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1097" y="110"/>
+        </scene>
+        <!--YoutubePlayer-->
+        <scene sceneID="g1t-9i-SV9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="YoutubePlayer" id="t17-bs-kRB" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="FGm-He-q8j"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fuK-Jw-AnJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1086" y="177"/>
         </scene>
     </scenes>
     <resources>

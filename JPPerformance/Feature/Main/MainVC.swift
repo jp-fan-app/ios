@@ -46,6 +46,14 @@ class MainVC: UIViewController {
         {
             carModelDetailVC.carModel = carModel
         }
+
+        if segue.identifier == "showYoutubeVideoDetail",
+            let youtubePlayerVC = segue.destination as? YoutubePlayerVC,
+            let youtubeVideo = sender as? JPFanAppClient.YoutubeVideo
+        {
+            youtubePlayerVC.modalPresentationStyle = .fullScreen
+            youtubePlayerVC.youtubeVideo = youtubeVideo
+        }
     }
 
 
@@ -135,6 +143,7 @@ extension MainVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "YoutubeVideosTableViewCell",
                                                      for: indexPath) as! YoutubeVideosTableViewCell
             // swiftlint:enable force_cast
+            cell.delegate = self
             cell.youtubeVideos = youtubeVideoSection.youtubeVideos
             return cell
         case let videoSeriesSection as ViewModel.VideoSeriesSection:
@@ -247,6 +256,17 @@ extension MainVC: ManufacturersTableViewCellDelegate {
     func manufacturersTableViewCell(_ manufacturersTableViewCell: ManufacturersTableViewCell,
                                     didSelect manufacturer: JPFanAppClient.ManufacturerModel) {
         viewModel.selectManufacturer(manufacturer)
+    }
+
+}
+
+// MARK: - YoutubeVideosTableViewCellDelegate
+
+extension MainVC: YoutubeVideosTableViewCellDelegate {
+
+    func youtubeVideosTableViewCell(_ youtubeVideosTableViewCell: YoutubeVideosTableViewCell,
+                                    didSelect youtubeVideo: JPFanAppClient.YoutubeVideo) {
+        performSegue(withIdentifier: "showYoutubeVideoDetail", sender: youtubeVideo)
     }
 
 }
