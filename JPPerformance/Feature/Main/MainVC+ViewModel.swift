@@ -7,6 +7,7 @@
 //
 
 
+import Foundation
 import JPFanAppClient
 
 
@@ -15,6 +16,7 @@ protocol MainVCViewModelDelegate: class {
     func didUpdateSections()
 
 }
+
 
 internal extension MainVC {
 
@@ -68,7 +70,7 @@ internal extension MainVC {
 
         func updateYoutubeVideos() {
             http.getYoutubeVideos().whenSuccess { index in
-                self.youtubeVideos = index
+                self.youtubeVideos = index.sorted(by: { $0.publishedAt > $1.publishedAt })
                 self.updateSections()
                 self.updateSelectedManufacturer()
             }
@@ -76,7 +78,7 @@ internal extension MainVC {
 
         func updateVideoSeries() {
             http.getVideoSeries().whenSuccess { index in
-                self.videoSeries = index
+                self.videoSeries = index.sorted(by: { ($0.updatedAt ?? Date()) > ($1.updatedAt ?? Date()) })
                 self.updateSections()
             }
         }

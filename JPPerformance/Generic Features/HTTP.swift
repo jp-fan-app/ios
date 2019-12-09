@@ -177,6 +177,18 @@ public class HTTP {
     }
 
     @discardableResult
+    func getVideoSerieVideos(videoSerieId: Int) -> EventLoopFuture<[JPFanAppClient.YoutubeVideo]> {
+        if let cached = cache?.cachedVideoSerieVideos(videoSerieId: videoSerieId) {
+            return httpClient.nextEventLoop().makeSucceededFuture(cached)
+        }
+        return httpClient.videoSeriesVideos(id: videoSerieId).map { index in
+            let videoIndex = index.map { $0.video }
+            self.cache?.store(youtubeVideos: videoIndex, forVideoSerie: videoSerieId)
+            return videoIndex
+        }
+    }
+
+    @discardableResult
     public func getStagesVideos() -> EventLoopFuture<[JPFanAppClient.CarStageYoutubeVideoRelation]> {
         if let cached = cache?.cachedCarStageVideoRelationsIndex() {
             return httpClient.nextEventLoop().makeSucceededFuture(cached)

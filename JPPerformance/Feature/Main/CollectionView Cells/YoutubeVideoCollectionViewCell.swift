@@ -38,9 +38,11 @@ class YoutubeVideoCollectionViewCell: UICollectionViewCell {
         }
 
         labelName.text = youtubeVideo.title
-        http.getPublicImage(url: youtubeVideo.thumbnailURL).whenSuccess { image in
-            DispatchQueue.main.async {
-                self.imageViewImage.image = image
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.http.getPublicImage(url: youtubeVideo.thumbnailURL).whenSuccess { image in
+                DispatchQueue.main.async {
+                    self.imageViewImage.image = image
+                }
             }
         }
     }

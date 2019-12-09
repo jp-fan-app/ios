@@ -14,6 +14,7 @@ class VideoSerieCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var imageViewImage: UIImageView!
     @IBOutlet var labelName: UILabel!
+    let http = HTTP()
 
     var videoSerie: JPFanAppClient.VideoSerie? {
         didSet {
@@ -36,7 +37,19 @@ class VideoSerieCollectionViewCell: UICollectionViewCell {
         }
 
         labelName.text = videoSerie.title
-//        imageViewLogo.image = ManufacturerLogoMapper.manufacturerLogo(for: manufacturer.name)
+        imageViewImage.image = nil
+        DispatchQueue.global(qos: .userInitiated).async {
+            guard let videoSerieId = videoSerie.id else { return }
+            self.http.getVideoSerieVideos(videoSerieId: videoSerieId).whenSuccess { youtubeVideos in
+                guard let youtubeVideo = youtubeVideos.first else { return }
+                self.http.getPublicImage(url: youtubeVideo.thumbnailURL).whenSuccess { image in
+                    DispatchQueue.main.async {
+                        self.imageViewImage.image = image
+                    }
+                }
+            }
+        }
+
     }
 
 

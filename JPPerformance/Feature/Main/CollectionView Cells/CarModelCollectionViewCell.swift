@@ -57,17 +57,21 @@ class CarModelCollectionViewCell: UICollectionViewCell {
 
         labelName.text = carModel.name
         if let mainImageID = carModel.mainImageID {
-            http.getCarImageFile(id: mainImageID).whenSuccess { imageData in
-                let image = UIImage(data: imageData)
-                DispatchQueue.main.async {
-                    self.imageViewMainImage.image = image
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.http.getCarImageFile(id: mainImageID).whenSuccess { imageData in
+                    let image = UIImage(data: imageData)
+                    DispatchQueue.main.async {
+                        self.imageViewMainImage.image = image
+                    }
                 }
             }
         }
 
-        http.getManufacturer(id: carModel.manufacturerID).whenSuccess { manufacturer in
-            DispatchQueue.main.async {
-                self.imageViewLogo.image = ManufacturerLogoMapper.manufacturerLogo(for: manufacturer.name)
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.http.getManufacturer(id: carModel.manufacturerID).whenSuccess { manufacturer in
+                DispatchQueue.main.async {
+                    self.imageViewLogo.image = ManufacturerLogoMapper.manufacturerLogo(for: manufacturer.name)
+                }
             }
         }
 
@@ -86,27 +90,29 @@ class CarModelCollectionViewCell: UICollectionViewCell {
             return
         }
 
-        http.getCarStagesWithMappedTimings(carModelID: carModelID).whenSuccess { stageTimings in
-            guard let stageTiming = stageTimings.randomElement(),
-                let timing = stageTiming.1.randomElement()
-            else {
-                DispatchQueue.main.async {
-                    clearLabels()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.http.getCarStagesWithMappedTimings(carModelID: carModelID).whenSuccess { stageTimings in
+                guard let stageTiming = stageTimings.randomElement(),
+                    let timing = stageTiming.1.randomElement()
+                else {
+                    DispatchQueue.main.async {
+                        clearLabels()
+                    }
+                    return
                 }
-                return
-            }
-            let bestTiming = [
-                timing.second1,
-                timing.second3,
-                timing.second3
-            ].compactMap({ $0 }).max()
+                let bestTiming = [
+                    timing.second1,
+                    timing.second3,
+                    timing.second3
+                ].compactMap({ $0 }).max()
 
-            DispatchQueue.main.async {
-                self.labelCarStageName.text = stageTiming.0.name
-                self.labelCarStageTimingRange.text = timing.range
+                DispatchQueue.main.async {
+                    self.labelCarStageName.text = stageTiming.0.name
+                    self.labelCarStageTimingRange.text = timing.range
 
-                let formattedSec = NumberFormatter.secondsFormatter.string(from: bestTiming) ?? ""
-                self.labelCarStageTimingSeconds.text = formattedSec
+                    let formattedSec = NumberFormatter.secondsFormatter.string(from: bestTiming) ?? ""
+                    self.labelCarStageTimingSeconds.text = formattedSec
+                }
             }
         }
     }

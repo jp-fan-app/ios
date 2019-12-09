@@ -86,9 +86,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="WWh-h3-nhb" firstAttribute="top" secondItem="R2S-rh-OQ9" secondAttribute="top" id="8Yw-gG-PCc"/>
-                            <constraint firstAttribute="trailing" secondItem="WWh-h3-nhb" secondAttribute="trailing" id="9Km-tw-2Ic"/>
+                            <constraint firstItem="mLN-XP-avz" firstAttribute="trailing" secondItem="WWh-h3-nhb" secondAttribute="trailing" id="9Km-tw-2Ic"/>
                             <constraint firstAttribute="bottom" secondItem="WWh-h3-nhb" secondAttribute="bottom" id="qNm-po-BlD"/>
-                            <constraint firstItem="WWh-h3-nhb" firstAttribute="leading" secondItem="R2S-rh-OQ9" secondAttribute="leading" id="zm5-ft-nca"/>
+                            <constraint firstItem="WWh-h3-nhb" firstAttribute="leading" secondItem="mLN-XP-avz" secondAttribute="leading" id="zm5-ft-nca"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mLN-XP-avz"/>
                     </view>

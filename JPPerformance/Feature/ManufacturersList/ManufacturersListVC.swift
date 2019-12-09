@@ -26,23 +26,24 @@ class ManufacturersListVC: UIViewController {
         reloadManufacturers()
     }
 
-    private func reloadManufacturers() {
-        http.getManufacturers().whenSuccess { index in
-            self.manufacturers = index.sorted(by: { $0.name < $1.name })
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
+    private func reloadManufacturers() {
+       http.getManufacturers().whenSuccess { index in
+           self.manufacturers = index.sorted(by: { $0.name < $1.name })
+           DispatchQueue.main.async {
+               self.collectionView.reloadData()
+           }
+       }
+   }
+
 }
 
+// MARK: - UICollectionViewDataSource
 
 extension ManufacturersListVC: UICollectionViewDataSource {
 
@@ -65,6 +66,8 @@ extension ManufacturersListVC: UICollectionViewDataSource {
     }
 
 }
+
+// MARK: - UICollectionViewDelegate
 
 extension ManufacturersListVC: UICollectionViewDelegate {
 
