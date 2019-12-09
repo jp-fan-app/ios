@@ -56,7 +56,7 @@ public class HTTP {
 
     @discardableResult
     func getManufacturerCarModels(id: Int) -> EventLoopFuture<[JPFanAppClient.CarModel]> {
-        if let cached = cache?.cachedCarModelFor(manufacturerId: id) {
+        if let cached = cache?.cachedCarModelsFor(manufacturerId: id) {
             return httpClient.nextEventLoop().makeSucceededFuture(cached)
         }
         return httpClient.manufacturersModels(id: id).map { index in
