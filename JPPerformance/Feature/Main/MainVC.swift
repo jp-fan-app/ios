@@ -236,6 +236,12 @@ extension MainVC: MainVCViewModelDelegate {
         }
     }
 
+    func didUpdateSection(section: Int) {
+        DispatchQueue.main.async {
+            self.tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+        }
+    }
+
 }
 
 // MARK: - CarModelsTableViewCellDelegate

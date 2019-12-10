@@ -15,6 +15,7 @@ import JPFanAppClient
 protocol MainVCViewModelDelegate: class {
 
     func didUpdateSections()
+    func didUpdateSection(section: Int)
 
 }
 
@@ -37,14 +38,14 @@ internal extension MainVC {
 
         func update() {
             updateManufacturers()
-            updateCarModels()
+            updateCarModels(singleSectionUpdate: false)
             updateYoutubeVideos()
             updateVideoSeries()
         }
 
         func selectManufacturer(_ manufacturer: JPFanAppClient.ManufacturerModel) {
             selectedManufacturer = manufacturer
-            updateCarModels()
+            updateCarModels(singleSectionUpdate: true)
         }
 
         func updateManufacturers() {
@@ -55,16 +56,16 @@ internal extension MainVC {
             }
         }
 
-        func updateCarModels() {
+        func updateCarModels(singleSectionUpdate: Bool) {
             if let selectedManufacturerID = selectedManufacturer?.id {
                 http.getManufacturerCarModels(id: selectedManufacturerID).whenSuccess { index in
                     self.carModels = index
-                    self.updateSections()
+                    self.updateSections(onlyCarModels: singleSectionUpdate)
                 }
             } else {
                 http.getCarModels().whenSuccess { index in
                     self.carModels = index
-                    self.updateSections()
+                    self.updateSections(onlyCarModels: singleSectionUpdate)
                 }
             }
         }
@@ -88,77 +89,96 @@ internal extension MainVC {
             let newFirstManufacturer = manufacturers.first
             if selectedManufacturer?.id != newFirstManufacturer?.id {
                 selectedManufacturer = manufacturers.first
-                updateCarModels()
+                updateCarModels(singleSectionUpdate: true)
             }
         }
 
-        private func updateSections() {
+        private func updateSections(onlyCarModels: Bool = false) {
+            if onlyCarModels, let indexOfCarModelSection = sections.firstIndex(where: { $0 is CarModelsSection }) {
+                if let newModelsSection = carModelsSection() {
+                    sections[indexOfCarModelSection] = newModelsSection
+                    delegate?.didUpdateSection(section: Int(indexOfCarModelSection))
+                    return
+                }
+            }
             var newSections = [
                 Section(headerType: .navigationHeader)
             ]
-
-            if manufacturers.count > 0 {
-                var manufacturers: [JPFanAppClient.ManufacturerModel] = []
-
-                // try to prefer manufacturers from recent videos
-                if youtubeVideos.count > 0 {
-                    let sortedVideos = youtubeVideos.sorted(by: { $0.publishedAt > $1.publishedAt })
-                    let recentVideos = Array(sortedVideos.prefix(14))
-                    var manufacturersWithVideos: [(JPFanAppClient.ManufacturerModel, Int)] = []
-                    var manufacturersWithoutVideos: [JPFanAppClient.ManufacturerModel] = []
-
-                    for manufacturer in self.manufacturers {
-                        let videoWithIndex = recentVideos.enumerated().first { tuple in
-                            let (_, youtubeVideo) = tuple
-                            let nameInTitle = youtubeVideo.title.lowercased().contains(manufacturer.name.lowercased())
-                            let nameInDescription = youtubeVideo.description.lowercased().contains(manufacturer.name.lowercased())
-                            return nameInTitle || nameInDescription
-                        }
-                        if let videoWithIndex = videoWithIndex {
-                            let (index, _) = videoWithIndex
-                            manufacturersWithVideos.append((manufacturer, index))
-                        } else {
-                            manufacturersWithoutVideos.append(manufacturer)
-                        }
-                    }
-                    let manufacturersWithVideosSortedByVideos = manufacturersWithVideos
-                        .sorted(by: { $0.1 < $1.1 })
-                        .map { $0.0 }
-                    manufacturers.append(contentsOf: manufacturersWithVideosSortedByVideos)
-                    manufacturers.append(contentsOf: manufacturersWithoutVideos)
-
-                } else {
-                    manufacturers = self.manufacturers
-                }
-
-                self.manufacturers = manufacturers.filter({ ManufacturerLogoMapper.manufacturerLogo(for: $0.name) != nil })
-
-                let title = "choose-a-manufacturer".localized()
-                newSections.append(ManufacturerSection(headerType: .detailsHeader(title: title),
-                                                       manufacturers: Array(self.manufacturers.prefix(5))))
-            }
-
-            if carModels.count > 0 {
-                newSections.append(CarModelsSection(headerType: .none,
-                                                    carModels: Array(carModels.prefix(2)),
-                                                    detailsRowTitle: "show-all-car-models".localized(),
-                                                    hasAdRow: true))
-            }
-
-            if youtubeVideos.count > 0 {
-                let title = "recent-videos".localized()
-                newSections.append(YoutubeVideosSection(headerType: .detailsHeader(title: title),
-                                                        youtubeVideos: Array(youtubeVideos.prefix(5))))
-            }
-
-            if videoSeries.count > 0 {
-                let title = "video-series".localized()
-                newSections.append(VideoSeriesSection(headerType: .detailsHeader(title: title),
-                                                      videoSeries: Array(videoSeries.prefix(5))))
-            }
+            let optionalSections = [
+                manufacturersSection(),
+                carModelsSection(),
+                youtubeVideosSection(),
+                videoSeriesSection()
+            ]
+            newSections.append(contentsOf: optionalSections.compactMap({ $0 }))
 
             sections = newSections
             delegate?.didUpdateSections()
+        }
+
+        private func manufacturersSection() -> ManufacturerSection? {
+            guard manufacturers.count > 0 else { return nil }
+
+            var manufacturers: [JPFanAppClient.ManufacturerModel] = []
+
+            // try to prefer manufacturers from recent videos
+            if youtubeVideos.count > 0 {
+                let sortedVideos = youtubeVideos.sorted(by: { $0.publishedAt > $1.publishedAt })
+                let recentVideos = Array(sortedVideos.prefix(14))
+                var manufacturersWithVideos: [(JPFanAppClient.ManufacturerModel, Int)] = []
+                var manufacturersWithoutVideos: [JPFanAppClient.ManufacturerModel] = []
+
+                for manufacturer in self.manufacturers {
+                    let videoWithIndex = recentVideos.enumerated().first { tuple in
+                        let (_, youtubeVideo) = tuple
+                        let nameInTitle = youtubeVideo.title.lowercased().contains(manufacturer.name.lowercased())
+                        let nameInDescription = youtubeVideo.description.lowercased().contains(manufacturer.name.lowercased())
+                        return nameInTitle || nameInDescription
+                    }
+                    if let videoWithIndex = videoWithIndex {
+                        let (index, _) = videoWithIndex
+                        manufacturersWithVideos.append((manufacturer, index))
+                    } else {
+                        manufacturersWithoutVideos.append(manufacturer)
+                    }
+                }
+                let manufacturersWithVideosSortedByVideos = manufacturersWithVideos
+                    .sorted(by: { $0.1 < $1.1 })
+                    .map { $0.0 }
+                manufacturers.append(contentsOf: manufacturersWithVideosSortedByVideos)
+                manufacturers.append(contentsOf: manufacturersWithoutVideos)
+
+            } else {
+                manufacturers = self.manufacturers
+            }
+
+            self.manufacturers = manufacturers.filter({ ManufacturerLogoMapper.manufacturerLogo(for: $0.name) != nil })
+
+            let title = "choose-a-manufacturer".localized()
+            return ManufacturerSection(headerType: .detailsHeader(title: title),
+                                       manufacturers: Array(self.manufacturers.prefix(5)))
+        }
+
+        private func carModelsSection() -> CarModelsSection? {
+            guard carModels.count > 0 else { return nil }
+            return CarModelsSection(headerType: .none,
+                                    carModels: Array(carModels.prefix(2)),
+                                    detailsRowTitle: "show-all-car-models".localized(),
+                                    hasAdRow: true)
+        }
+
+        private func youtubeVideosSection() -> YoutubeVideosSection? {
+            guard youtubeVideos.count > 0 else { return nil }
+            let title = "recent-videos".localized()
+            return YoutubeVideosSection(headerType: .detailsHeader(title: title),
+                                        youtubeVideos: Array(youtubeVideos.prefix(5)))
+        }
+
+        private func videoSeriesSection() -> VideoSeriesSection? {
+            guard videoSeries.count > 0 else { return nil }
+            let title = "video-series".localized()
+            return VideoSeriesSection(headerType: .detailsHeader(title: title),
+                                      videoSeries: Array(videoSeries.prefix(5)))
         }
 
     }
