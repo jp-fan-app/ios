@@ -24,6 +24,10 @@ class CarModelDetailStageHeader: UITableViewHeaderFooterView {
     @IBOutlet var labelStageName: UILabel!
     @IBOutlet var buttonPlayVideo: UIButton!
 
+    @IBOutlet var viewStageAttributes: UIView!
+    @IBOutlet var labelStageAttributePS: UILabel!
+    @IBOutlet var labelStageAttributeNM: UILabel!
+
     weak var delegate: CarModelDetailStageHeaderDelegate?
 
     private let http = UIApplication.http

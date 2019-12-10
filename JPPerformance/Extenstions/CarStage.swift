@@ -17,6 +17,10 @@ extension JPFanAppClient.CarStage {
         return lasiseInSeconds?.formattedLaSiSeDisplayString()
     }
 
+    func hasStageAttributes() -> Bool {
+        return ps != nil || nm != nil
+    }
+
 }
 
 

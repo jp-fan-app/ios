@@ -11,26 +11,77 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="QYM-If-8QG" customClass="CarModelDetailStageHeader" customModule="JPPerformance" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5r-1C-qez">
-                    <rect key="frame" x="0.0" y="23" width="48" height="34"/>
-                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-NI-AYG">
-                    <rect key="frame" x="330" y="20.5" width="83" height="83"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="Orz-NI-AYG" secondAttribute="height" multiplier="1:1" id="rjS-uv-ANz"/>
-                        <constraint firstAttribute="width" constant="83" id="uHa-Z5-hsf"/>
-                    </constraints>
-                    <state key="normal" image="icon-video"/>
-                    <connections>
-                        <action selector="actionPlayVideoTouchUpInside:" destination="QYM-If-8QG" eventType="touchUpInside" id="zkb-F7-zfB"/>
-                    </connections>
-                </button>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="VoI-mx-2AK">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vIO-N0-C3w">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5r-1C-qez">
+                                    <rect key="frame" x="0.0" y="18" width="48" height="24"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Orz-NI-AYG">
+                                    <rect key="frame" x="331" y="-11.5" width="83" height="83"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Orz-NI-AYG" secondAttribute="height" multiplier="1:1" id="rjS-uv-ANz"/>
+                                        <constraint firstAttribute="width" constant="83" id="uHa-Z5-hsf"/>
+                                    </constraints>
+                                    <state key="normal" image="icon-video"/>
+                                    <connections>
+                                        <action selector="actionPlayVideoTouchUpInside:" destination="QYM-If-8QG" eventType="touchUpInside" id="zkb-F7-zfB"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Orz-NI-AYG" secondAttribute="trailing" id="4Rv-r6-0Tc"/>
+                                <constraint firstAttribute="height" constant="60" id="VsS-hM-La6"/>
+                                <constraint firstItem="Orz-NI-AYG" firstAttribute="centerY" secondItem="f5r-1C-qez" secondAttribute="centerY" id="h8i-M4-TKq"/>
+                                <constraint firstItem="f5r-1C-qez" firstAttribute="leading" secondItem="vIO-N0-C3w" secondAttribute="leading" id="iOX-Uu-e9o"/>
+                                <constraint firstItem="f5r-1C-qez" firstAttribute="centerY" secondItem="vIO-N0-C3w" secondAttribute="centerY" id="mUh-N7-cYA"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRk-mY-eV0">
+                            <rect key="frame" x="0.0" y="60" width="414" height="25"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="dwp-24-HYL">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="25"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMf-fC-ATB">
+                                            <rect key="frame" x="0.0" y="0.0" width="42" height="25"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PoX-t6-i7W">
+                                            <rect key="frame" x="62" y="0.0" width="42" height="25"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SPa-gQ-oxT">
+                                            <rect key="frame" x="124" y="0.0" width="290" height="25"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        </view>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <constraints>
+                                <constraint firstItem="dwp-24-HYL" firstAttribute="top" secondItem="lRk-mY-eV0" secondAttribute="top" id="9ve-32-YMy"/>
+                                <constraint firstAttribute="bottom" secondItem="dwp-24-HYL" secondAttribute="bottom" id="EvB-mI-Qts"/>
+                                <constraint firstAttribute="trailing" secondItem="dwp-24-HYL" secondAttribute="trailing" id="eFm-Pp-mv5"/>
+                                <constraint firstItem="dwp-24-HYL" firstAttribute="leading" secondItem="lRk-mY-eV0" secondAttribute="leading" id="hd2-Co-oBx"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                </stackView>
                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WPE-sG-qsc">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
                     <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -41,21 +92,23 @@
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="VoI-mx-2AK" firstAttribute="top" secondItem="QYM-If-8QG" secondAttribute="top" id="3Kn-SQ-nEp"/>
+                <constraint firstAttribute="bottom" secondItem="VoI-mx-2AK" secondAttribute="bottom" constant="15" id="91I-n9-jVK"/>
+                <constraint firstAttribute="trailing" secondItem="VoI-mx-2AK" secondAttribute="trailing" id="Lvh-DS-0YY"/>
+                <constraint firstItem="VoI-mx-2AK" firstAttribute="leading" secondItem="HNw-rm-9vM" secondAttribute="leading" id="TXT-Kl-kLY"/>
                 <constraint firstItem="WPE-sG-qsc" firstAttribute="top" secondItem="QYM-If-8QG" secondAttribute="top" id="bBa-KG-lbW"/>
-                <constraint firstItem="HNw-rm-9vM" firstAttribute="trailing" secondItem="Orz-NI-AYG" secondAttribute="trailing" constant="1" id="e3v-xf-3TD"/>
                 <constraint firstItem="WPE-sG-qsc" firstAttribute="leading" secondItem="QYM-If-8QG" secondAttribute="leading" id="e7u-gM-GYb"/>
-                <constraint firstItem="f5r-1C-qez" firstAttribute="centerY" secondItem="QYM-If-8QG" secondAttribute="centerY" id="eSg-15-PZS"/>
-                <constraint firstItem="f5r-1C-qez" firstAttribute="leading" secondItem="HNw-rm-9vM" secondAttribute="leading" id="fwh-Se-fl5"/>
-                <constraint firstItem="Orz-NI-AYG" firstAttribute="centerY" secondItem="HNw-rm-9vM" secondAttribute="centerY" id="nHb-ks-44s"/>
                 <constraint firstAttribute="trailing" secondItem="WPE-sG-qsc" secondAttribute="trailing" id="ub6-dt-Qhy"/>
-                <constraint firstItem="HNw-rm-9vM" firstAttribute="top" secondItem="f5r-1C-qez" secondAttribute="top" constant="21" id="vFm-uw-qfT"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="HNw-rm-9vM"/>
             <connections>
                 <outlet property="buttonPlayVideo" destination="Orz-NI-AYG" id="DAM-Rb-elF"/>
+                <outlet property="labelStageAttributeNM" destination="PoX-t6-i7W" id="W41-X2-no4"/>
+                <outlet property="labelStageAttributePS" destination="ZMf-fC-ATB" id="MAF-by-K6w"/>
                 <outlet property="labelStageName" destination="f5r-1C-qez" id="1GI-l1-yJ2"/>
                 <outlet property="viewSeperator" destination="WPE-sG-qsc" id="p0Q-RW-Dra"/>
+                <outlet property="viewStageAttributes" destination="lRk-mY-eV0" id="U0y-iu-a6G"/>
             </connections>
             <point key="canvasLocation" x="-71.014492753623188" y="100.44642857142857"/>
         </view>

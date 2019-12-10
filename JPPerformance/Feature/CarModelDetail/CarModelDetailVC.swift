@@ -180,7 +180,8 @@ extension CarModelDetailVC: UITableViewDataSource {
 extension CarModelDetailVC: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 70
+        let stage = stageTimingsViewModel.sections[section].stage
+        return stage.hasStageAttributes() ? 100 : 70
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -190,6 +191,9 @@ extension CarModelDetailVC: UITableViewDelegate {
         let stage = stageTimingsViewModel.sections[section].stage
         headerView.viewSeperator.isHidden = section == 0
         headerView.labelStageName.text = stage.name
+        headerView.viewStageAttributes.isHidden = !stage.hasStageAttributes()
+        headerView.labelStageAttributePS.text = NumberFormatter.psFormatter.string(from: stage.ps)
+        headerView.labelStageAttributeNM.text = NumberFormatter.nmFormatter.string(from: stage.nm)
         headerView.delegate = self
         headerView.preparePlayButton(for: stage)
 
