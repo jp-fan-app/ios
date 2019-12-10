@@ -15,7 +15,7 @@ class ManufacturersListVC: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
 
-    let http = HTTP()
+    private let http = UIApplication.http
     var manufacturers: [JPFanAppClient.ManufacturerModel] = []
 
     override func viewDidLoad() {

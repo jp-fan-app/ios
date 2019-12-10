@@ -14,7 +14,7 @@ class VideoSerieCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet var imageViewImage: UIImageView!
     @IBOutlet var labelName: UILabel!
-    let http = HTTP()
+    private let http = UIApplication.http
 
     var videoSerie: JPFanAppClient.VideoSerie? {
         didSet {

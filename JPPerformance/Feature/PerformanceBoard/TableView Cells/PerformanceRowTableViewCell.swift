@@ -20,7 +20,7 @@ class PerformanceRowTableViewCell: UITableViewCell {
     @IBOutlet var labelStageName: UILabel!
     @IBOutlet var labelPerformanceValue: UILabel!
 
-    let http = HTTP()
+    private let http = UIApplication.http
 
     var carModel: JPFanAppClient.CarModel? {
         didSet {

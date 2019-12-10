@@ -15,7 +15,7 @@ class YoutubeVideosListVC: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
 
-    let http = HTTP()
+    private let http = UIApplication.http
     var youtubeVideos: [JPFanAppClient.YoutubeVideo] = []
 
     override func viewDidLoad() {

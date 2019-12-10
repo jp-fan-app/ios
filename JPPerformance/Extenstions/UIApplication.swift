@@ -12,6 +12,10 @@ import UIKit
 
 extension UIApplication {
 
-    static var appDelegate: AppDelegate? { return UIApplication.shared.delegate as? AppDelegate }
+    // swiftlint:disable force_cast
+    static var appDelegate: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
+    // swiftlint:enable force_cast
+    
+    static var http: HTTP { return appDelegate.http }
 
 }

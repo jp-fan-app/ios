@@ -21,7 +21,7 @@ class CarModelCollectionViewCell: UICollectionViewCell {
     @IBOutlet var labelCarStageTimingRange: UILabel!
     @IBOutlet var labelCarStageTimingSeconds: UILabel!
 
-    let http = HTTP()
+    private let http = UIApplication.http
 
     var carModel: JPFanAppClient.CarModel? {
         didSet {

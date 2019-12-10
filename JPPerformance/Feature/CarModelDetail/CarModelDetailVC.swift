@@ -36,7 +36,7 @@ class CarModelDetailVC: UIViewController {
     @IBOutlet var lcTableViewStagesHeight: NSLayoutConstraint!
     @IBOutlet var barButtonItemClose: UIBarButtonItem!
 
-    let http = HTTP()
+    private let http = UIApplication.http
 
     // MARK: - View Lifecycle
 
@@ -255,7 +255,7 @@ private extension CarModelDetailVC {
 
         var sections: [Section] = []
 
-        let http = HTTP()
+        private let http = UIApplication.http
 
         func reload(carModel: JPFanAppClient.CarModel) {
             guard let carModelID = carModel.id else { return }

@@ -26,7 +26,7 @@ class CarModelDetailStageHeader: UITableViewHeaderFooterView {
 
     weak var delegate: CarModelDetailStageHeaderDelegate?
 
-    let http = HTTP()
+    private let http = UIApplication.http
     private var youtubeVideos: [JPFanAppClient.YoutubeVideo]?
 
     func preparePlayButton(for carStage: JPFanAppClient.CarStage) {

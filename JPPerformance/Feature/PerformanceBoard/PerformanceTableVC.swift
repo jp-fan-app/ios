@@ -152,7 +152,7 @@ private extension PerformanceTableVC {
 
         var rows: [Row] = []
 
-        let http = HTTP()
+        private let http = UIApplication.http
 
         enum PerformanceFilter: Equatable {
 

@@ -7,6 +7,7 @@
 //
 
 
+import UIKit.UIApplication
 import Foundation
 import JPFanAppClient
 
@@ -22,7 +23,7 @@ internal extension MainVC {
 
     class ViewModel {
 
-        private let http = HTTP()
+        private let http = UIApplication.http
         private var manufacturers: [JPFanAppClient.ManufacturerModel] = []
         private var carModels: [JPFanAppClient.CarModel] = []
         private var youtubeVideos: [JPFanAppClient.YoutubeVideo] = []

@@ -12,7 +12,7 @@ import UIKit
 
 class CarModelsSearchVC: UIViewController {
 
-    let http = HTTP()
+    private let http = UIApplication.http
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
