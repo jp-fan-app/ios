@@ -29,6 +29,8 @@ class CarModelDetailVC: UIViewController {
     @IBOutlet var labelCarModelName: UILabel!
     @IBOutlet var imageViewManufacturerLogo: UIImageView!
 
+    @IBOutlet var buttonCarImagesGallery: UIButton!
+
     @IBOutlet var viewBannerBackground: UIView!
     @IBOutlet var bannerView: GADBannerView!
 
@@ -76,6 +78,12 @@ class CarModelDetailVC: UIViewController {
             youtubePlayerVC.modalPresentationStyle = .fullScreen
             youtubePlayerVC.youtubeVideo = youtubeVideo
         }
+        if segue.identifier == "showCarImagesGallery",
+            let carImagesGalleryVC = segue.destination as? CarImagesGalleryVC
+        {
+            carImagesGalleryVC.modalPresentationStyle = .fullScreen
+            carImagesGalleryVC.carModel = carModel
+        }
     }
 
     private func reloadCarModel() {
@@ -87,6 +95,7 @@ class CarModelDetailVC: UIViewController {
 
         labelCarModelName.text = carModel.name
         if let mainImageID = carModel.mainImageID {
+            buttonCarImagesGallery.isHidden = false
             http.getCarImageFile(id: mainImageID).whenComplete { result in
                 switch result {
                 case .success(let imageData):
@@ -103,6 +112,7 @@ class CarModelDetailVC: UIViewController {
                 }
             }
         } else {
+            buttonCarImagesGallery.isHidden = true
             imageViewMainImage.image = nil
             lcViewImageBackgroundNoImageRatio.isActive = true
         }

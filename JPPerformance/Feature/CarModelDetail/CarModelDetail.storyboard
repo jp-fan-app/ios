@@ -38,9 +38,23 @@
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Ms-6v-R26">
+                                                                <rect key="frame" x="352" y="398" width="52" height="42"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="5Ms-6v-R26" secondAttribute="height" multiplier="16:13" id="5dV-wm-VYb"/>
+                                                                    <constraint firstAttribute="width" constant="52" id="mOZ-Nw-ONL"/>
+                                                                </constraints>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal" image="icon-gallery"/>
+                                                                <connections>
+                                                                    <segue destination="Smz-QU-sIt" kind="showDetail" identifier="showCarImagesGallery" id="DtO-5c-nNb"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" name="DimColor"/>
                                                         <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="5Ms-6v-R26" secondAttribute="trailing" constant="10" id="3OC-aa-bWb"/>
+                                                            <constraint firstAttribute="bottom" secondItem="5Ms-6v-R26" secondAttribute="bottom" constant="20" id="DSD-s6-q7K"/>
                                                             <constraint firstItem="TPZ-vk-pyr" firstAttribute="top" secondItem="t2H-9a-1es" secondAttribute="top" constant="140" id="Wo7-TO-jOq"/>
                                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="TPZ-vk-pyr" secondAttribute="trailing" constant="20" id="fib-8O-9Eo"/>
                                                             <constraint firstItem="TPZ-vk-pyr" firstAttribute="leading" secondItem="t2H-9a-1es" secondAttribute="leading" constant="20" id="vfe-Hx-7LC"/>
@@ -205,6 +219,7 @@
                     <connections>
                         <outlet property="bannerView" destination="lPv-bZ-Wg9" id="BDD-lG-qJc"/>
                         <outlet property="barButtonItemClose" destination="Crj-RP-6hP" id="19d-y5-p6S"/>
+                        <outlet property="buttonCarImagesGallery" destination="5Ms-6v-R26" id="Wb2-Yi-ziU"/>
                         <outlet property="imageViewMainImage" destination="8Mn-0q-hwj" id="Oe9-XG-0sg"/>
                         <outlet property="imageViewManufacturerLogo" destination="wVd-du-Z1M" id="sOd-9d-XY6"/>
                         <outlet property="labelCarModelName" destination="TPZ-vk-pyr" id="hLg-zA-U3G"/>
@@ -227,7 +242,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="THa-Ek-YvA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1299" y="136"/>
+            <point key="canvasLocation" x="1364" y="96"/>
+        </scene>
+        <!--CarImagesGallery-->
+        <scene sceneID="g4M-P7-mFB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CarImagesGallery" id="Smz-QU-sIt" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="t17-6u-kdf"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D1j-DT-MJQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1377" y="165"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="sjl-1i-4kY">
@@ -251,6 +276,7 @@
     <resources>
         <image name="MakeLogoAudi" width="80" height="32"/>
         <image name="audir8sample" width="3337" height="1627"/>
+        <image name="icon-gallery" width="32" height="26"/>
         <namedColor name="DimColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

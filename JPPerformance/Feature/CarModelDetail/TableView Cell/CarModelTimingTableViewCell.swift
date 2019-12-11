@@ -17,4 +17,13 @@ class CarModelTimingTableViewCell: UITableViewCell {
     @IBOutlet var labelSecond2: UILabel!
     @IBOutlet var labelSecond3: UILabel!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        labelRange.dynamicFont(weight: .regular, textStyle: .headline)
+        labelSecond1.dynamicFont(weight: .bold, textStyle: .headline)
+        labelSecond2.dynamicFont(weight: .bold, textStyle: .headline)
+        labelSecond3.dynamicFont(weight: .bold, textStyle: .headline)
+    }
+
 }

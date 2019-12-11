@@ -91,6 +91,17 @@ public class HTTP {
         }
     }
 
+    @discardableResult
+    public func getCarImages(carModelId: Int) -> EventLoopFuture<[JPFanAppClient.CarImage]> {
+        if let cached = cache?.cachedCarImagesForCarModel(carModelId: carModelId) {
+            return httpClient.nextEventLoop().makeSucceededFuture(cached)
+        }
+        return httpClient.modelsImages(id: carModelId).map { index in
+            self.cache?.store(carImages: index, carModelId: carModelId)
+            return index
+        }
+    }
+
     public func getCarImageFile(id: Int) -> EventLoopFuture<Data> {
         if let cached = cache?.cachedCarImageData(carImageID: id) {
             return httpClient.nextEventLoop().makeSucceededFuture(cached)

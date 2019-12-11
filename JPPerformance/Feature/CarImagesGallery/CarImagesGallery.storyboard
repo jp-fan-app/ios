@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Wgt-rf-muI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Car Images GalleryVC-->
+        <scene sceneID="f7t-x4-xJd">
+            <objects>
+                <viewController id="Wgt-rf-muI" customClass="CarImagesGalleryVC" customModule="JPPerformance" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qKj-9a-0X2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54w-N7-mQt" customClass="ImageSlideshow" customModule="ImageSlideshow">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggc-lx-84b">
+                                <rect key="frame" x="20" y="64" width="50" height="50"/>
+                                <color key="backgroundColor" name="HighlightColor1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ggc-lx-84b" secondAttribute="height" multiplier="1:1" id="Np1-sG-zsO"/>
+                                    <constraint firstAttribute="width" constant="50" id="O8F-Le-tMp"/>
+                                </constraints>
+                                <state key="normal" image="icon-close">
+                                    <color key="titleColor" name="DimColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionButtonCloseTouchUpInside:" destination="Wgt-rf-muI" eventType="touchUpInside" id="rON-dn-EZD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ggc-lx-84b" firstAttribute="top" secondItem="lxi-wP-nuv" secondAttribute="top" constant="20" id="3At-CY-dZG"/>
+                            <constraint firstAttribute="bottom" secondItem="54w-N7-mQt" secondAttribute="bottom" id="68d-U4-ABz"/>
+                            <constraint firstItem="54w-N7-mQt" firstAttribute="leading" secondItem="qKj-9a-0X2" secondAttribute="leading" id="Qg9-Fg-zhq"/>
+                            <constraint firstItem="ggc-lx-84b" firstAttribute="leading" secondItem="lxi-wP-nuv" secondAttribute="leading" constant="20" id="YEq-Nk-U43"/>
+                            <constraint firstAttribute="trailing" secondItem="54w-N7-mQt" secondAttribute="trailing" id="sem-bo-o7e"/>
+                            <constraint firstItem="54w-N7-mQt" firstAttribute="top" secondItem="qKj-9a-0X2" secondAttribute="top" id="wTd-27-RNh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lxi-wP-nuv"/>
+                    </view>
+                    <connections>
+                        <outlet property="buttonClose" destination="ggc-lx-84b" id="f0E-D6-20f"/>
+                        <outlet property="imageSlideshow" destination="54w-N7-mQt" id="9vP-UJ-Bvt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TD4-BP-Xyc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-146" y="131"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon-close" width="12" height="12"/>
+        <namedColor name="DimColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="HighlightColor1">
+            <color red="1" green="0.49019607843137253" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

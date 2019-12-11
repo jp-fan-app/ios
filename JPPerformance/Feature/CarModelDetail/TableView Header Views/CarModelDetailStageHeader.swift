@@ -33,6 +33,12 @@ class CarModelDetailStageHeader: UITableViewHeaderFooterView {
     private let http = UIApplication.http
     private var youtubeVideos: [JPFanAppClient.YoutubeVideo]?
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        labelStageName.dynamicFont(weight: .heavy, textStyle: .title3)
+    }
+
     func preparePlayButton(for carStage: JPFanAppClient.CarStage) {
         buttonPlayVideo.isHidden = true
         guard let carStageID = carStage.id else { return }
