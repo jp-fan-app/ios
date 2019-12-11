@@ -75,6 +75,8 @@
 		59E058EE23A0CEB600514117 /* CarImagesGallery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E058ED23A0CEB600514117 /* CarImagesGallery.storyboard */; };
 		59E058F023A0CECB00514117 /* CarImagesGalleryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E058EF23A0CECB00514117 /* CarImagesGalleryVC.swift */; };
 		59E058F223A0D29400514117 /* CarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E058F123A0D29400514117 /* CarImage.swift */; };
+		59E058F523A0DBA300514117 /* VideoSerieDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E058F423A0DBA300514117 /* VideoSerieDetail.storyboard */; };
+		59E058F723A0DBBE00514117 /* VideoSerieDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E058F623A0DBBE00514117 /* VideoSerieDetailVC.swift */; };
 		59ED637C1F6D6AAB008A3A0F /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59ED63761F6D6AAA008A3A0F /* YouTubePlayer.framework */; };
 		59F9B461239A550D008AAF49 /* PerformanceBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F9B460239A550D008AAF49 /* PerformanceBoard.storyboard */; };
 		59F9B463239A5600008AAF49 /* PerformanceBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B462239A5600008AAF49 /* PerformanceBoardVC.swift */; };
@@ -236,6 +238,8 @@
 		59E058ED23A0CEB600514117 /* CarImagesGallery.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CarImagesGallery.storyboard; sourceTree = "<group>"; };
 		59E058EF23A0CECB00514117 /* CarImagesGalleryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImagesGalleryVC.swift; sourceTree = "<group>"; };
 		59E058F123A0D29400514117 /* CarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImage.swift; sourceTree = "<group>"; };
+		59E058F423A0DBA300514117 /* VideoSerieDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoSerieDetail.storyboard; sourceTree = "<group>"; };
+		59E058F623A0DBBE00514117 /* VideoSerieDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSerieDetailVC.swift; sourceTree = "<group>"; };
 		59E4480C20E17DA9003EE672 /* CompareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareVC.swift; sourceTree = "<group>"; };
 		59ED63761F6D6AAA008A3A0F /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = Carthage/Build/iOS/YouTubePlayer.framework; sourceTree = "<group>"; };
 		59ED637E1F6D73F4008A3A0F /* JPNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPNavigationViewController.swift; sourceTree = "<group>"; };
@@ -322,13 +326,13 @@
 			path = JPPerformanceUITests;
 			sourceTree = "<group>";
 		};
-		590F7DE9239E3562006337FE /* YoutubePlayerVC */ = {
+		590F7DE9239E3562006337FE /* YoutubePlayer */ = {
 			isa = PBXGroup;
 			children = (
 				590F7DEC239E3586006337FE /* YoutubePlayer.storyboard */,
 				590F7DEA239E3575006337FE /* YoutubePlayerVC.swift */,
 			);
-			path = YoutubePlayerVC;
+			path = YoutubePlayer;
 			sourceTree = "<group>";
 		};
 		592BB0492183161500AD400C /* Series */ = {
@@ -358,8 +362,9 @@
 				59F9B470239A5DD0008AAF49 /* CarModelDetail */,
 				59E058EC23A0CE9F00514117 /* CarImagesGallery */,
 				59F9B466239A573E008AAF49 /* YoutubeVideosList */,
-				590F7DE9239E3562006337FE /* YoutubePlayerVC */,
+				590F7DE9239E3562006337FE /* YoutubePlayer */,
 				59F9B467239A5746008AAF49 /* VideoSeriesList */,
+				59E058F323A0DB8A00514117 /* VideoSerieDetail */,
 				59F9B487239A94C6008AAF49 /* JPNavigationController.swift */,
 			);
 			path = Feature;
@@ -676,6 +681,15 @@
 			path = CarImagesGallery;
 			sourceTree = "<group>";
 		};
+		59E058F323A0DB8A00514117 /* VideoSerieDetail */ = {
+			isa = PBXGroup;
+			children = (
+				59E058F423A0DBA300514117 /* VideoSerieDetail.storyboard */,
+				59E058F623A0DBBE00514117 /* VideoSerieDetailVC.swift */,
+			);
+			path = VideoSerieDetail;
+			sourceTree = "<group>";
+		};
 		59E4480620E17D7C003EE672 /* Compare */ = {
 			isa = PBXGroup;
 			children = (
@@ -919,6 +933,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5981E9982398F01C00CD57FF /* ManufacturerLogos.xcassets in Resources */,
+				59E058F523A0DBA300514117 /* VideoSerieDetail.storyboard in Resources */,
 				59696223213DC73B00172F5F /* Localizable.strings in Resources */,
 				594F393223993AE600D6ED20 /* MainDetailsHeader.xib in Resources */,
 				590F7DED239E3586006337FE /* YoutubePlayer.storyboard in Resources */,
@@ -1105,6 +1120,7 @@
 				59C590172398043700EE14AB /* Cache.swift in Sources */,
 				59F9B476239A5F0D008AAF49 /* CarModelsSearchVC.swift in Sources */,
 				59C5901A2398077000EE14AB /* Preferences.swift in Sources */,
+				59E058F723A0DBBE00514117 /* VideoSerieDetailVC.swift in Sources */,
 				59F9B486239A8698008AAF49 /* CarModelTimingTableViewCell.swift in Sources */,
 				5981E9852398E2E400CD57FF /* Cache+Manufacturers.swift in Sources */,
 				5981E9932398E5CE00CD57FF /* Cache+VideoSerie.swift in Sources */,

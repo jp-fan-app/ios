@@ -526,6 +526,7 @@
                         <segue destination="oZU-wB-tVh" kind="show" identifier="showVideoSeriesList" id="yJa-Wc-UuJ"/>
                         <segue destination="ZcF-7n-CJw" kind="showDetail" identifier="showCarModelDetail" id="BtF-Fq-csU"/>
                         <segue destination="t17-bs-kRB" kind="showDetail" identifier="showYoutubeVideoDetail" id="Tri-94-qK2"/>
+                        <segue destination="NNt-pg-du2" kind="show" identifier="showVideoSerieDetail" id="vJy-JJ-2zC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ZE-wv-A4y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -540,7 +541,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cgm-wL-WUn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1112" y="-183"/>
+            <point key="canvasLocation" x="1117" y="-187"/>
         </scene>
         <!--ManufacturersList-->
         <scene sceneID="2L9-mC-YjO">
@@ -560,7 +561,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ave-lO-gWk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1094" y="-102"/>
+            <point key="canvasLocation" x="1109" y="-98"/>
         </scene>
         <!--YoutubeVideosList-->
         <scene sceneID="wFn-NZ-U51">
@@ -570,7 +571,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jsW-cz-nmr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1112" y="-62"/>
+            <point key="canvasLocation" x="1112" y="-58"/>
         </scene>
         <!--VideoSeriesList-->
         <scene sceneID="win-mE-s6T">
@@ -580,7 +581,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7n9-gu-c0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1099" y="-21"/>
+            <point key="canvasLocation" x="1099" y="-16"/>
         </scene>
         <!--CarModelDetail-->
         <scene sceneID="YPO-ef-FyF">
@@ -588,7 +589,7 @@
                 <viewControllerPlaceholder storyboardName="CarModelDetail" id="ZcF-7n-CJw" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIL-7g-HfG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1097" y="110"/>
+            <point key="canvasLocation" x="1103" y="24"/>
         </scene>
         <!--YoutubePlayer-->
         <scene sceneID="g1t-9i-SV9">
@@ -598,7 +599,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fuK-Jw-AnJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086" y="177"/>
+            <point key="canvasLocation" x="1094" y="65"/>
+        </scene>
+        <!--VideoSerieDetail-->
+        <scene sceneID="0rs-6o-qL3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="VideoSerieDetail" id="NNt-pg-du2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lj8-48-d8M"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HoS-Xx-mdg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1108" y="112"/>
         </scene>
     </scenes>
     <resources>

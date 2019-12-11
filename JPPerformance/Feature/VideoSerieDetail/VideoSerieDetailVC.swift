@@ -1,8 +1,8 @@
 //
-//  VideoSeriesListVC.swift
+//  VideoSerieDetailVC.swift
 //  JPPerformance
 //
-//  Created by Christoph Pageler on 06.12.19.
+//  Created by Christoph Pageler on 11.12.19.
 //  Copyright © 2019 Christoph Pageler. All rights reserved.
 //
 
@@ -10,19 +10,24 @@
 import UIKit
 import JPFanAppClient
 
-class VideoSeriesListVC: UIViewController {
+
+class VideoSerieDetailVC: UIViewController {
 
     @IBOutlet var collectionView: UICollectionView!
 
+    var videoSerie: JPFanAppClient.VideoSerie? {
+        didSet {
+            reloadVideoSerie()
+        }
+    }
+
     private let http = UIApplication.http
-    var videoSeries: [JPFanAppClient.VideoSerie] = []
+    var youtubeVideos: [JPFanAppClient.YoutubeVideo] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "video-series".localized()
-
-        reloadVideoSeries()
+        reloadVideoSerie()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -32,18 +37,25 @@ class VideoSeriesListVC: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showVideoSerieDetail",
-            let videoSerieDetailVC = segue.destination as? VideoSerieDetailVC,
-            let videoSerie = sender as? JPFanAppClient.VideoSerie
+        if segue.identifier == "showYoutubeVideoDetail",
+            let youtubePlayerVC = segue.destination as? YoutubePlayerVC,
+            let youtubeVideo = sender as? JPFanAppClient.YoutubeVideo
         {
-            videoSerieDetailVC.videoSerie = videoSerie
+            youtubePlayerVC.modalPresentationStyle = .fullScreen
+            youtubePlayerVC.youtubeVideo = youtubeVideo
         }
     }
 
-    private func reloadVideoSeries() {
+    private func reloadVideoSerie() {
+        guard isViewLoaded else { return }
+        guard let videoSerie = videoSerie else { return }
+        guard let videoSerieId = videoSerie.id else { return }
+
+        navigationItem.title = videoSerie.title
+
         DispatchQueue.global(qos: .userInitiated).async {
-            self.http.getVideoSeries().whenSuccess { index in
-                self.videoSeries = index.sorted(by: { $0.updatedAt ?? Date() > $1.updatedAt ?? Date() })
+            self.http.getVideoSerieVideos(videoSerieId: videoSerieId).whenSuccess { index in
+                self.youtubeVideos = index.sorted(by: { $0.publishedAt > $1.publishedAt })
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
@@ -55,23 +67,23 @@ class VideoSeriesListVC: UIViewController {
 
 // MARK: - UICollectionViewDataSource
 
-extension VideoSeriesListVC: UICollectionViewDataSource {
+extension VideoSerieDetailVC: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videoSeries.count
+        return youtubeVideos.count
     }
 
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // swiftlint:disable force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoSerieCollectionViewCell",
-                                                      for: indexPath) as! VideoSerieCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "YoutubeVideoCollectionViewCell",
+                                                      for: indexPath) as! YoutubeVideoCollectionViewCell
         // swiftlint:enable force_cast
-        cell.videoSerie = videoSeries[indexPath.row]
+        cell.youtubeVideo = youtubeVideos[indexPath.row]
         return cell
     }
 
@@ -79,18 +91,19 @@ extension VideoSeriesListVC: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension VideoSeriesListVC: UICollectionViewDelegate {
+extension VideoSerieDetailVC: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showVideoSerieDetail",
-                     sender: videoSeries[indexPath.row])
+        performSegue(withIdentifier: "showYoutubeVideoDetail",
+                     sender: youtubeVideos[indexPath.row])
     }
 
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension VideoSeriesListVC: UICollectionViewDelegateFlowLayout {
+extension VideoSerieDetailVC: UICollectionViewDelegateFlowLayout {
+
 
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,

@@ -54,6 +54,13 @@ class MainVC: UIViewController {
             youtubePlayerVC.modalPresentationStyle = .fullScreen
             youtubePlayerVC.youtubeVideo = youtubeVideo
         }
+
+        if segue.identifier == "showVideoSerieDetail",
+            let videoSerieDetailVC = segue.destination as? VideoSerieDetailVC,
+            let videoSerie = sender as? JPFanAppClient.VideoSerie
+        {
+            videoSerieDetailVC.videoSerie = videoSerie
+        }
     }
 
 
@@ -151,6 +158,7 @@ extension MainVC: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "VideoSeriesTableViewCell",
                                                      for: indexPath) as! VideoSeriesTableViewCell
             // swiftlint:enable force_cast
+            cell.delegate = self
             cell.videoSeries = videoSeriesSection.videoSeries
             return cell
 
@@ -273,6 +281,17 @@ extension MainVC: YoutubeVideosTableViewCellDelegate {
     func youtubeVideosTableViewCell(_ youtubeVideosTableViewCell: YoutubeVideosTableViewCell,
                                     didSelect youtubeVideo: JPFanAppClient.YoutubeVideo) {
         performSegue(withIdentifier: "showYoutubeVideoDetail", sender: youtubeVideo)
+    }
+
+}
+
+// MARK: - VideoSeriesTableViewCellDelegate
+
+extension MainVC: VideoSeriesTableViewCellDelegate {
+
+    func videoSeriesTableViewCell(_ videoSeriesTableViewCell: VideoSeriesTableViewCell,
+                                  didSelect videoSerie: JPFanAppClient.VideoSerie) {
+        performSegue(withIdentifier: "showVideoSerieDetail", sender: videoSerie)
     }
 
 }

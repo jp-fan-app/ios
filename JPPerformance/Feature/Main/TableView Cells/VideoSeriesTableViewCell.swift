@@ -11,6 +11,14 @@ import UIKit
 import JPFanAppClient
 
 
+protocol VideoSeriesTableViewCellDelegate: class {
+
+    func videoSeriesTableViewCell(_ videoSeriesTableViewCell: VideoSeriesTableViewCell,
+                                  didSelect videoSerie: JPFanAppClient.VideoSerie)
+
+}
+
+
 class VideoSeriesTableViewCell: UITableViewCell {
 
     var videoSeries: [JPFanAppClient.VideoSerie] = [] {
@@ -21,13 +29,18 @@ class VideoSeriesTableViewCell: UITableViewCell {
 
     @IBOutlet var collectionView: UICollectionView!
 
+    weak var delegate: VideoSeriesTableViewCellDelegate?
+
     override func awakeFromNib() {
         super.awakeFromNib()
 
         collectionView.dataSource = self
+        collectionView.delegate = self
     }
 
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension VideoSeriesTableViewCell: UICollectionViewDataSource {
 
@@ -47,6 +60,15 @@ extension VideoSeriesTableViewCell: UICollectionViewDataSource {
         // swiftlint:enable force_cast
         cell.videoSerie = videoSeries[indexPath.row]
         return cell
+    }
+
+}
+
+
+extension VideoSeriesTableViewCell: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.videoSeriesTableViewCell(self, didSelect: videoSeries[indexPath.row])
     }
 
 }
