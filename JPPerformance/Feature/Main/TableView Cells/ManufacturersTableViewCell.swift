@@ -47,7 +47,7 @@ class ManufacturersTableViewCell: UITableViewCell {
         guard let selectedId = selectedManufacturer?.id else { return }
         guard let index = manufacturers.firstIndex(where: { $0.id == selectedId }) else { return }
         let indexPath = IndexPath(row: index, section: 0)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.01) {
             self.collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
         }
     }
