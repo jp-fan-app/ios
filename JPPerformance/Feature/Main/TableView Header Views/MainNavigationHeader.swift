@@ -14,5 +14,6 @@ class MainNavigationHeader: UITableViewHeaderFooterView {
 
     @IBOutlet var buttonPerformanceBoard: UIButton!
     @IBOutlet var buttonSearch: UIButton!
+    @IBOutlet var buttonDotation: UIButton!
 
 }

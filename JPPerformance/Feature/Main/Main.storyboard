@@ -527,6 +527,7 @@
                         <segue destination="ZcF-7n-CJw" kind="showDetail" identifier="showCarModelDetail" id="BtF-Fq-csU"/>
                         <segue destination="t17-bs-kRB" kind="showDetail" identifier="showYoutubeVideoDetail" id="Tri-94-qK2"/>
                         <segue destination="NNt-pg-du2" kind="show" identifier="showVideoSerieDetail" id="vJy-JJ-2zC"/>
+                        <segue destination="QlZ-Va-JV2" kind="show" identifier="showDonation" id="aeZ-gT-5hJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8ZE-wv-A4y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -609,7 +610,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HoS-Xx-mdg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1108" y="112"/>
+            <point key="canvasLocation" x="1104" y="114"/>
+        </scene>
+        <!--Donation-->
+        <scene sceneID="WOk-5v-LCV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Donation" id="QlZ-Va-JV2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qoy-me-BbI"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gem-Dm-aXd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1075" y="159"/>
         </scene>
     </scenes>
     <resources>

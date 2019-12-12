@@ -72,6 +72,10 @@ class MainVC: UIViewController {
         performSegue(withIdentifier: "showCarModelsSearch", sender: self)
     }
 
+    @objc private func actionMainNavigationHeaderDonation(_ sender: UIButton) {
+        performSegue(withIdentifier: "showDonation", sender: self)
+    }
+
 
     @objc private func actionMainDetailsHeaderActionButtonManufacturerSection(_ sender: UIButton) {
         performSegue(withIdentifier: "showManufacturersList", sender: self)
@@ -203,6 +207,10 @@ extension MainVC: UITableViewDelegate {
             mainNavigationHeader.buttonSearch.addTarget(self,
                                                         action: #selector(actionMainNavigationHeaderSearch),
                                                         for: .touchUpInside)
+            mainNavigationHeader.buttonDotation.removeTarget(self, action: nil, for: .allEvents)
+            mainNavigationHeader.buttonDotation.addTarget(self,
+                                                          action: #selector(actionMainNavigationHeaderDonation),
+                                                          for: .touchUpInside)
             // swiftlint:enable force_cast
             return mainNavigationHeader
         case .detailsHeader(let title):

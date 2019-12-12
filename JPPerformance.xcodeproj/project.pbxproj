@@ -20,6 +20,7 @@
 		594E504620E399BF00CCC158 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 594E504520E399BF00CCC158 /* Collection.swift */; };
 		594F393023993A2B00D6ED20 /* MainNavigationHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594F392F23993A2B00D6ED20 /* MainNavigationHeader.xib */; };
 		594F393223993AE600D6ED20 /* MainDetailsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 594F393123993AE600D6ED20 /* MainDetailsHeader.xib */; };
+		5950AC0723A2410400E672B7 /* InAppPurchaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5950AC0623A2410400E672B7 /* InAppPurchaseButton.swift */; };
 		5952A3C51F765A2700313132 /* ImageSlideshow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5952A3C41F765A2700313132 /* ImageSlideshow.framework */; };
 		595892F4239EAC0500131431 /* TimingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595892F3239EAC0500131431 /* TimingLabel.swift */; };
 		59696223213DC73B00172F5F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59696225213DC73B00172F5F /* Localizable.strings */; };
@@ -77,6 +78,8 @@
 		59E058F223A0D29400514117 /* CarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E058F123A0D29400514117 /* CarImage.swift */; };
 		59E058F523A0DBA300514117 /* VideoSerieDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E058F423A0DBA300514117 /* VideoSerieDetail.storyboard */; };
 		59E058F723A0DBBE00514117 /* VideoSerieDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E058F623A0DBBE00514117 /* VideoSerieDetailVC.swift */; };
+		59E058FA23A2366300514117 /* Donation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59E058F923A2366300514117 /* Donation.storyboard */; };
+		59E058FC23A2366F00514117 /* DonationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E058FB23A2366F00514117 /* DonationVC.swift */; };
 		59ED637C1F6D6AAB008A3A0F /* YouTubePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 59ED63761F6D6AAA008A3A0F /* YouTubePlayer.framework */; };
 		59F9B461239A550D008AAF49 /* PerformanceBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F9B460239A550D008AAF49 /* PerformanceBoard.storyboard */; };
 		59F9B463239A5600008AAF49 /* PerformanceBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F9B462239A5600008AAF49 /* PerformanceBoardVC.swift */; };
@@ -146,6 +149,7 @@
 		594E5291212416FE000C4809 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		594F392F23993A2B00D6ED20 /* MainNavigationHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainNavigationHeader.xib; sourceTree = "<group>"; };
 		594F393123993AE600D6ED20 /* MainDetailsHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainDetailsHeader.xib; sourceTree = "<group>"; };
+		5950AC0623A2410400E672B7 /* InAppPurchaseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchaseButton.swift; sourceTree = "<group>"; };
 		5952A3BD1F730FA300313132 /* SimulatorStatusMagiciOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SimulatorStatusMagiciOS.framework; path = Carthage/Build/iOS/SimulatorStatusMagiciOS.framework; sourceTree = "<group>"; };
 		5952A3C41F765A2700313132 /* ImageSlideshow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageSlideshow.framework; path = Carthage/Build/iOS/ImageSlideshow.framework; sourceTree = "<group>"; };
 		5952A3C61F765A5D00313132 /* JPCarDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPCarDetailVC.swift; sourceTree = "<group>"; };
@@ -240,6 +244,8 @@
 		59E058F123A0D29400514117 /* CarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarImage.swift; sourceTree = "<group>"; };
 		59E058F423A0DBA300514117 /* VideoSerieDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VideoSerieDetail.storyboard; sourceTree = "<group>"; };
 		59E058F623A0DBBE00514117 /* VideoSerieDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoSerieDetailVC.swift; sourceTree = "<group>"; };
+		59E058F923A2366300514117 /* Donation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Donation.storyboard; sourceTree = "<group>"; };
+		59E058FB23A2366F00514117 /* DonationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationVC.swift; sourceTree = "<group>"; };
 		59E4480C20E17DA9003EE672 /* CompareVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareVC.swift; sourceTree = "<group>"; };
 		59ED63761F6D6AAA008A3A0F /* YouTubePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubePlayer.framework; path = Carthage/Build/iOS/YouTubePlayer.framework; sourceTree = "<group>"; };
 		59ED637E1F6D73F4008A3A0F /* JPNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JPNavigationViewController.swift; sourceTree = "<group>"; };
@@ -365,6 +371,7 @@
 				590F7DE9239E3562006337FE /* YoutubePlayer */,
 				59F9B467239A5746008AAF49 /* VideoSeriesList */,
 				59E058F323A0DB8A00514117 /* VideoSerieDetail */,
+				59E058F823A2365700514117 /* Donation */,
 				59F9B487239A94C6008AAF49 /* JPNavigationController.swift */,
 			);
 			path = Feature;
@@ -490,6 +497,7 @@
 				5942B34A213E72BF00F463F9 /* PurchaseService.swift */,
 				59DE606323994FC40004FCE6 /* ManufacturerLogoMapper.swift */,
 				595892F3239EAC0500131431 /* TimingLabel.swift */,
+				5950AC0623A2410400E672B7 /* InAppPurchaseButton.swift */,
 			);
 			path = "Generic Features";
 			sourceTree = "<group>";
@@ -688,6 +696,15 @@
 				59E058F623A0DBBE00514117 /* VideoSerieDetailVC.swift */,
 			);
 			path = VideoSerieDetail;
+			sourceTree = "<group>";
+		};
+		59E058F823A2365700514117 /* Donation */ = {
+			isa = PBXGroup;
+			children = (
+				59E058F923A2366300514117 /* Donation.storyboard */,
+				59E058FB23A2366F00514117 /* DonationVC.swift */,
+			);
+			path = Donation;
 			sourceTree = "<group>";
 		};
 		59E4480620E17D7C003EE672 /* Compare */ = {
@@ -946,6 +963,7 @@
 				59E058EE23A0CEB600514117 /* CarImagesGallery.storyboard in Resources */,
 				5981E99C2398FEF600CD57FF /* Colors.xcassets in Resources */,
 				59F9B472239A5DDC008AAF49 /* CarModelDetail.storyboard in Resources */,
+				59E058FA23A2366300514117 /* Donation.storyboard in Resources */,
 				59F9B491239BA4D8008AAF49 /* PerformanceBoardFilterHeaderView.xib in Resources */,
 				59F9B461239A550D008AAF49 /* PerformanceBoard.storyboard in Resources */,
 				59C590082397F2C400EE14AB /* LaunchScreen.storyboard in Resources */,
@@ -1115,6 +1133,7 @@
 				59DE6068239956230004FCE6 /* CarModelCollectionViewCell.swift in Sources */,
 				59F9B478239A5F1F008AAF49 /* YoutubeVideosListVC.swift in Sources */,
 				59E058E923A0CCEE00514117 /* UIFont.swift in Sources */,
+				5950AC0723A2410400E672B7 /* InAppPurchaseButton.swift in Sources */,
 				59F9B499239D44DF008AAF49 /* CarStage.swift in Sources */,
 				59E058F023A0CECB00514117 /* CarImagesGalleryVC.swift in Sources */,
 				59C590172398043700EE14AB /* Cache.swift in Sources */,
@@ -1162,6 +1181,7 @@
 				59356FF31F6EC6F700EFF311 /* Array.swift in Sources */,
 				59DE606423994FC40004FCE6 /* ManufacturerLogoMapper.swift in Sources */,
 				59F9B495239BA7BF008AAF49 /* PerformanceTableVC.swift in Sources */,
+				59E058FC23A2366F00514117 /* DonationVC.swift in Sources */,
 				59A18AAB1F6D0BBC008789BA /* AppDelegate.swift in Sources */,
 				59DE6124239A48670004FCE6 /* Cache+PublicImage.swift in Sources */,
 				59F9B474239A5EFE008AAF49 /* ManufacturersListVC.swift in Sources */,

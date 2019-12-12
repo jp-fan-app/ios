@@ -34,9 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             Review.requestReviewIfNeeded()
         }
 
-//        PurchaseService.shared.completeTransactions()
-//        PurchaseService.shared.retrieveProductsInfo()
-//
+        InAppPurchase.shared.completeTransactions()
+        InAppPurchase.shared.retrieveProductsInfo()
+
 //        NotificationService.shared.initialize()
 //        NotificationService.shared.sendDevicePing()
 
