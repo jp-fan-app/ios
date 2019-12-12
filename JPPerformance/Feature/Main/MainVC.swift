@@ -61,6 +61,12 @@ class MainVC: UIViewController {
         {
             videoSerieDetailVC.videoSerie = videoSerie
         }
+
+        if segue.identifier == "showCarModelsSearch",
+            let carModelsSearchVC = segue.destination as? CarModelsSearchVC
+        {
+            carModelsSearchVC.initialSearchText = sender as? String
+        }
     }
 
 
@@ -90,7 +96,7 @@ class MainVC: UIViewController {
     }
 
     @objc private func actionShowDetailsCarModelsRow(_ sender: UIButton) {
-        performSegue(withIdentifier: "showCarModelsSearch", sender: self)
+        performSegue(withIdentifier: "showCarModelsSearch", sender: viewModel.selectedManufacturer?.name)
     }
 
 }

@@ -13,11 +13,11 @@ import UIKit
 class JPNavigationController: UINavigationController {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        topViewController?.supportedInterfaceOrientations ?? .all
+        topViewController?.presentedViewController?.supportedInterfaceOrientations ?? topViewController?.supportedInterfaceOrientations ?? .all
     }
 
     override var shouldAutorotate: Bool {
-        topViewController?.shouldAutorotate ?? false
+        topViewController?.presentedViewController?.shouldAutorotate ?? topViewController?.shouldAutorotate ?? false
     }
 
 }

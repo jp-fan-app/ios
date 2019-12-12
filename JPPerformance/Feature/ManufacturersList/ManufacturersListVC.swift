@@ -32,6 +32,15 @@ class ManufacturersListVC: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCarModelsSearch",
+            let carModelsSearchVC = segue.destination as? CarModelsSearchVC,
+            let manufacturer = sender as? JPFanAppClient.ManufacturerModel
+        {
+            carModelsSearchVC.initialSearchText = manufacturer.name
+        }
+    }
+
     private func reloadManufacturers() {
        http.getManufacturers().whenSuccess { index in
            self.manufacturers = index.sorted(by: { $0.name < $1.name })
@@ -72,7 +81,7 @@ extension ManufacturersListVC: UICollectionViewDataSource {
 extension ManufacturersListVC: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showCarModelsSearch", sender: self)
+        performSegue(withIdentifier: "showCarModelsSearch", sender: manufacturers[indexPath.row])
     }
 
 }

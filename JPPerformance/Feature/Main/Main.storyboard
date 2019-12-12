@@ -219,7 +219,7 @@
                                                                         </constraints>
                                                                     </view>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="MakeLogoAudi" translatesAutoresizingMaskIntoConstraints="NO" id="FFW-3R-Pxf">
-                                                                        <rect key="frame" x="20" y="40" width="80" height="64"/>
+                                                                        <rect key="frame" x="20" y="40" width="80" height="56"/>
                                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="lessThanOrEqual" constant="80" id="DZh-fj-QVc"/>
@@ -624,7 +624,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="MakeLogoAudi" width="80" height="32"/>
+        <image name="MakeLogoAudi" width="80" height="28"/>
         <image name="MakeLogoBMW" width="80" height="80"/>
         <image name="audir8sample" width="3337" height="1627"/>
         <image name="icon-back" width="23" height="23"/>
