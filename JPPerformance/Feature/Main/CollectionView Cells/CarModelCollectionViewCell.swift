@@ -83,6 +83,7 @@ class CarModelCollectionViewCell: UICollectionViewCell {
             labelCarStageName.text = ""
             labelCarStageTimingRange.text = ""
             labelCarStageTimingSeconds.text = ""
+            labelCarStageTimingSeconds.isHidden = true
         }
 
         guard let carModelID = carModel?.id else {
@@ -112,6 +113,7 @@ class CarModelCollectionViewCell: UICollectionViewCell {
 
                     let formattedSec = NumberFormatter.secondsFormatter.string(from: bestTiming) ?? ""
                     self.labelCarStageTimingSeconds.text = formattedSec
+                    self.labelCarStageTimingSeconds.isHidden = false
                 }
             }
         }

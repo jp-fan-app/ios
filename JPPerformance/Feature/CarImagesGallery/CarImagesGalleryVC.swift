@@ -55,9 +55,7 @@ class CarImagesGalleryVC: UIViewController {
         guard let carModel = carModel else { return }
         guard let carModelID = carModel.id else { return }
 
-        print("load images for \(carModel.name)")
         http.getCarImages(carModelId: carModelID).whenSuccess { carImages in
-            print("loaded \(carImages.count) images")
             DispatchQueue.main.async {
                 self.imageSlideshow.setImageInputs(carImages.map({
                     CarImageInputSource(carImage: $0, http: self.http)

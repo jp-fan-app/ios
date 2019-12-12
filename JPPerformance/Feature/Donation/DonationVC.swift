@@ -57,8 +57,6 @@ class DonationVC: UIViewController {
         }
     }
 
-
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -67,15 +65,15 @@ class DonationVC: UIViewController {
 
     private func updateInAppPurchases() {
         stackViewTip1.isHidden = InAppPurchase.shared.tipSmall == nil
-        labelTitleTip1.text = InAppPurchase.shared.tipSmall?.localizedTitle
+        labelTitleTip1.text = "🙂 \(InAppPurchase.shared.tipSmall?.localizedTitle ?? "")"
         buttonTip1.setTitle(InAppPurchase.shared.tipSmall?.localizedPrice, for: .normal)
 
         stackViewTip2.isHidden = InAppPurchase.shared.tipMedium == nil
-        labelTitleTip2.text = InAppPurchase.shared.tipMedium?.localizedTitle
+        labelTitleTip2.text = "😃 \(InAppPurchase.shared.tipMedium?.localizedTitle ?? "")"
         buttonTip2.setTitle(InAppPurchase.shared.tipMedium?.localizedPrice, for: .normal)
 
         stackViewTip3.isHidden = InAppPurchase.shared.tipMassive == nil
-        labelTitleTip3.text = InAppPurchase.shared.tipMassive?.localizedTitle
+        labelTitleTip3.text = "😍 \(InAppPurchase.shared.tipMassive?.localizedTitle ?? "")"
         buttonTip3.setTitle(InAppPurchase.shared.tipMassive?.localizedPrice, for: .normal)
     }
 
