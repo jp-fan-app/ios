@@ -14,4 +14,14 @@ class PerformanceBoardFilterHeaderView: UITableViewHeaderFooterView {
 
     @IBOutlet var segmentedControlPerformanceFilter: UISegmentedControl!
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+
+        if #available(iOS 13, *) {
+
+        } else {
+            segmentedControlPerformanceFilter.tintColor = .black
+        }
+    }
+
 }

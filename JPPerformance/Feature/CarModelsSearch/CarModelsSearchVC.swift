@@ -29,13 +29,17 @@ class CarModelsSearchVC: UIViewController {
         tableView.sectionIndexBackgroundColor = .clear
 
         let searchController = UISearchController()
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "search-placeholder".localized()
         searchController.searchBar.text = initialSearchText
         searchController.searchBar.delegate = self
+        searchController.searchBar.sizeToFit()
+        searchController.hidesNavigationBarDuringPresentation = true
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
 
         viewModel.delegate = self
+        viewModel.search(text: initialSearchText ?? "")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -142,13 +146,21 @@ extension CarModelsSearchVC: UITableViewDelegate {
 
 }
 
+// MARK: - UISearchBarDelegate
+
 extension CarModelsSearchVC: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         viewModel.search(text: searchText)
     }
 
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.search(text: "")
+    }
+
 }
+
+// MARK: - CarModelsSearchVCDelegate
 
 extension CarModelsSearchVC: CarModelsSearchVCDelegate {
 
@@ -201,22 +213,37 @@ private extension CarModelsSearchVC {
 
         private func performFilter() {
             let lowerSearchText = searchText?.lowercased()
-            print("search \(searchText)")
-            sections = manufacturers
-                .sorted(by: { $0.name < $1.name })
-                .map
-            { manufacturer in
-                return Section(manufacturer: manufacturer,
-                               models: carModels
-                                .filter({ $0.manufacturerID == manufacturer.id })
-                                .sorted(by: { $0.name < $1.name }
-                ))
-            }.filter { section in
-                guard let lowerSearchText = lowerSearchText else { return true }
-                return section.manufacturer.name.lowercased().contains(lowerSearchText) || section.models.contains(where: { carModel in
-                    carModel.name.lowercased().contains(lowerSearchText)
-                })
+
+            // map all sections
+            sections = manufacturers.sorted(by: { $0.name < $1.name }).map { manufacturer in
+                let models = carModels
+                    .filter({ $0.manufacturerID == manufacturer.id })
+                    .sorted(by: { $0.name < $1.name })
+                return Section(manufacturer: manufacturer, models: models)
             }
+
+            // filter sections
+            if let lowerSearchText = lowerSearchText {
+                for tuple in sections.enumerated().reversed() {
+                    let (index, section) = tuple
+
+                    let isNameMatch = section.manufacturer.name.lowercased().contains(lowerSearchText)
+                    let filteredModels = section.models.filter({ $0.name.lowercased().contains(lowerSearchText) })
+                    if isNameMatch {
+                        // leave section as it is
+                        continue
+                    } else {
+                        if filteredModels.count > 0 {
+                            // show filtered section
+                            sections[index].models = filteredModels
+                        } else {
+                            // remove section
+                            sections.remove(at: index)
+                        }
+                    }
+                }
+            }
+
             delegate?.didUpdateSearchResults()
         }
 
@@ -229,7 +256,7 @@ private extension CarModelsSearchVC.ViewModel {
     struct Section {
 
         let manufacturer: JPFanAppClient.ManufacturerModel
-        let models: [JPFanAppClient.CarModel]
+        var models: [JPFanAppClient.CarModel]
 
     }
 

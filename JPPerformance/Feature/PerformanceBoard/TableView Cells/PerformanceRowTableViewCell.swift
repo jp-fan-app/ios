@@ -67,6 +67,7 @@ class PerformanceRowTableViewCell: UITableViewCell {
 
         DispatchQueue.global(qos: .userInitiated).async {
             self.http.getManufacturer(id: carModel.manufacturerID).whenSuccess { manufacturer in
+                guard self.carModel?.id == carModel.id else { return }
                 DispatchQueue.main.async {
                     self.labelManufacturerName.text = manufacturer.name
                 }
@@ -74,6 +75,7 @@ class PerformanceRowTableViewCell: UITableViewCell {
 
             if let mainImageID = carModel.mainImageID {
                 self.http.getCarImageFile(id: mainImageID).whenSuccess { imageData in
+                    guard self.carModel?.id == carModel.id else { return }
                     let image = UIImage(data: imageData)
                     DispatchQueue.main.async {
                         self.imageViewBackground.image = image

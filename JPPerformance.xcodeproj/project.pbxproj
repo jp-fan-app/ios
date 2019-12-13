@@ -833,8 +833,8 @@
 		59F9B48D239BA4B6008AAF49 /* TableVIew Header Views */ = {
 			isa = PBXGroup;
 			children = (
-				59F9B48E239BA4CB008AAF49 /* PerformanceBoardFilterHeaderView.swift */,
 				59F9B490239BA4D8008AAF49 /* PerformanceBoardFilterHeaderView.xib */,
+				59F9B48E239BA4CB008AAF49 /* PerformanceBoardFilterHeaderView.swift */,
 			);
 			path = "TableVIew Header Views";
 			sourceTree = "<group>";
