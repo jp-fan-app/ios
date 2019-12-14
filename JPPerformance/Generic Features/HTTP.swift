@@ -127,8 +127,11 @@ public class HTTP {
 
     @discardableResult
     public func getCarStages(carModelID: Int) -> EventLoopFuture<[JPFanAppClient.CarStage]> {
-        // TODO: Cache
+        if let cached = cache?.cachedCarStagesForCarModel(carModelId: carModelID) {
+            return httpClient.nextEventLoop().makeSucceededFuture(cached)
+        }
         return httpClient.modelsStages(id: carModelID).map { index in
+            self.cache?.store(carStages: index, forCarModelId: carModelID)
             return index
         }
     }

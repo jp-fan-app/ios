@@ -29,8 +29,20 @@ public extension Cache {
               singleKey: keyFor)
     }
 
+    func store(carStages: [JPFanAppClient.CarStage], forCarModelId carModelId: Int) {
+        store(index: carStages,
+              indexStorage: indexStorage,
+              indexKey: "car-model-stages-\(carModelId)",
+              singleStorage: singleStorage,
+              singleKey: keyFor)
+    }
+
     func cachedCarStagesIndex() -> [JPFanAppClient.CarStage]? {
         return cachedIndex(in: indexStorage, key: indexKey)
+    }
+
+    func cachedCarStagesForCarModel(carModelId: Int) -> [JPFanAppClient.CarStage]? {
+        return cachedIndex(in: indexStorage, key: "car-model-stages-\(carModelId)")
     }
 
     func cached(carStageID: Int) -> JPFanAppClient.CarStage? {
