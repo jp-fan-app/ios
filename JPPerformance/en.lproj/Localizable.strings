@@ -51,6 +51,7 @@
 "manufacturers" = "Manufacturers";
 "youtube-videos" = "Videos";
 "show-all-car-models" = "Show all cars";
+"show-all-car-models-for-manufacturer" = "All cars from %@";
 "recent-videos" = "Recent Videos";
 "video-series" = "Video Series";
 "all" = "All";

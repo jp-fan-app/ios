@@ -140,13 +140,13 @@ public class HTTP {
     public func getCarStagesWithMappedTimings(carModelID: Int) -> EventLoopFuture<[CarStageWithTimingsMapping]> {
         return getCarStages(carModelID: carModelID).and(getStageTimings()).map { (tuple) in
             let (carStages, allTimings) = tuple
-            let stageTimings: [(JPFanAppClient.CarStage, [JPFanAppClient.StageTiming])] = carStages.compactMap { carStage in
-                // TODO: return car stages without timings?
+            let stageTimings: [(JPFanAppClient.CarStage, [JPFanAppClient.StageTiming])] = carStages.compactMap
+            { carStage in
                 let timings = allTimings.filter({ $0.stageID == carStage.id })
                 if timings.count > 0 {
                     return (carStage, timings)
                 } else {
-                    return nil
+                    return (carStage, [])
                 }
             }
             return stageTimings

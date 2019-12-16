@@ -16,8 +16,6 @@ class YoutubePlayerVC: UIViewController {
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask { .all }
 
-    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation { .landscapeRight }
-
     @IBOutlet var youtubePlayerView: YouTubePlayerView!
     @IBOutlet var buttonClose: UIButton!
 

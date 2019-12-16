@@ -161,9 +161,13 @@ internal extension MainVC {
 
         private func carModelsSection() -> CarModelsSection? {
             guard carModels.count > 0 else { return nil }
+            var detailsRowTitle = "show-all-car-models".localized()
+            if let selectedManufacturer = selectedManufacturer {
+                detailsRowTitle = "show-all-car-models-for-manufacturer".localized(selectedManufacturer.name)
+            }
             return CarModelsSection(headerType: .none,
                                     carModels: Array(carModels.prefix(2)),
-                                    detailsRowTitle: "show-all-car-models".localized(),
+                                    detailsRowTitle: detailsRowTitle,
                                     hasAdRow: true)
         }
 

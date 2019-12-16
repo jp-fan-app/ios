@@ -38,8 +38,15 @@ class CarModelsSearchVC: UIViewController {
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = true
 
-        viewModel.delegate = self
-        viewModel.search(text: initialSearchText ?? "")
+        // reload a bit later (navigation item / searchbar fix)
+        tableView.dataSource = nil
+        tableView.delegate = nil
+        DispatchQueue.main.async {
+            self.tableView.dataSource = self
+            self.tableView.delegate = self
+            self.viewModel.delegate = self
+            self.viewModel.search(text: self.initialSearchText ?? "")
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {

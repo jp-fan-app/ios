@@ -51,6 +51,7 @@
 "manufacturers" = "Marken";
 "youtube-videos" = "Videos";
 "show-all-car-models" = "Alle Fahrzeuge anzeigen";
+"show-all-car-models-for-manufacturer" = "Alle Fahrzeuge von %@";
 "recent-videos" = "Neue Videos";
 "video-series" = "Videoserien";
 "all" = "Alle";
